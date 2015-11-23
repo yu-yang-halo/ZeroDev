@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  LoginViewController.h
 //  ZeroDev
 //
 //  Created by admin on 15/11/6.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface LoginViewController : UIViewController<UIWebViewDelegate>
 
 @end
-

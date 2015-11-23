@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="js/elapi.js" ></script>
+		<script type="text/javascript" src="js/jquery-2.1.0.js" ></script>
+		<link rel="stylesheet" href="css/button.css" type="text/css" charset="utf-8"/>
+        
+		<style>
+
+			.title{
+				text-align: center;
+				height: 40px;
+				line-height: 44px;
+			    margin-top: 20px;
+			}
+			.title label{
+				font-size: 22px;
+				width: 200px;
+			}
+			.sel{
+				text-align: center;
+				margin-top: 0px;
+			}
+			.sel select{
+			width: 280px;
+			height: 40px;
+			text-align: center;
+			background-color:deepskyblue;
+			font-size: 25px;
+			border:dashed;
+			}
+			.sel section option{
+				text-align: center;
+			}
+			.main{
+			   margin-top:100px;
+			}
+			.rowcls{
+			text-align: center;
+			margin-top: 200px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="main">
+			<div class="title"><label>请选择您的应用</label></div>
+			<div class="sel">
+				<select style="" id="appsel">
+					<option value="-1"></option>
+					<option value="0" url="http://www.baidu.com/0">E联易家</option>
+					<option value="1" url="http://www.baidu.com/1">应用1</option>
+					<option value="2" url="http://www.baidu.com/2">应用2</option>
+					<option value="3" url="http://www.baidu.com/3">应用3</option>
+				</select>
+			</div>
+			<div class="rowcls">
+				<button class="button blue" onclick="next()">下一步</button>
+			</div>
+		</div>
+	</body>
+    <script type="text/javascript">
+		$('#appsel').change(function(){
+               var selectIndex=$(this).children('option:selected').val();
+               if(selectIndex==-1){
+                  alert("请选择一个APP");
+               }else{
+
+               }
+        })
+        function next(){
+              var selectIndex=$('#appsel').children('option:selected').val();
+              if(selectIndex==-1){
+                  alert("请选择一个APP");
+              }else{
+                  var url=$('#appsel').children('option:selected').attr("url");
+                  hyl_downloadApp(url);
+                  alert(url);
+              }
+        }
+	</script>
+</html>

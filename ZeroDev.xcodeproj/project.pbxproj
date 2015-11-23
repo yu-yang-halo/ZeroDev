@@ -7,13 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		187526C342650BB622D5430D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AEC66BEC68ABDAA4FFFB25D /* libPods.a */; };
+		8488BC441BEC7BA000803B96 /* ui in Resources */ = {isa = PBXBuildFile; fileRef = 8488BC431BEC7B9F00803B96 /* ui */; };
+		8488BC471BEC887500803B96 /* HYLDevicesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488BC461BEC887500803B96 /* HYLDevicesController.m */; };
+		8488BC4B1BEC8F8600803B96 /* HYLClassUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488BC4A1BEC8F8600803B96 /* HYLClassUtils.m */; };
+		8488BC4E1BEC8FA400803B96 /* HYLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8488BC4D1BEC8FA400803B96 /* HYLCache.m */; };
+		84992F1B1BFC32BE00D890A2 /* ZDItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84992F1A1BFC32BE00D890A2 /* ZDItem.m */; };
 		84C273941BEC46FA00C52577 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C273931BEC46FA00C52577 /* main.m */; };
 		84C273971BEC46FA00C52577 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C273961BEC46FA00C52577 /* AppDelegate.m */; };
-		84C2739A1BEC46FA00C52577 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C273991BEC46FA00C52577 /* ViewController.m */; };
 		84C2739D1BEC46FA00C52577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C2739B1BEC46FA00C52577 /* Main.storyboard */; };
 		84C2739F1BEC46FA00C52577 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C2739E1BEC46FA00C52577 /* Images.xcassets */; };
 		84C273A21BEC46FA00C52577 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C273A01BEC46FA00C52577 /* LaunchScreen.xib */; };
 		84C273AE1BEC46FA00C52577 /* ZeroDevTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C273AD1BEC46FA00C52577 /* ZeroDevTests.m */; };
+		84C273CA1BEC482A00C52577 /* SlideNavigationContorllerAnimatorFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C273BC1BEC482A00C52577 /* SlideNavigationContorllerAnimatorFade.m */; };
+		84C273CB1BEC482A00C52577 /* SlideNavigationContorllerAnimatorScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C273BE1BEC482A00C52577 /* SlideNavigationContorllerAnimatorScale.m */; };
+		84C273CC1BEC482A00C52577 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C273C01BEC482A00C52577 /* SlideNavigationContorllerAnimatorScaleAndFade.m */; };
+		84C273CD1BEC482A00C52577 /* SlideNavigationContorllerAnimatorSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C273C21BEC482A00C52577 /* SlideNavigationContorllerAnimatorSlide.m */; };
+		84C273CE1BEC482A00C52577 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C273C41BEC482A00C52577 /* SlideNavigationContorllerAnimatorSlideAndFade.m */; };
+		84C273CF1BEC482A00C52577 /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C273C61BEC482A00C52577 /* menu-button.png */; };
+		84C273D01BEC482A00C52577 /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C273C71BEC482A00C52577 /* menu-button@2x.png */; };
+		84C273D11BEC482A00C52577 /* SlideNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C273C91BEC482A00C52577 /* SlideNavigationController.m */; };
+		84C273D51BEC55DD00C52577 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C273D41BEC55DD00C52577 /* LoginViewController.m */; };
+		84C273D81BEC67BA00C52577 /* ELNetworkService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C273D71BEC67BA00C52577 /* ELNetworkService.framework */; };
+		84F8199C1BF0368000FA2314 /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8199B1BF0368000FA2314 /* LeftMenuViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,19 +43,49 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E847DE7A8CC4497E18F85E0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		7692A53577CA343C4467CC5F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		8488BC431BEC7B9F00803B96 /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ui; sourceTree = "<group>"; };
+		8488BC451BEC887500803B96 /* HYLDevicesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLDevicesController.h; sourceTree = "<group>"; };
+		8488BC461BEC887500803B96 /* HYLDevicesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLDevicesController.m; sourceTree = "<group>"; };
+		8488BC491BEC8F8600803B96 /* HYLClassUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLClassUtils.h; sourceTree = "<group>"; };
+		8488BC4A1BEC8F8600803B96 /* HYLClassUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLClassUtils.m; sourceTree = "<group>"; };
+		8488BC4C1BEC8FA400803B96 /* HYLCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLCache.h; sourceTree = "<group>"; };
+		8488BC4D1BEC8FA400803B96 /* HYLCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLCache.m; sourceTree = "<group>"; };
+		84992F191BFC32BE00D890A2 /* ZDItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDItem.h; sourceTree = "<group>"; };
+		84992F1A1BFC32BE00D890A2 /* ZDItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDItem.m; sourceTree = "<group>"; };
 		84C2738E1BEC46FA00C52577 /* ZeroDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZeroDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C273921BEC46FA00C52577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84C273931BEC46FA00C52577 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84C273951BEC46FA00C52577 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84C273961BEC46FA00C52577 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		84C273981BEC46FA00C52577 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		84C273991BEC46FA00C52577 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		84C2739C1BEC46FA00C52577 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84C2739E1BEC46FA00C52577 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84C273A11BEC46FA00C52577 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		84C273A71BEC46FA00C52577 /* ZeroDevTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZeroDevTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C273AC1BEC46FA00C52577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84C273AD1BEC46FA00C52577 /* ZeroDevTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZeroDevTests.m; sourceTree = "<group>"; };
+		84C273BA1BEC482A00C52577 /* SlideNavigationContorllerAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimator.h; sourceTree = "<group>"; };
+		84C273BB1BEC482A00C52577 /* SlideNavigationContorllerAnimatorFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorFade.h; sourceTree = "<group>"; };
+		84C273BC1BEC482A00C52577 /* SlideNavigationContorllerAnimatorFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorFade.m; sourceTree = "<group>"; };
+		84C273BD1BEC482A00C52577 /* SlideNavigationContorllerAnimatorScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorScale.h; sourceTree = "<group>"; };
+		84C273BE1BEC482A00C52577 /* SlideNavigationContorllerAnimatorScale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorScale.m; sourceTree = "<group>"; };
+		84C273BF1BEC482A00C52577 /* SlideNavigationContorllerAnimatorScaleAndFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorScaleAndFade.h; sourceTree = "<group>"; };
+		84C273C01BEC482A00C52577 /* SlideNavigationContorllerAnimatorScaleAndFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorScaleAndFade.m; sourceTree = "<group>"; };
+		84C273C11BEC482A00C52577 /* SlideNavigationContorllerAnimatorSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorSlide.h; sourceTree = "<group>"; };
+		84C273C21BEC482A00C52577 /* SlideNavigationContorllerAnimatorSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorSlide.m; sourceTree = "<group>"; };
+		84C273C31BEC482A00C52577 /* SlideNavigationContorllerAnimatorSlideAndFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationContorllerAnimatorSlideAndFade.h; sourceTree = "<group>"; };
+		84C273C41BEC482A00C52577 /* SlideNavigationContorllerAnimatorSlideAndFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationContorllerAnimatorSlideAndFade.m; sourceTree = "<group>"; };
+		84C273C61BEC482A00C52577 /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button.png"; sourceTree = "<group>"; };
+		84C273C71BEC482A00C52577 /* menu-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button@2x.png"; sourceTree = "<group>"; };
+		84C273C81BEC482A00C52577 /* SlideNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideNavigationController.h; sourceTree = "<group>"; };
+		84C273C91BEC482A00C52577 /* SlideNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideNavigationController.m; sourceTree = "<group>"; };
+		84C273D31BEC55DD00C52577 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		84C273D41BEC55DD00C52577 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		84C273D71BEC67BA00C52577 /* ELNetworkService.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ELNetworkService.framework; sourceTree = "<group>"; };
+		84F8199A1BF0368000FA2314 /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
+		84F8199B1BF0368000FA2314 /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
+		9AEC66BEC68ABDAA4FFFB25D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +93,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C273D81BEC67BA00C52577 /* ELNetworkService.framework in Frameworks */,
+				187526C342650BB622D5430D /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +108,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		172CBF0E2C09348CCCF582C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9AEC66BEC68ABDAA4FFFB25D /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		525A77152FA6BE90874AEC05 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6E847DE7A8CC4497E18F85E0 /* Pods.debug.xcconfig */,
+				7692A53577CA343C4467CC5F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8488BC481BEC8EFF00803B96 /* serialize */ = {
+			isa = PBXGroup;
+			children = (
+				8488BC4C1BEC8FA400803B96 /* HYLCache.h */,
+				8488BC4D1BEC8FA400803B96 /* HYLCache.m */,
+				8488BC491BEC8F8600803B96 /* HYLClassUtils.h */,
+				8488BC4A1BEC8F8600803B96 /* HYLClassUtils.m */,
+			);
+			name = serialize;
+			sourceTree = "<group>";
+		};
+		84992F181BFC326800D890A2 /* bean */ = {
+			isa = PBXGroup;
+			children = (
+				84992F191BFC32BE00D890A2 /* ZDItem.h */,
+				84992F1A1BFC32BE00D890A2 /* ZDItem.m */,
+			);
+			name = bean;
+			sourceTree = "<group>";
+		};
 		84C273851BEC46FA00C52577 = {
 			isa = PBXGroup;
 			children = (
 				84C273901BEC46FA00C52577 /* ZeroDev */,
 				84C273AA1BEC46FA00C52577 /* ZeroDevTests */,
 				84C2738F1BEC46FA00C52577 /* Products */,
+				525A77152FA6BE90874AEC05 /* Pods */,
+				172CBF0E2C09348CCCF582C0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,10 +168,14 @@
 		84C273901BEC46FA00C52577 /* ZeroDev */ = {
 			isa = PBXGroup;
 			children = (
+				84992F181BFC326800D890A2 /* bean */,
+				8488BC481BEC8EFF00803B96 /* serialize */,
+				84C274291BEC6C3400C52577 /* res */,
+				84C273D61BEC679D00C52577 /* library */,
+				84C273D21BEC55A800C52577 /* ViewController */,
+				84C273B71BEC472500C52577 /* SlideNav */,
 				84C273951BEC46FA00C52577 /* AppDelegate.h */,
 				84C273961BEC46FA00C52577 /* AppDelegate.m */,
-				84C273981BEC46FA00C52577 /* ViewController.h */,
-				84C273991BEC46FA00C52577 /* ViewController.m */,
 				84C2739B1BEC46FA00C52577 /* Main.storyboard */,
 				84C2739E1BEC46FA00C52577 /* Images.xcassets */,
 				84C273A01BEC46FA00C52577 /* LaunchScreen.xib */,
@@ -119,6 +210,81 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		84C273B71BEC472500C52577 /* SlideNav */ = {
+			isa = PBXGroup;
+			children = (
+				84C273B81BEC482A00C52577 /* Source */,
+			);
+			name = SlideNav;
+			sourceTree = "<group>";
+		};
+		84C273B81BEC482A00C52577 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				84C273B91BEC482A00C52577 /* Animations */,
+				84C273C51BEC482A00C52577 /* Assets */,
+				84C273C81BEC482A00C52577 /* SlideNavigationController.h */,
+				84C273C91BEC482A00C52577 /* SlideNavigationController.m */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		84C273B91BEC482A00C52577 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				84C273BA1BEC482A00C52577 /* SlideNavigationContorllerAnimator.h */,
+				84C273BB1BEC482A00C52577 /* SlideNavigationContorllerAnimatorFade.h */,
+				84C273BC1BEC482A00C52577 /* SlideNavigationContorllerAnimatorFade.m */,
+				84C273BD1BEC482A00C52577 /* SlideNavigationContorllerAnimatorScale.h */,
+				84C273BE1BEC482A00C52577 /* SlideNavigationContorllerAnimatorScale.m */,
+				84C273BF1BEC482A00C52577 /* SlideNavigationContorllerAnimatorScaleAndFade.h */,
+				84C273C01BEC482A00C52577 /* SlideNavigationContorllerAnimatorScaleAndFade.m */,
+				84C273C11BEC482A00C52577 /* SlideNavigationContorllerAnimatorSlide.h */,
+				84C273C21BEC482A00C52577 /* SlideNavigationContorllerAnimatorSlide.m */,
+				84C273C31BEC482A00C52577 /* SlideNavigationContorllerAnimatorSlideAndFade.h */,
+				84C273C41BEC482A00C52577 /* SlideNavigationContorllerAnimatorSlideAndFade.m */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		84C273C51BEC482A00C52577 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				84C273C61BEC482A00C52577 /* menu-button.png */,
+				84C273C71BEC482A00C52577 /* menu-button@2x.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		84C273D21BEC55A800C52577 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8488BC451BEC887500803B96 /* HYLDevicesController.h */,
+				8488BC461BEC887500803B96 /* HYLDevicesController.m */,
+				84C273D31BEC55DD00C52577 /* LoginViewController.h */,
+				84C273D41BEC55DD00C52577 /* LoginViewController.m */,
+				84F8199A1BF0368000FA2314 /* LeftMenuViewController.h */,
+				84F8199B1BF0368000FA2314 /* LeftMenuViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		84C273D61BEC679D00C52577 /* library */ = {
+			isa = PBXGroup;
+			children = (
+				84C273D71BEC67BA00C52577 /* ELNetworkService.framework */,
+			);
+			name = library;
+			sourceTree = "<group>";
+		};
+		84C274291BEC6C3400C52577 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				8488BC431BEC7B9F00803B96 /* ui */,
+			);
+			name = res;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,9 +292,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84C273B11BEC46FA00C52577 /* Build configuration list for PBXNativeTarget "ZeroDev" */;
 			buildPhases = (
+				9699C6783576B9CF739A0890 /* Check Pods Manifest.lock */,
 				84C2738A1BEC46FA00C52577 /* Sources */,
 				84C2738B1BEC46FA00C52577 /* Frameworks */,
 				84C2738C1BEC46FA00C52577 /* Resources */,
+				6535BDB89A03841ED3E6DF8C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,7 +332,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0640;
-				ORGANIZATIONNAME = "cn.lztech  合肥联正电子科技有限公司";
+				ORGANIZATIONNAME = "cn.lztech  &#21512;&#32933;&#32852;&#27491;&#30005;&#23376;&#31185;&#25216;&#26377;&#38480;&#20844;&#21496;";
 				TargetAttributes = {
 					84C2738D1BEC46FA00C52577 = {
 						CreatedOnToolsVersion = 6.4;
@@ -199,8 +367,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C273CF1BEC482A00C52577 /* menu-button.png in Resources */,
 				84C2739D1BEC46FA00C52577 /* Main.storyboard in Resources */,
 				84C273A21BEC46FA00C52577 /* LaunchScreen.xib in Resources */,
+				84C273D01BEC482A00C52577 /* menu-button@2x.png in Resources */,
+				8488BC441BEC7BA000803B96 /* ui in Resources */,
 				84C2739F1BEC46FA00C52577 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,14 +385,58 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6535BDB89A03841ED3E6DF8C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9699C6783576B9CF739A0890 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		84C2738A1BEC46FA00C52577 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84C2739A1BEC46FA00C52577 /* ViewController.m in Sources */,
+				84C273D11BEC482A00C52577 /* SlideNavigationController.m in Sources */,
+				8488BC471BEC887500803B96 /* HYLDevicesController.m in Sources */,
+				84C273CB1BEC482A00C52577 /* SlideNavigationContorllerAnimatorScale.m in Sources */,
+				84C273CC1BEC482A00C52577 /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				84C273971BEC46FA00C52577 /* AppDelegate.m in Sources */,
+				8488BC4B1BEC8F8600803B96 /* HYLClassUtils.m in Sources */,
+				84992F1B1BFC32BE00D890A2 /* ZDItem.m in Sources */,
+				84F8199C1BF0368000FA2314 /* LeftMenuViewController.m in Sources */,
+				84C273CA1BEC482A00C52577 /* SlideNavigationContorllerAnimatorFade.m in Sources */,
+				84C273D51BEC55DD00C52577 /* LoginViewController.m in Sources */,
 				84C273941BEC46FA00C52577 /* main.m in Sources */,
+				84C273CE1BEC482A00C52577 /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
+				8488BC4E1BEC8FA400803B96 /* HYLCache.m in Sources */,
+				84C273CD1BEC482A00C52577 /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,20 +560,78 @@
 		};
 		84C273B21BEC46FA00C52577 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E847DE7A8CC4497E18F85E0 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ZeroDev",
+				);
 				INFOPLIST_FILE = ZeroDev/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"Pods-EGOTableViewPullRefresh\"",
+					"-l\"Pods-JDStatusBarNotification\"",
+					"-l\"Pods-JSONKit\"",
+					"-l\"Pods-MBProgressHUD\"",
+					"-l\"Pods-Reachability\"",
+					"-l\"Pods-SDWebImage\"",
+					"-l\"Pods-SIAlertView\"",
+					"-l\"Pods-Toast\"",
+					"-l\"Pods-ZipArchive\"",
+					"-l\"z\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-lxml2",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		84C273B31BEC46FA00C52577 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7692A53577CA343C4467CC5F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ZeroDev",
+				);
 				INFOPLIST_FILE = ZeroDev/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"Pods-EGOTableViewPullRefresh\"",
+					"-l\"Pods-JDStatusBarNotification\"",
+					"-l\"Pods-JSONKit\"",
+					"-l\"Pods-MBProgressHUD\"",
+					"-l\"Pods-Reachability\"",
+					"-l\"Pods-SDWebImage\"",
+					"-l\"Pods-SIAlertView\"",
+					"-l\"Pods-Toast\"",
+					"-l\"Pods-ZipArchive\"",
+					"-l\"z\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-lxml2",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -416,6 +689,7 @@
 				84C273B31BEC46FA00C52577 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84C273B41BEC46FA00C52577 /* Build configuration list for PBXNativeTarget "ZeroDevTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +698,7 @@
 				84C273B61BEC46FA00C52577 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

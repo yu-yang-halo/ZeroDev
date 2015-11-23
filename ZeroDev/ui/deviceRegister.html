@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="language/language.js"></script>
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript" src="js/elapi.js"></script>
+		<link rel="stylesheet" href="css/button.css" type="text/css" charset="utf-8" />
+
+	</head>
+	<style>
+		body {
+			width: 100%;
+			height: 100%;
+			margin: 0px auto;
+		}
+		.main {
+			width: 100%;
+			height: 100%;
+			margin: 0px auto;
+			text-align: center;
+		}
+		.row {
+			text-align: center;
+			margin-top: 10px;
+			
+		}
+		label {
+			width: 68px;
+			display: inline-block;
+			text-align: right;
+		}
+		.in {
+			background-repeat: round;
+			padding-left: 2px;
+			border: 1px solid #A9C08C;
+			height: 30px;
+			width: 180px;
+			font-size: 20px;
+			background-size: 100%;
+		}
+	</style>
+
+	<body>
+		<div class="main">
+			<div class="row">
+				<label>序列号:</label>
+				<input class="in" />
+				
+			</div>
+			<div class="row" style="margin-top: -0;">
+				<button class="button white" style="display: table-cell;"  id="scan">扫一扫</button>
+			</div>
+			<div class="row">
+				<label>产品类型:</label>
+				<input class="in" />
+			</div>
+			<div class="row">
+				<label>验证码:</label>
+				<input class="in" />
+			</div>
+			<div class="row">
+				<label>名称:</label>
+				<input class="in" />
+			</div>
+			<div class="row">
+				<button class="button blue">注册</button>
+			</div>
+		</div>
+	</body>
+    <script type="text/javascript">
+		$("#scan").click(function(){
+		   hyl_scanCode();
+		});
+	</script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="js/elapi.js"></script>
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+		<link rel="stylesheet" href="css/button.css" type="text/css" charset="utf-8" />
+		<style>
+			body {
+				width: 100%;
+				height: 100%;
+				margin: 0px auto;
+			}
+			.row{
+				text-align: center;
+				margin-top: 15px;
+			}
+			div button {
+				width: 240px;
+				height: 36px;
+			}
+			.button {
+				font-size: 14px;
+			}
+			div input {
+				background-repeat: round;
+				padding-left: 2px;
+				border: 1px solid #A9C08C;
+				height: 30px;
+				width: 230px;
+				font-size: 15px;
+				background-size: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="main">
+			<div class="row">
+				<button class="button blue">连接到WIFI设备的无线网络</button>
+			</div>
+			<div class="row">
+				<input placeholder="常用无线网SSID" />
+			</div>
+			<div class="row">
+				<input placeholder="无线网密码" />
+			</div>
+			<div class="row">
+				<button disabled="disabled">配置常用网络到WIFI设备</button>
+			</div>
+		</div>
+
+	</body>
+
+</html>

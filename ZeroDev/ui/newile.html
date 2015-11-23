@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+
+<head>
+
+	<meta charset="GBK">
+	<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+
+	<title>title</title>
+
+	<style type="text/css">
+		*{padding:0;margin:0;}
+
+		html,body{height:100%;}
+
+		#header{width:100%;height:100px;position:absolute;left:0;top:0;z-index:3;background:#0f0;}
+
+		.sidebar{width:120px;height:100%;position:absolute;left:0;top:0;z-index:2;background:#f00;}
+
+		.sidebar .inner{padding-top:100px;}
+
+		.bodyer{width:100%;height:100%;overflow:hidden;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;padding:100px 0 0 120px;position:absolute;left:0;top:0;z-index:1;background:#0ff;}
+
+		.bodyer .inner{width:100%;height:100%;overflow:auto;}
+	</style>
+
+</head>
+
+<body>
+
+<div id="header">
+
+	<div style="background-color: #00ADEE;width: 80%;height: 1900px;"></div>
+
+</div>
+
+</body>
+<script type="text/javascript">
+	$(function() {
+		var xx, yy, XX, YY, swipeX, swipeY;
+		var swipeleft=false;
+		var showADID = 1;
+		document.getElementById("header").addEventListener("touchstart", touchStart, false);
+		document.getElementById("header").addEventListener("touchmove", touchMove, false);
+		document.getElementById("header").addEventListener("touchend", touchEnd, false);
+
+		function touchStart(event) {
+			xx = event.targetTouches[0].screenX;
+			yy = event.targetTouches[0].screenY;
+			swipeX = true;
+			swipeY = true;
+		}
+
+		function touchMove(event) {
+			XX = event.targetTouches[0].screenX;
+			YY = event.targetTouches[0].screenY;
+			if (swipeX && Math.abs(XX - xx) - Math.abs(YY - yy) > 0) //左右滑动
+			{
+				event.stopPropagation(); //组织冒泡
+				event.preventDefault(); //阻止浏览器默认事件
+				swipeY = false;
+
+				if(XX-xx>0){
+				   swipeleft=false;//向右
+				}else{
+				   swipeleft=true;//向左
+				}
+				//左右滑动
+			} else if (swipeY && Math.abs(XX - xx) - Math.abs(YY - yy) < 0) { //上下滑动
+				swipeX = false;
+				//上下滑动，使用浏览器默认的上下滑动
+			}
+		}
+
+		function touchEnd(event) {
+			var direct = "";
+			if (swipeX) {
+			    if(swipeleft){
+			       direct = "左滑动";
+			    }else{
+			       direct = "右滑动";
+			    }
+			}
+		}
+	})
+</script>
+
+</html>
