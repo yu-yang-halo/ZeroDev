@@ -7,17 +7,12 @@
 //
 
 #import "LeftMenuViewController.h"
-#import "ZDItem.h"
+
 
 @interface LeftMenuViewController (){
-    NSArray *heads;
-    NSArray *contents;
-    
-    NSInteger CellCount;
-    NSInteger ExpandCount;
+  
 }
-@property (assign, nonatomic) BOOL isExpand;
-@property (strong, nonatomic) NSIndexPath *selectedIndexPath;
+@property (nonatomic, strong) NSArray *contents;
 
 
 @end
@@ -26,20 +21,45 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
-    [self.staticView setBackgroundColor:[UIColor clearColor]];
-    self.isExpand = NO;
-    heads=[NSArray arrayWithObjects:@"0",@"1",@"2", nil];
-    contents=[NSArray arrayWithObjects:[NSArray arrayWithObjects:@"01",@"02",@"03", nil],[NSArray arrayWithObjects:@"11",@"12", nil],[NSArray arrayWithObjects:@"23",nil], nil];
+    self.tableView.SKSTableViewDelegate = self;
     
-    CellCount=[heads count];
+    // In order to expand just one cell at a time. If you set this value YES, when you expand an cell, the already-expanded cell is collapsed automatically.
+    //    self.tableView.shouldExpandOnlyOneCell = YES;
     
-    self.tableView.tableFooterView = [UIView new];
-    self.tableView.dataSource=self;
-    self.tableView.delegate=self;
-    [self.tableView setBackgroundColor:[UIColor clearColor]];
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    self.navigationItem.title = @"SKSTableView";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Collapse"
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(collapseSubrows)];
+    [self setDataManipulationButton:UIBarButtonSystemItemRefresh];
     
+}
+- (NSArray *)contents
+{
+    if (!_contents)
+    {
+        _contents = @[
+                      @[
+                          @[@"主页", @"",@"Row0_Subrow2"],
+                          @[@"Section0_Row1", @"Row1_Subrow1", @"Row1_Subrow2", @"Row1_Subrow3", @"Row1_Subrow4", @"Row1_Subrow5", @"Row1_Subrow6", @"Row1_Subrow7", @"Row1_Subrow8", @"Row1_Subrow9", @"Row1_Subrow10", @"Row1_Subrow11", @"Row1_Subrow12"],
+                          @[@"Section0_Row2"]],
+                      @[
+                          @[@"Section1_Row0", @"Row0_Subrow1", @"Row0_Subrow2", @"Row0_Subrow3"],
+                          @[@"Section1_Row1"],
+                          @[@"Section1_Row2", @"Row2_Subrow1", @"Row2_Subrow2", @"Row2_Subrow3", @"Row2_Subrow4", @"Row2_Subrow5"],
+                          @[@"Section1_Row3"],
+                          @[@"Section1_Row4"],
+                          @[@"Section1_Row5"],
+                          @[@"Section1_Row6"],
+                          @[@"Section1_Row7"],
+                          @[@"Section1_Row8"],
+                          @[@"Section1_Row9"],
+                          @[@"Section1_Row10"],
+                          @[@"Section1_Row11"]]
+                      ];
+    }
+    
+    return _contents;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,109 +68,139 @@
 }
 #pragma mark - Private
 
-- (NSArray *)indexPathsForExpandRow:(NSInteger)row {
-    NSMutableArray *indexPaths = [NSMutableArray array];
-    for (int i = 1; i <= ExpandCount; i++) {
-        NSIndexPath *idxPth = [NSIndexPath indexPathForRow:row + i inSection:0];
-        [indexPaths addObject:idxPth];
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [self.contents count];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.contents[section] count];
+}
+
+- (NSInteger)tableView:(SKSTableView *)tableView numberOfSubRowsAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self.contents[indexPath.section][indexPath.row] count] - 1;
+}
+
+- (BOOL)tableView:(SKSTableView *)tableView shouldExpandSubRowsOfCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1 && indexPath.row == 0)
+    {
+        return YES;
     }
-    return [indexPaths copy];
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.isExpand) {
-        return CellCount + ExpandCount;
-    }
-    return CellCount;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell;
-    if (self.isExpand && self.selectedIndexPath.row < indexPath.row && indexPath.row <= self.selectedIndexPath.row + ExpandCount) {   // Expand cell
-        cell = [tableView dequeueReusableCellWithIdentifier:@"FriendCell" forIndexPath:indexPath];
-        int childIndex=indexPath.row-self.selectedIndexPath.row-1;
-        NSLog(@"childIndex:%d",childIndex);
-        
-        id title=[[contents objectAtIndex:self.selectedIndexPath.row] objectAtIndex:childIndex];
-        
-        [[(ChildCell *)cell titleLabel] setText:title];
-    } else {    // Normal cell
-        cell = [tableView dequeueReusableCellWithIdentifier:@"GroupCell" forIndexPath:indexPath];
-        int groupIndex=indexPath.row;
-       
-        if(indexPath.row>=ExpandCount+self.selectedIndexPath.row+1){
-            groupIndex=indexPath.row-ExpandCount;
-        }
     
-         NSLog(@"groupIndex:%d ",groupIndex);
-        
-        [[(GroupCell *)cell titleLabel] setText:[heads objectAtIndex:groupIndex]];
-    }
-    [cell setBackgroundColor:[UIColor clearColor]];
-    UIView *view=[[UIView alloc] initWithFrame:cell.bounds];
-    [view setAlpha:0.0];
-    [cell setSelectedBackgroundView:view];
+    return NO;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"SKSTableViewCell";
+    
+    SKSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (!cell)
+        cell = [[SKSTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    
+    cell.textLabel.text = self.contents[indexPath.section][indexPath.row][0];
+    
+    if ((indexPath.section == 0 && (indexPath.row == 1 || indexPath.row == 0)) || (indexPath.section == 1 && (indexPath.row == 0 || indexPath.row == 2)))
+        cell.expandable = YES;
+    else
+        cell.expandable = NO;
+    
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.isExpand && self.selectedIndexPath.row < indexPath.row && indexPath.row <= self.selectedIndexPath.row + ExpandCount) {
-        return 77;
-    } else {
-        return 77;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForSubRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"UITableViewCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (!cell)
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", self.contents[indexPath.section][indexPath.row][indexPath.subRow]];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(SKSTableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60.0f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Section: %d, Row:%d, Subrow:%d", indexPath.section, indexPath.row, indexPath.subRow);
+}
+
+- (void)tableView:(SKSTableView *)tableView didSelectSubRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Section: %d, Row:%d, Subrow:%d", indexPath.section, indexPath.row, indexPath.subRow);
+}
+
+#pragma mark - Actions
+
+- (void)collapseSubrows
+{
+    [self.tableView collapseCurrentlyExpandedIndexPaths];
+}
+
+- (void)refreshData
+{
+    NSArray *array = @[
+                       @[
+                           @[@"Section0_Row0", @"Row0_Subrow1",@"Row0_Subrow2"],
+                           @[@"Section0_Row1", @"Row1_Subrow1", @"Row1_Subrow2", @"Row1_Subrow3", @"Row1_Subrow4", @"Row1_Subrow5", @"Row1_Subrow6", @"Row1_Subrow7", @"Row1_Subrow8", @"Row1_Subrow9", @"Row1_Subrow10", @"Row1_Subrow11", @"Row1_Subrow12"],
+                           @[@"Section0_Row2"]
+                           ]
+                       ];
+    [self reloadTableViewWithData:array];
+    
+    [self setDataManipulationButton:UIBarButtonSystemItemUndo];
+}
+
+- (void)undoData
+{
+    [self reloadTableViewWithData:nil];
+    
+    [self setDataManipulationButton:UIBarButtonSystemItemRefresh];
+}
+
+- (void)reloadTableViewWithData:(NSArray *)array
+{
+    self.contents = array;
+    
+    // Refresh data not scrolling
+    //    [self.tableView refreshData];
+    
+    [self.tableView refreshDataWithScrollingToIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+}
+
+#pragma mark - Helpers
+
+- (void)setDataManipulationButton:(UIBarButtonSystemItem)item
+{
+    switch (item) {
+        case UIBarButtonSystemItemUndo:
+            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemUndo
+                                                                                                  target:self
+                                                                                                  action:@selector(undoData)];
+            break;
+            
+        default:
+            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                                                  target:self
+                                                                                                  action:@selector(refreshData)];
+            break;
     }
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (!self.selectedIndexPath) {
-        ExpandCount=[[contents objectAtIndex:indexPath.row] count];
-        self.isExpand = YES;
-        self.selectedIndexPath = indexPath;
-        [self.tableView beginUpdates];
-        [self.tableView insertRowsAtIndexPaths:[self indexPathsForExpandRow:indexPath.row] withRowAnimation:UITableViewRowAnimationTop];
-        [self.tableView endUpdates];
-    } else {
-        if (self.isExpand) {
-            if (self.selectedIndexPath == indexPath) {
-                [[(GroupCell *)[self.tableView cellForRowAtIndexPath:self.selectedIndexPath] expandImageView] setHighlighted:NO];
-                
-                self.isExpand = NO;
-                [self.tableView beginUpdates];
-                [self.tableView deleteRowsAtIndexPaths:[self indexPathsForExpandRow:indexPath.row] withRowAnimation:UITableViewRowAnimationTop];
-                [self.tableView endUpdates];
-                self.selectedIndexPath = nil;
-                
-               
-                
-               
-            } else if (self.selectedIndexPath.row < indexPath.row && indexPath.row <= self.selectedIndexPath.row + ExpandCount) {
-                // Select the expand cell, do the relating dealing.
-            } else {
-                [[(GroupCell *)[self.tableView cellForRowAtIndexPath:indexPath] expandImageView] setHighlighted:NO];
-                self.isExpand = NO;
-                [self.tableView beginUpdates];
-                [self.tableView deleteRowsAtIndexPaths:[self indexPathsForExpandRow:self.selectedIndexPath.row] withRowAnimation:UITableViewRowAnimationTop];
-                [self.tableView endUpdates];
-                self.selectedIndexPath = nil;
-                
-            }
-        }
-    }
-}
-
 @end
 
 
-@implementation GroupCell
-
-@end
-
-@implementation ChildCell
-
-@end

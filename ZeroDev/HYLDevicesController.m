@@ -13,9 +13,14 @@
 #import <JSONKit/JSONKit.h>
 #import <UIView+Toast.h>
 #import "HYLClassUtils.h"
+#import "AppManager.h"
+#import "JSONManager.h"
+#import "DeviceInfoViewController.h"
+#import "AnimationUtils.h"
 @interface HYLDevicesController (){
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
+    ELDeviceObject *selectedObject;
 }
 @property (strong, nonatomic) IBOutlet UIWebView *webVIew;
 @property (nonatomic,retain) NSDictionary *deviceDic;
@@ -37,8 +42,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+
+    
+    
     [self.navigationController.navigationBar setHidden:NO];
-    [self setTitle:@"设备列表"];
+    [self setTitle:[JSONManager getAppTitle]];
     
     
     [self.webVIew.scrollView setShowsHorizontalScrollIndicator:NO];
@@ -55,8 +64,7 @@
     }
     [_refreshHeaderView refreshLastUpdatedDate];
     
-    
-    NSString *filePath=[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"ui/devices.html"];
+    NSString *filePath=[[AppManager uiRootPath] stringByAppendingPathComponent:@"devices.html"];
     NSLog(@"filePath %@",filePath);
     NSURL *url=[NSURL fileURLWithPath:filePath];
     
@@ -74,12 +82,23 @@
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
-            ELDeviceObject *device=[[ElApiService shareElApiService] getObjectValue:[[args[0] toString] integerValue]];
+            selectedObject=[[ElApiService shareElApiService] getObjectValue:[[args[0] toString] integerValue]];
             
             
             dispatch_async(dispatch_get_main_queue(), ^{
+               
+                UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+                                                                         bundle: nil];
+                DeviceInfoViewController *devInfoVC=[mainStoryboard instantiateViewControllerWithIdentifier:@"deviceInfoVC"];
                 
-              
+                
+                [devInfoVC setDeviceObject:selectedObject];
+                
+                
+                [self presentViewController:(DeviceInfoViewController *)devInfoVC animated:YES completion:^{
+                    
+                }];
+                
             });
         });
         
@@ -92,7 +111,7 @@
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
            
-           self.deviceDic=[[ElApiService shareElApiService] getObjectListAndFieldsByUser];
+           self.deviceDic=[[ElApiService shareElApiService] getObjectList];
            //搜集对象object json数据
            NSMutableArray *allDeviceObj=[NSMutableArray new];
            //搜集类型class json数据  {classId：[fields{}] }
@@ -148,8 +167,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UIViewController *desVC=[segue destinationViewController];
-  
+ 
    
 }
 
@@ -187,6 +205,45 @@
 }
 - (BOOL)slideNavigationControllerShouldDisplayLeftMenu{
     return YES;
+}
+#pragma mark MenuHandlerDelegate
+-(void)menuClick:(MENU_CLICK_TYPE)type{
+    
+    NSString *identifier=nil;
+    switch (type) {
+        case MENU_CLICK_TYPE_DEVICE_MANAGER:
+            identifier=@"deviceManagerVC";
+            break;
+        default:
+            identifier=nil;
+            break;
+    }
+    if(identifier!=nil){
+        [self clickToViewController:identifier];
+        
+       
+    }else{
+        [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
+            
+        }];
+    }
+    
+}
+
+-(void)clickToViewController:(NSString *)identifier{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+                                                             bundle: nil];
+    UIViewController *vc=[mainStoryboard instantiateViewControllerWithIdentifier:identifier];
+    
+   
+    [AnimationUtils addAnimationFromRight:vc.view.layer];
+
+    [self presentViewController:vc animated:NO completion:^{
+        
+    }];
+    
+
+    
 }
 
 @end

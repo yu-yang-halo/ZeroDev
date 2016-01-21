@@ -20,6 +20,10 @@
 		<data>
 		3z8kRNXFq9GpcrMSgzDKrixczBU=
 		</data>
+		<key>Headers/ELCcsClientInfo.h</key>
+		<data>
+		8TAZqM/5R4osA2PYwafOxiAGfRw=
+		</data>
 		<key>Headers/ELClass.h</key>
 		<data>
 		4byfnzmtm2zteDtvjofdeuvckGo=
@@ -38,7 +42,7 @@
 		</data>
 		<key>Headers/ELDeviceObject.h</key>
 		<data>
-		aIBB5b52EmNTBEj06IdZg65lSd8=
+		RnMilf9DdmeV3mVJKPwqlLHy7Aw=
 		</data>
 		<key>Headers/ELDeviceObjectHolder.h</key>
 		<data>
@@ -58,7 +62,7 @@
 		</data>
 		<key>Headers/ELNetworkService.h</key>
 		<data>
-		QMhZ4YikN05TENOW+5jrGmv4NU4=
+		XyZWEIJeL3jRRI0rC91/+ryqFsw=
 		</data>
 		<key>Headers/ELPacketData.h</key>
 		<data>
@@ -86,7 +90,7 @@
 		</data>
 		<key>Headers/ElApiService.h</key>
 		<data>
-		dqduYb5ZwxMz48GUmqsVuay8fRk=
+		Bjw+8/NKhd8aWxAckcV2wYur96M=
 		</data>
 		<key>Headers/Util.h</key>
 		<data>
@@ -98,7 +102,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		wxzZGNyo6/tb+Fvy6w0btPNpI5I=
+		7d8DSGB+Do+2X9PNAmTcmOAjPtI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -123,6 +127,10 @@
 		<data>
 		3z8kRNXFq9GpcrMSgzDKrixczBU=
 		</data>
+		<key>Headers/ELCcsClientInfo.h</key>
+		<data>
+		8TAZqM/5R4osA2PYwafOxiAGfRw=
+		</data>
 		<key>Headers/ELClass.h</key>
 		<data>
 		4byfnzmtm2zteDtvjofdeuvckGo=
@@ -141,7 +149,7 @@
 		</data>
 		<key>Headers/ELDeviceObject.h</key>
 		<data>
-		aIBB5b52EmNTBEj06IdZg65lSd8=
+		RnMilf9DdmeV3mVJKPwqlLHy7Aw=
 		</data>
 		<key>Headers/ELDeviceObjectHolder.h</key>
 		<data>
@@ -161,7 +169,7 @@
 		</data>
 		<key>Headers/ELNetworkService.h</key>
 		<data>
-		QMhZ4YikN05TENOW+5jrGmv4NU4=
+		XyZWEIJeL3jRRI0rC91/+ryqFsw=
 		</data>
 		<key>Headers/ELPacketData.h</key>
 		<data>
@@ -189,7 +197,7 @@
 		</data>
 		<key>Headers/ElApiService.h</key>
 		<data>
-		dqduYb5ZwxMz48GUmqsVuay8fRk=
+		Bjw+8/NKhd8aWxAckcV2wYur96M=
 		</data>
 		<key>Headers/Util.h</key>
 		<data>

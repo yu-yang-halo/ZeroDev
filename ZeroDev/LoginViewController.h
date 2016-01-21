@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/*
+   登录界面
+ */
 @interface LoginViewController : UIViewController<UIWebViewDelegate>
 
 @end

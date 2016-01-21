@@ -13,11 +13,7 @@
     height:90px;
    
 }
-.appTheme{
-    vertical-align: auto;
-    margin-top:10px;
-    top:0;
-}
+
 label{
     width: 80px;
     display: inline-block;
@@ -28,8 +24,8 @@ label{
     padding-left: 40px;
     border:none;
     height: 35px;
-    width:180px;
-    font-size:20px;
+    width:190px;
+    font-size:18px;
     background-size:100%;
 }
 div{

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -6,7 +6,7 @@
 		<script type="text/javascript" src="language/language.js"></script>
 		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
 		<script type="text/javascript" src="js/elapi.js"></script>
-		<link rel="stylesheet" href="css/button.css" type="text/css" charset="utf-8" />
+		<link rel="stylesheet" href="css/theme.css" type="text/css" charset="utf-8" />
 	
 	<style>
 		body{
@@ -30,13 +30,13 @@
 	<body>
 		<div class="main">
 			<div>
-				<button class="button orange" id="btn_deviceReg">设备注册</button>
+				<button class="button gray" id="btn_deviceReg">设备注册</button>
 			</div>
 			<div>
-				<button class="button orange" id="btn_deviceDel">设备删除</button>
+				<button class="button gray" id="btn_deviceDel">设备删除</button>
 			</div>
 			<div>
-			<button class="button orange" id="btn_wifiConfig">WIFI设置</button>
+			<button class="button gray" id="btn_wifiConfig">WIFI设置</button>
 			</div>
 
 		</div>
@@ -49,7 +49,7 @@
                 hyl_toWiFiConfigPage();
 	    });
 	    $("#btn_deviceDel").click(function(){
-              alert("开发中...");
+              hyl_toDeviceDelPage();
 	    });
 	</script>
 </html>

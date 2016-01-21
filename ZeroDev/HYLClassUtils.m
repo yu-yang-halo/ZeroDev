@@ -33,29 +33,7 @@ static NSString *kCacheListDataKey=@"KEY_CACHELISTDATA";
     return canConvertJSONInstance;
 }
 +(id)classObjectFromCache:(NSInteger)classId{
-    NSString *classIdKey=[NSString stringWithFormat:@"%d",classId];
-    
-    
-    id binaryclassObj=[[NSUserDefaults standardUserDefaults] objectForKey:classIdKey];
-    
-    ELClassObject *classObj=nil;
-    
-    if(binaryclassObj==nil){
-        classObj=[[ElApiService shareElApiService] getClassById:classId];
-        
-        [self addFieldDisableYNProperties:classObj];
-        
-        
-        
-        binaryclassObj=[NSKeyedArchiver archivedDataWithRootObject:classObj];
-        [[NSUserDefaults standardUserDefaults] setObject:binaryclassObj forKey:classIdKey];
-        
-        
-    }else{
-         classObj=[NSKeyedUnarchiver unarchiveObjectWithData:binaryclassObj];
-        NSLog(@"缓存数据 %@",classObj);
-    }
-    return classObj;
+    return nil;
 }
 
 +(void)addFieldDisableYNProperties:(ELClassObject *)classObj{

@@ -82,20 +82,55 @@ function hyl_updateDeviceName(name,objectId){
 
 }
 
-
+function hyl_toWifiSetting(){
+       if(browser.versions.android){
+           window.jna.mobile_toWifiSetting();
+        }else{
+           mobile_toWifiSetting();
+        }
+}
+function hyl_configInfoToWIFIDevice(ssid,password){
+         if(browser.versions.android){
+                   window.jna.mobile_configInfoToWIFIDevice(ssid,password);
+         }else{
+                    mobile_configInfoToWIFIDevice(ssid,password);
+         }
+}
 //跳转到设备详细界面
-function hyl_toDetailPage(objectId){
-
+function hyl_toDetailPage(objectId,clientSn){
 
     if(browser.versions.android){
-       window.jna.mobile_toDetailPage(objectId);
+       window.jna.mobile_toDetailPage(objectId,clientSn);
     }else{
-       mobile_toDetailPage(objectId);
+       mobile_toDetailPage(objectId,clientSn);
     }
 
 
 }
-function hyl_loadDevicesData(devices,classTable,classIcon){
+
+function getClassIcon(classId,appJSON){
+	var defaultIcon="img/defaultDevIcon.png";
+
+	if(classId==232){
+	   return "img/device_camera0.png";
+	}
+
+	if(appJSON.localClassLayoutTracker==true){
+		var classLayoutArr=appJSON.localClassLayout;
+		
+		for(var i=0;i<classLayoutArr.length;i++){
+			if(classLayoutArr[i].localClassId==classId){
+				defaultIcon="img/"+classLayoutArr[i].localIcon;
+				break;
+			}
+		}
+		
+	}
+	return defaultIcon;
+}
+
+
+function hyl_loadDevicesData(devices,appJSON){
 
 //var devices=eval("("+devices+")");
 //var classTable=eval("("+classTable+")");
@@ -126,8 +161,8 @@ function hyl_loadDevicesData(devices,classTable,classIcon){
             
 			var obj=devices[i];
 			var trString="";
-			trString+="<tr objectId="+obj.objectId+">";
-			trString+="<td class='content'><img class='icon' src='";
+			trString+="<tr objectId="+obj.objectId+" clientSn="+obj.clientSn+">";
+			trString+="<td class='content'><img class='icon' src='"+getClassIcon(obj.classId,appJSON);
             trString+="'></img></td>";
             
 			
@@ -202,7 +237,7 @@ function load(){
                         
                            $(this).addClass("on").siblings("tr").removeClass("on");
 
-                            hyl_toDetailPage($(this).attr('objectId'));
+                            hyl_toDetailPage($(this).attr('objectId'),$(this).attr('clientSn'));
                         
                         });
     
@@ -260,6 +295,13 @@ function hyl_toWiFiConfigPage(){
                  mobile_toWiFiConfigPage();
             }
 }
+function hyl_toDeviceDelPage(){
+ if(browser.versions.android){
+                window.jna.mobile_toDeviceDelPage();
+            }else{
+                 mobile_toDeviceDelPage();
+            }
+}
 
 
 function hyl_findPassCmd(phoneOrEmail){
@@ -278,21 +320,17 @@ function hyl_deleteDevice(objectId){
                    mobile_deleteDevice(objectId);
               }
 }
-
-function hyl_scanCode(){
+/*
+ code : 0代表url地址获取   1代表序列号获取
+*/
+function hyl_scanCode(code){
      if(browser.versions.android){
-                       window.jna.mobile_scanCode();
+                       window.jna.mobile_scanCode(code);
                   }else{
-                       mobile_scanCode();
+                       mobile_scanCode(code);
                   }
 }
-function alert(s){
-                 if(browser.versions.android){
-                       window.jna.malert(s);
-                  }else{
-                       malert(s);
-                  }
-}
+
 
 function hyl_updateUserInfo(username,email,telephone){
              if(browser.versions.android){
@@ -308,13 +346,108 @@ function hyl_updateUserPass(oldpass,newpass,repass){
                     mobile_updateUserPass(oldpass,newpass,repass);
               }
 }
+
 function hyl_downloadApp(url){
-             if(browser.versions.android){
+
+              if(browser.versions.android){
                    window.jna.mobile_downloadApp(url);
                }else{
                    mobile_downloadApp(url);
                }
 }
+/**
+ * 注册视频设备
+ */
+function hyl_registerVideoDevice(sn,uid,username,password,name){
+	          if(browser.versions.android){
+                   window.jna.mobile_registerVideoDevice(sn,uid,username,password,name);
+               }else{
+                   mobile_registerVideoDevice(sn,uid,username,password,name);
+               }
+}
+/**
+ * 注册设备
+ */
+function hyl_registerDevice(sn,name){
+		  if(browser.versions.android){
+                   window.jna.mobile_registerDevice(sn,name);
+               }else{
+                   mobile_registerDevice(sn,name);
+               }	
+}
+/**
+ * 更新设备信息
+ */
+function hyl_updateDeviceInfo(name,sn,tagArrString){
+      if(browser.versions.android){
+                        window.jna.mobile_updateDeviceInfo(sn,name,tagArrString);
+                    }else{
+                        mobile_updateDeviceInfo(sn,name,tagArrString);
+                    }
+}
+
+function hylSearchClientSn(clientSn){
+   if(browser.versions.android){
+                           window.jna.mobile_hylSearchClientSn(clientSn);
+                       }else{
+                           mobile_hylSearchClientSn(clientSn);
+                       }
+}
+
+function alert(s){
+                 if(browser.versions.android){
+                       window.jna.malert(s);
+                  }else{
+                       malert(s);
+                  }
+}
+function findFieldName(clsJson,clsId,fieldId){
+  	 var localFieldInfo=[];
+  	 var fieldName="*"+fieldId;
+  	 for(var i=0;i<clsJson.length;i++){
+  	 	 if(clsJson[i].localClsId==clsId){
+  	 	 	 localFieldInfo=clsJson[i].localFieldInfo;
+  	 	 	 break;
+  	 	 }
+  	 }
+  	 for(var j=0;j<localFieldInfo.length;j++){
+  	 	   if(localFieldInfo[j].localFieldId==fieldId){
+  	 	   	  fieldName=localFieldInfo[j].localName;
+  	 	   	  break;
+  	 	   }
+  	 }
+  	 return fieldName;
+  }
+
+
+
+  /*
+     "0"--数值
+     "1"--开关
+     "2"--日期
+     "3"--货币
+     "4"--图像
+   */
+   function analysisValueFormat(value,type){
+     if(type==0){
+       return value;
+     }else if(type==1){
+       if(value==0){
+         return "关";
+       }else{
+         return "开";
+       }
+     }else if(type==2){
+         return ""+value;
+     }else if(type==3){
+         return "$"+value;
+     }else if(type==4){
+         return "图像无解析";
+     }else{
+         return value+type;
+     }
+   }
+
 
 
 /*

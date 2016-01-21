@@ -7,21 +7,32 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SKSTableView.h"
+#import "SKSTableViewCell.h"
+typedef NS_ENUM(NSInteger,MENU_CLICK_TYPE){
+    MENU_CLICK_TYPE_DEVICE_LIST,
+    MENU_CLICK_TYPE_DEVICE_MANAGER,
+    MENU_CLICK_TYPE_USER_MANAGER
+    /*
+        可添加其他类型
+     */
+};
 
-@interface LeftMenuViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@protocol MenuHandlerDelegate<NSObject>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIView *staticView;
+
+-(void)menuClick:(MENU_CLICK_TYPE)type;
+
 
 @end
 
-@interface GroupCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *expandImageView;
+/*
+   左侧菜单界面
+ */
+@interface LeftMenuViewController : UIViewController <SKSTableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet SKSTableView *tableView;
+
 
 @end
 
-@interface ChildCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-
-@end

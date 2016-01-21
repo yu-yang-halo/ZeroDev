@@ -11,6 +11,7 @@
 #import <UIView+Toast.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <ELNetworkService/ELNetworkService.h>
+#import "AppManager.h"
 const  NSString *kloginUserName=@"keyLoginUserName";
 const  NSString *kloginPassword=@"keyLoginPassword";
 
@@ -67,7 +68,7 @@ const  NSString *kloginPassword=@"keyLoginPassword";
 }
 
 -(void)requestIndexHtml{
-    NSString *filePath=[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"ui/index.html"];
+    NSString *filePath=[[AppManager uiRootPath] stringByAppendingPathComponent:@"index.html"];
     NSLog(@"filePath %@",filePath);
     NSURL *url=[NSURL fileURLWithPath:filePath];
     
@@ -124,7 +125,7 @@ const  NSString *kloginPassword=@"keyLoginPassword";
     hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText=@"登录中...";
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        BOOL isOK=[[ElApiService shareElApiService] loginByUsername:name andPassword:pass];
+        BOOL isOK=[[ElApiService shareElApiService] loginByUsername:name andPassword:pass appId:22];
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hide:YES];
             if(isOK){

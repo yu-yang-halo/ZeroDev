@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<script type="text/javascript" src="js/elapi.js"></script>
 		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
-		<link rel="stylesheet" href="css/button.css" type="text/css" charset="utf-8" />
+		<link rel="stylesheet" href="css/theme.css" type="text/css" charset="utf-8" />
 		<style>
 			body {
 				width: 100%;
@@ -38,19 +38,38 @@
 	<body>
 		<div class="main">
 			<div class="row">
-				<button class="button blue">连接到WIFI设备的无线网络</button>
+				<button class="button gray" onclick="hyl_toWifiSetting()">连接到WIFI设备的无线网络</button>
 			</div>
 			<div class="row">
-				<input placeholder="常用无线网SSID" />
+				<input placeholder="常用无线网SSID" class="vs" style="display:none;" id="ssid"  />
 			</div>
 			<div class="row">
-				<input placeholder="无线网密码" />
+				<input placeholder="无线网密码" class="vs" style="display:none;"  id="pass" />
 			</div>
 			<div class="row">
-				<button disabled="disabled">配置常用网络到WIFI设备</button>
+				<button class="button vs gray" style="display:none;" id="configWIFIBtn" >配置常用网络到WIFI设备</button>
 			</div>
 		</div>
 
 	</body>
+	<script type="text/javascript">
+	        $("#configWIFIBtn").click(function(){
+	            hyl_configInfoToWIFIDevice($("#ssid").val(),$("#pass").val());
+	        });
+
+	        function setViewHidden(isHidden,ssid){
+	           if(isHidden){
+	              $(".vs").each(function(){
+	                 $(this).hide();
+	              })
+	              $("#ssid").val();
+	           }else{
+	              $(".vs").each(function(){
+	                 $(this).show();
+	              })
+	              $("#ssid").val(ssid);
+	           }
+	        }
+	</script>
 
 </html>
