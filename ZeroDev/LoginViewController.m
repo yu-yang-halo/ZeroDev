@@ -12,11 +12,15 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <ELNetworkService/ELNetworkService.h>
 #import "AppManager.h"
+#import "LGSideMenuController.h"
+#import "LeftViewController.h"
 const  NSString *kloginUserName=@"keyLoginUserName";
 const  NSString *kloginPassword=@"keyLoginPassword";
 
 @interface LoginViewController (){
     MBProgressHUD *hud;
+    LGSideMenuController *sideMenuController ;
+    LeftViewController  *leftMenu;
 }
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -46,6 +50,30 @@ const  NSString *kloginPassword=@"keyLoginPassword";
     UIBarButtonItem *backButton=[[UIBarButtonItem alloc] init];
     [backButton setTitle:@"返回"];
     self.navigationItem.backBarButtonItem=backButton;
+    
+    leftMenu=[[LeftViewController alloc] init];
+    CGRect frame= self.view.frame;
+    frame.size.width=200.f;
+    leftMenu.view.frame=frame;
+    
+    [leftMenu.view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.6]];
+    
+    
+    UINavigationController  *mainNavigationVC=[self.storyboard instantiateViewControllerWithIdentifier:@"MainNavigationVC"];
+    
+   
+    
+    sideMenuController = [[LGSideMenuController alloc] initWithRootViewController:mainNavigationVC];
+   
+    
+    [sideMenuController setLeftViewEnabledWithWidth:200.f
+                                  presentationStyle:LGSideMenuPresentationStyleSlideAbove
+                               alwaysVisibleOptions:0];
+    
+   
+    [sideMenuController.leftView addSubview:leftMenu.view];
+    
+   
     
 }
 
@@ -137,7 +165,16 @@ const  NSString *kloginPassword=@"keyLoginPassword";
                 }
                 
                 
-                [self performSegueWithIdentifier:@"toDevices" sender:self];
+                UIWindow *window = [UIApplication sharedApplication].delegate.window;
+                
+                window.rootViewController = sideMenuController;
+                
+                [UIView transitionWithView:window
+                                  duration:0.3
+                                   options:UIViewAnimationOptionTransitionCrossDissolve
+                                animations:nil
+                                completion:nil];
+               
                 
             
             }

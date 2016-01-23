@@ -25,6 +25,12 @@
 // Please contact the author.
 // Version: 1.5pre.
 
+// LGSideMenuController
+#define COCOAPODS_POD_AVAILABLE_LGSideMenuController
+#define COCOAPODS_VERSION_MAJOR_LGSideMenuController 1
+#define COCOAPODS_VERSION_MINOR_LGSideMenuController 0
+#define COCOAPODS_VERSION_PATCH_LGSideMenuController 10
+
 // MBProgressHUD
 #define COCOAPODS_POD_AVAILABLE_MBProgressHUD
 #define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0

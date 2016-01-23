@@ -7,8 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "SlideNavigationController.h"
-#import "LeftMenuViewController.h"
 #import "AppManager.h"
 #import "JSONManager.h"
 @interface AppDelegate ()
@@ -24,8 +22,6 @@
 @synthesize lunchView;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
-                                                             bundle: nil];
    
     [self.window makeKeyAndVisible];
     lunchView = [[NSBundle mainBundle ]loadNibNamed:@"LaunchScreen" owner:nil options:nil][0];
@@ -50,21 +46,10 @@
     [self.window bringSubviewToFront:lunchView];
     [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(removeLun) userInfo:nil repeats:NO];
     
-    LeftMenuViewController  *leftMenu=[mainStoryboard instantiateViewControllerWithIdentifier:@"leftMenu"];
     
-    UIViewController *homeVC=[mainStoryboard instantiateViewControllerWithIdentifier:@"homeVC"];
+   
     
-    UIViewController *loginVC=[mainStoryboard instantiateViewControllerWithIdentifier:@"loginVC"];
-    
-    
-    [SlideNavigationController sharedInstance].leftMenu = leftMenu;
-    [SlideNavigationController sharedInstance].menuRevealAnimationDuration = .18;
-    [SlideNavigationController sharedInstance].portraitSlideOffset =100;
-
-     [[SlideNavigationController sharedInstance] pushViewController:loginVC animated:YES];
-    
-    
-    
+   
     
     
     

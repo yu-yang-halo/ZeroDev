@@ -47,6 +47,8 @@
         }];
         
     };
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"activeYN"];
+    [self performSegueWithIdentifier:@"segueLogin" sender:self];
     
     
 }

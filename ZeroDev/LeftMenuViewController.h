@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger,MENU_CLICK_TYPE){
  */
 @interface LeftMenuViewController : UIViewController <SKSTableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet SKSTableView *tableView;
+@property (retain, nonatomic) SKSTableView *tableView;
 
 
 @end

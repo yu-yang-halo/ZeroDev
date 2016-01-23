@@ -42,13 +42,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-
-    
+       
     
     [self.navigationController.navigationBar setHidden:NO];
-    [self setTitle:[JSONManager getAppTitle]];
-    
     
     [self.webVIew.scrollView setShowsHorizontalScrollIndicator:NO];
     [self.webVIew.scrollView setShowsVerticalScrollIndicator:NO];
@@ -223,9 +219,7 @@
         
        
     }else{
-        [[SlideNavigationController sharedInstance] closeMenuWithCompletion:^{
-            
-        }];
+       
     }
     
 }

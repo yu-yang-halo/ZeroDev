@@ -76,10 +76,10 @@ static UIImage *_image = nil;
     CGPoint point = self.accessoryView.center;
     CGRect bounds = self.accessoryView.bounds;
     
-    CGRect frame = CGRectMake((point.x - CGRectGetWidth(bounds) * 1.5), point.y * 1.4, CGRectGetWidth(bounds) * 3.0, CGRectGetHeight(self.bounds) - point.y * 1.4);
+    CGRect frame = CGRectMake((point.x - CGRectGetWidth(bounds) * 1.0), point.y * 1.6, CGRectGetWidth(bounds) * 2.0, CGRectGetHeight(self.bounds) - point.y * 1.6);
     SKSTableViewCellIndicator *indicatorView = [[SKSTableViewCellIndicator alloc] initWithFrame:frame];
     indicatorView.tag = kIndicatorViewTag;
-    [self.contentView addSubview:indicatorView];
+    //[self.contentView addSubview:indicatorView];
 }
 
 - (void)removeIndicatorView

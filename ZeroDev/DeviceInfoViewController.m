@@ -110,7 +110,7 @@
 -(void)loadWebViewData{
     
     
-    [self.webView stringByEvaluatingJavaScriptFromString: [NSString stringWithFormat:@"loadData(%@,%d)",[JSONManager reverseJSONToString],_deviceObject.classId]];
+//    [self.webView stringByEvaluatingJavaScriptFromString: [NSString stringWithFormat:@"loadData(%@,%d)",[JSONManager reverseJSONToString],_deviceObject.classId]];
     
     _reloading=NO;
     [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.webView.scrollView];

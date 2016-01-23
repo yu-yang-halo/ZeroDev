@@ -10,7 +10,11 @@
 
 @interface JSONManager : NSObject
 
-+(NSString *)getAppTitle;
-+(NSArray *)getTags;
-+(NSString *)reverseJSONToString;
+
++(NSArray *)getMobileAppTags;
++(NSDictionary *)reverseClassJSONToObject;
++(NSDictionary *)reverseMobileAppJSONToObject;
++(NSDictionary *)reverseApplicationJSONToObject;
+
+
 @end

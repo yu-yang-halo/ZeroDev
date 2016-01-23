@@ -2,6 +2,7 @@ PODS:
   - EGOTableViewPullRefresh (0.1.0)
   - JDStatusBarNotification (1.5.2)
   - JSONKit (1.5pre)
+  - LGSideMenuController (1.0.10)
   - MBProgressHUD (0.9.1)
   - Reachability (3.2)
   - SDWebImage (3.7.3):
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - EGOTableViewPullRefresh (~> 0.1.0)
   - JDStatusBarNotification (~> 1.5.2)
   - JSONKit (~> 1.5pre)
+  - LGSideMenuController (~> 1.0.0)
   - MBProgressHUD
   - Reachability (~> 3.2)
   - SDWebImage (~> 3.7.2)
@@ -26,6 +28,7 @@ SPEC CHECKSUMS:
   EGOTableViewPullRefresh: d4c15be51914f4168d6fd7529b6ad3a4ab01e5f4
   JDStatusBarNotification: a36d09ccbb047217572b074a61e7ca10dddc5f0a
   JSONKit: bae313ce6a6c444f40489a6c0b023f399888871f
+  LGSideMenuController: 8682bdbd0008c1acfbce95eaf96cc3657bca5f95
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84

@@ -10,70 +10,56 @@
 #import "AppManager.h"
 #import <JSONKit/JSONKit.h>
 @implementation JSONManager
-+(NSString *)getAppTitle{
-    NSDictionary* jsonObject=[self reverseJSONToObject];
-   
-     
-    if(jsonObject!=nil){
-        return [[jsonObject objectForKey:@"mobileApp"] objectForKey:@"appName"];
-    }else{
-        NSLog(@"json nil ");
-    }
-   
-    
-    return nil;
-    
-}
-+(NSDictionary *)reverseJSONToObject{
-    NSString *jsonPath=[[AppManager uiRootPath] stringByAppendingPathComponent:@"json/app.json"];
+
++(NSDictionary *)reverseApplicationJSONToObject{
+    NSString *jsonPath=[[AppManager uiRootPath] stringByAppendingPathComponent:@"application.json"];
     if([[NSFileManager defaultManager] fileExistsAtPath:jsonPath]){
         
         NSString *jsonDictionary= [[NSString alloc] initWithContentsOfFile:jsonPath encoding:NSUTF8StringEncoding error:NULL];
         id  jsonObject=[jsonDictionary objectFromJSONString];
         if([jsonObject isKindOfClass:[NSDictionary class]]){
-           
+            
             return jsonObject;
         }
         
     }
     return nil;
 }
-+(NSString *)reverseJSONToString{
-    NSString *jsonPath=[[AppManager uiRootPath] stringByAppendingPathComponent:@"json/app.json"];
+
++(NSDictionary *)reverseMobileAppJSONToObject{
+    NSString *jsonPath=[[AppManager uiRootPath] stringByAppendingPathComponent:@"mobileApp.json"];
     if([[NSFileManager defaultManager] fileExistsAtPath:jsonPath]){
         
         NSString *jsonDictionary= [[NSString alloc] initWithContentsOfFile:jsonPath encoding:NSUTF8StringEncoding error:NULL];
-        return jsonDictionary;
+        id  jsonObject=[jsonDictionary objectFromJSONString];
+        if([jsonObject isKindOfClass:[NSDictionary class]]){
+            
+            return jsonObject;
+        }
         
     }
     return nil;
 }
 
-/*
- {
- name = "\U4f4d\U7f6e";
- tag =         (
- Bedroom,
- Kitchen,
- "Front Door"
- );
- tagSetId = 16;
- }
- */
-+(NSArray *)getTags{
-    id tags=nil;
-    NSDictionary* jsonObject=[self reverseJSONToObject];
-    if(jsonObject!=nil){
-        tags=[[jsonObject objectForKey:@"mobileApp"] objectForKey:@"Tags"];
-        if([tags isKindOfClass:[NSArray class]]){
-            return tags;
-        }else if([tags isKindOfClass:[NSDictionary class]]){
-            return [NSArray arrayWithObject:tags];
++(NSDictionary *)reverseClassJSONToObject{
+    NSString *jsonPath=[[AppManager uiRootPath] stringByAppendingPathComponent:@"class.json"];
+    if([[NSFileManager defaultManager] fileExistsAtPath:jsonPath]){
+        
+        NSString *jsonDictionary= [[NSString alloc] initWithContentsOfFile:jsonPath encoding:NSUTF8StringEncoding error:NULL];
+        id  jsonObject=[jsonDictionary objectFromJSONString];
+        if([jsonObject isKindOfClass:[NSDictionary class]]){
+            
+            return jsonObject;
         }
-    }else{
-        NSLog(@"json nil ");
+        
     }
-    
     return nil;
 }
+
++(NSArray *)getMobileAppTags{
+    NSDictionary *mobileAppObject=[self reverseMobileAppJSONToObject];
+    NSArray* localTags=[mobileAppObject objectForKey:@"localTags"];
+    return localTags;
+}
+
 @end

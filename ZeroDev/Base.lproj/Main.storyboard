@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Slide Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="cVW-dW-Da1">
             <objects>
-                <navigationController id="pub-bR-gHc" customClass="SlideNavigationController" sceneMemberID="viewController">
+                <navigationController id="pub-bR-gHc" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="I2n-7Z-nCi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -19,7 +19,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ltV-s6-dBn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1167" y="-892"/>
+            <point key="canvasLocation" x="-3969" y="-1050"/>
         </scene>
         <!--Left Menu View Controller-->
         <scene sceneID="Pjc-ot-FEF">
@@ -29,30 +29,15 @@
                         <viewControllerLayoutGuide type="top" id="gHR-vE-S3h"/>
                         <viewControllerLayoutGuide type="bottom" id="G2f-DL-BRW"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="N6R-JG-KaL">
+                    <view key="view" alpha="0.74999999999999978" contentMode="scaleToFill" id="N6R-JG-KaL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HFQ-W6-FLa" customClass="SKSTableView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.76918715380000002" green="0.15464669959999999" blue="0.79573837479999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="HFQ-W6-FLa" firstAttribute="bottom" secondItem="G2f-DL-BRW" secondAttribute="top" id="H07-wx-etk"/>
-                            <constraint firstItem="HFQ-W6-FLa" firstAttribute="leading" secondItem="N6R-JG-KaL" secondAttribute="leading" id="UhH-yr-ue9"/>
-                            <constraint firstItem="HFQ-W6-FLa" firstAttribute="top" secondItem="N6R-JG-KaL" secondAttribute="top" id="j0w-Jx-fvh"/>
-                            <constraint firstAttribute="trailing" secondItem="HFQ-W6-FLa" secondAttribute="trailing" id="qPN-Ah-2yD"/>
-                        </constraints>
+                        <color key="backgroundColor" red="0.28288966609999999" green="0.79573837479999998" blue="0.66543442399999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <connections>
-                        <outlet property="tableView" destination="HFQ-W6-FLa" id="D37-Rb-x4S"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xB4-M1-Yb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1145" y="-231"/>
+            <point key="canvasLocation" x="-1273" y="-599"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="bmb-Yr-7Dz">
@@ -87,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djN-TV-X2o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1051" y="-908"/>
+            <point key="canvasLocation" x="-2051" y="-1184"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="gPK-eZ-9oT">
@@ -117,17 +102,32 @@
                     <navigationItem key="navigationItem" id="IFq-ia-apM"/>
                     <connections>
                         <outlet property="webView" destination="03W-sf-Wwl" id="ycP-Bc-65w"/>
-                        <segue destination="okD-8Z-TYe" kind="push" identifier="toDevices" id="quu-dk-Z8Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxo-Rs-w30" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-202" y="-892"/>
+            <point key="canvasLocation" x="-1554" y="-1104"/>
         </scene>
-        <!--Devices Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="19e-zP-p0j">
+            <objects>
+                <navigationController storyboardIdentifier="MainNavigationVC" id="Td4-Bc-3dM" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="R8R-Wk-VW8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="okD-8Z-TYe" kind="relationship" relationship="rootViewController" id="n55-ex-gMf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eRa-Ys-RAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3232" y="-332"/>
+        </scene>
+        <!--设备列表-->
         <scene sceneID="KIN-h3-hba">
             <objects>
-                <viewController id="okD-8Z-TYe" customClass="HYLDevicesController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="devicesVC" id="okD-8Z-TYe" customClass="HYLDevicesController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Sen-2I-j8Z"/>
                         <viewControllerLayoutGuide type="bottom" id="7fy-X3-XP7"/>
@@ -149,14 +149,18 @@
                             <constraint firstItem="hLt-rf-ENW" firstAttribute="top" secondItem="XHL-ZV-Q7L" secondAttribute="top" constant="64" id="fgt-uT-ybo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="s7F-rJ-AUk"/>
+                    <navigationItem key="navigationItem" title="设备列表" id="RV2-J3-QvF">
+                        <barButtonItem key="leftBarButtonItem" image="ic_drawer.png" id="QQi-cY-U4M">
+                            <color key="tintColor" red="0.28288966609999999" green="0.79573837479999998" blue="0.66543442399999997" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="webVIew" destination="hLt-rf-ENW" id="PFj-7B-xaQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A7d-UA-aSd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="262" y="-892"/>
+            <point key="canvasLocation" x="-2655" y="-318"/>
         </scene>
         <!--Device Info View Controller-->
         <scene sceneID="L9F-ZE-Udc">
@@ -275,6 +279,9 @@
             <point key="canvasLocation" x="-61" y="-258"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_drawer.png" width="32" height="32"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
