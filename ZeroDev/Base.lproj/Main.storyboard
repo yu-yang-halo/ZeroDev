@@ -1,26 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="pub-bR-gHc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="cVW-dW-Da1">
-            <objects>
-                <navigationController id="pub-bR-gHc" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="I2n-7Z-nCi">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="K8C-ro-kg9" kind="relationship" relationship="rootViewController" id="Eaw-DB-dXb"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ltV-s6-dBn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3969" y="-1050"/>
-        </scene>
         <!--Left Menu View Controller-->
         <scene sceneID="Pjc-ot-FEF">
             <objects>
@@ -67,12 +51,11 @@
                     <navigationItem key="navigationItem" id="fpt-73-MDr"/>
                     <connections>
                         <outlet property="webView" destination="Bvb-xN-O0T" id="M1H-Yd-8g1"/>
-                        <segue destination="N8y-Lg-joW" kind="push" identifier="segueLogin" id="jhG-sk-hAt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djN-TV-X2o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2051" y="-1184"/>
+            <point key="canvasLocation" x="-4501" y="-913"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="gPK-eZ-9oT">
@@ -87,7 +70,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="03W-sf-Wwl">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="-64" width="320" height="632"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
@@ -96,7 +79,7 @@
                             <constraint firstAttribute="trailing" secondItem="03W-sf-Wwl" secondAttribute="trailing" id="7Og-wX-nCt"/>
                             <constraint firstItem="03W-sf-Wwl" firstAttribute="leading" secondItem="jSj-gZ-sXq" secondAttribute="leading" id="Xq5-eQ-FhX"/>
                             <constraint firstItem="03W-sf-Wwl" firstAttribute="bottom" secondItem="hpE-rA-JNF" secondAttribute="top" id="aRC-X8-0TB"/>
-                            <constraint firstItem="03W-sf-Wwl" firstAttribute="top" secondItem="jSj-gZ-sXq" secondAttribute="top" id="i5P-kE-0XM"/>
+                            <constraint firstItem="03W-sf-Wwl" firstAttribute="top" secondItem="jSj-gZ-sXq" secondAttribute="top" constant="-64" id="i5P-kE-0XM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IFq-ia-apM"/>
@@ -106,23 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxo-Rs-w30" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1554" y="-1104"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="19e-zP-p0j">
-            <objects>
-                <navigationController storyboardIdentifier="MainNavigationVC" id="Td4-Bc-3dM" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="R8R-Wk-VW8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="okD-8Z-TYe" kind="relationship" relationship="rootViewController" id="n55-ex-gMf"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eRa-Ys-RAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3232" y="-332"/>
+            <point key="canvasLocation" x="-4493" y="-1583"/>
         </scene>
         <!--设备列表-->
         <scene sceneID="KIN-h3-hba">
@@ -150,8 +117,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="设备列表" id="RV2-J3-QvF">
-                        <barButtonItem key="leftBarButtonItem" image="ic_drawer.png" id="QQi-cY-U4M">
-                            <color key="tintColor" red="0.28288966609999999" green="0.79573837479999998" blue="0.66543442399999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <barButtonItem key="leftBarButtonItem" image="ic_drawer" id="QQi-cY-U4M">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="slideMenuAction:" destination="okD-8Z-TYe" id="C9B-at-3L6"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -160,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A7d-UA-aSd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2655" y="-318"/>
+            <point key="canvasLocation" x="-3018" y="-340"/>
         </scene>
         <!--Device Info View Controller-->
         <scene sceneID="L9F-ZE-Udc">
@@ -174,24 +144,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJE-Vu-xYV">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="wor-r8-BVE">
-                                        <barButtonItem key="leftBarButtonItem" title="返回" id="wgc-Mw-vpR">
-                                            <color key="tintColor" red="0.28288966609999999" green="0.79573837479999998" blue="0.66689180169999995" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="leftOnClick:" destination="rCW-dx-YSC" id="5UJ-Rt-NY5"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" id="jXc-tk-0Ev">
-                                            <connections>
-                                                <action selector="rightOnClick:" destination="rCW-dx-YSC" id="4iy-dG-FSC"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOb-tw-05f">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -199,26 +151,52 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KOb-tw-05f" firstAttribute="bottom" secondItem="Zo7-FF-OJa" secondAttribute="top" id="GMu-h0-g6L"/>
-                            <constraint firstItem="ZJE-Vu-xYV" firstAttribute="leading" secondItem="3LU-2G-JBC" secondAttribute="leading" id="UYG-w8-Wqo"/>
-                            <constraint firstItem="ZJE-Vu-xYV" firstAttribute="leading" secondItem="KOb-tw-05f" secondAttribute="leading" id="VDM-mB-tip"/>
-                            <constraint firstItem="KOb-tw-05f" firstAttribute="top" secondItem="ZJE-Vu-xYV" secondAttribute="bottom" id="d8S-tS-Bwn"/>
-                            <constraint firstItem="ZJE-Vu-xYV" firstAttribute="top" secondItem="XV0-Cm-VxG" secondAttribute="bottom" id="o5N-j8-hoD"/>
-                            <constraint firstAttribute="trailing" secondItem="KOb-tw-05f" secondAttribute="trailing" id="y6A-0o-gwF"/>
-                            <constraint firstItem="KOb-tw-05f" firstAttribute="trailing" secondItem="ZJE-Vu-xYV" secondAttribute="trailing" id="zwL-Tg-DzU"/>
+                            <constraint firstItem="KOb-tw-05f" firstAttribute="top" secondItem="3LU-2G-JBC" secondAttribute="top" constant="64" id="0RI-Zg-ch7"/>
+                            <constraint firstAttribute="trailing" secondItem="KOb-tw-05f" secondAttribute="trailing" id="f6R-QN-byl"/>
+                            <constraint firstItem="KOb-tw-05f" firstAttribute="leading" secondItem="3LU-2G-JBC" secondAttribute="leading" id="hT9-UR-oeU"/>
+                            <constraint firstItem="KOb-tw-05f" firstAttribute="bottom" secondItem="Zo7-FF-OJa" secondAttribute="top" id="mGx-gV-ToC"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="customBar" destination="ZJE-Vu-xYV" id="CmF-zA-D4e"/>
-                        <outlet property="customItem" destination="wor-r8-BVE" id="ISY-zZ-uhB"/>
-                        <outlet property="leftBarButtomItem" destination="wgc-Mw-vpR" id="jz1-8W-AxM"/>
-                        <outlet property="rightarButtomItem" destination="jXc-tk-0Ev" id="ZQM-eJ-sKi"/>
                         <outlet property="webView" destination="KOb-tw-05f" id="1y6-VG-tRB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ej-Lv-xza" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-405" y="-246"/>
+            <point key="canvasLocation" x="-737" y="-312"/>
+        </scene>
+        <!--Device Config View Controller-->
+        <scene sceneID="hFQ-Q8-bm5">
+            <objects>
+                <viewController storyboardIdentifier="deviceConfigVC" id="20W-eW-iBc" customClass="DeviceConfigViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F0d-Jh-yO3"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kgd-WU-9IC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VWC-Vk-dQh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncl-K6-gqJ">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ncl-K6-gqJ" firstAttribute="top" secondItem="VWC-Vk-dQh" secondAttribute="top" constant="64" id="8ld-KL-GRk"/>
+                            <constraint firstItem="ncl-K6-gqJ" firstAttribute="bottom" secondItem="Kgd-WU-9IC" secondAttribute="top" id="Crm-bC-D9Y"/>
+                            <constraint firstAttribute="trailing" secondItem="ncl-K6-gqJ" secondAttribute="trailing" id="WjT-Gg-7YU"/>
+                            <constraint firstItem="ncl-K6-gqJ" firstAttribute="leading" secondItem="VWC-Vk-dQh" secondAttribute="leading" id="wEs-sa-iVd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="ncl-K6-gqJ" id="hVy-bp-v4G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yLT-WV-zb2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-342" y="-1200"/>
         </scene>
         <!--Device Manager View Controller-->
         <scene sceneID="RKh-wp-ZuC">
@@ -280,7 +258,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_drawer.png" width="32" height="32"/>
+        <image name="ic_drawer" width="22" height="18"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

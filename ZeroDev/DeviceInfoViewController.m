@@ -10,10 +10,17 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "AppManager.h"
 #import "JSONManager.h"
+#import <JSONKit/JSONKit.h>
+#import "HYLClassUtils.h"
+#import "AppDelegate.h"
+#import "DeviceConfigViewController.h"
+#import <UIView+Toast.h>
 @interface DeviceInfoViewController ()
 {
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
+    NSString *mobileAppJSON;
+    BOOL _pageLoadFinished;
 }
 @end
 
@@ -23,12 +30,16 @@
     
     [super viewDidLoad];
     
-
-    [self.view setBackgroundColor:[UIColor purpleColor]];
+    [self setTitle:_deviceObject.name];
+     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backList)];
+     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(settings)];
+    [self.navigationItem.leftBarButtonItem setTintColor:[UIColor whiteColor]];
+    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
     
-    [self.customBar setBarTintColor:[UIColor purpleColor]];
     
-    [self.customItem setTitle:_deviceObject.name];
+    
+    mobileAppJSON=[[JSONManager reverseMobileAppJSONToObject] JSONString];
+    
     
     self.webView.delegate=self;
    
@@ -54,15 +65,46 @@
     
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
-    
-    
     self.webView.dataDetectorTypes=UIDataDetectorTypeNone;
     
     JSContext *context=[self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-    context[@"mobile_downloadApp"]=^(){
-                
+    context[@"mobile_setFieldCmd"]=^(){
+   
+       // fieldValue,fieldId,objectId
+        NSArray *args=[JSContext currentArguments];
+        for (JSValue *jsVal in args) {
+            NSLog(@"argument : %@",jsVal.toString);
+        }
+        
+        [self setFieldValue:[args[0] toString] fieldId:[args[1] toInt32] objectId:[args[2] toInt32]];
+        
+        
+        
     };
+    context[@"malert"]=^(){
+         NSArray *args=[JSContext currentArguments];
+         dispatch_async(dispatch_get_main_queue(), ^{
+            
+             [self.view makeToast:[args[0] toString]];
+             
+         });
+    };
+   
     
+    
+}
+-(void)setFieldValue:(NSString *)value fieldId:(int)fieldId objectId:(int)objectId{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [[ElApiService shareElApiService] setFieldValue:value forFieldId:fieldId toDevice:objectId withYN:YES];
+        
+    });
+}
+-(void)viewWillAppear:(BOOL)animated{
+    if(_pageLoadFinished){
+        [self loadLastDeviceData];
+    }else{
+        NSLog(@"页面还没加载完成，。。。");
+    }
     
 }
 
@@ -70,6 +112,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark Button click event
+-(void)backList{
+     AppDelegate *appDelegate=[UIApplication sharedApplication].delegate;
+    [appDelegate setRootViewController:ROOT_VIEWCONTROLLER_TYPE_LISTDEIVCE animated:YES];
+}
+-(void)settings{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+                                                             bundle: nil];
+    DeviceConfigViewController *deviceConfigVC=[mainStoryboard instantiateViewControllerWithIdentifier:@"deviceConfigVC"];
+    
+    [deviceConfigVC setDeviceObject:_deviceObject];
+    [self.navigationController pushViewController:deviceConfigVC animated:YES];
+    
+}
+
 
 /*
 #pragma mark - Navigation
@@ -83,10 +141,10 @@
 #pragma mark UIWebViewDelegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
-    
+     _pageLoadFinished=NO;
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-
+    _pageLoadFinished=YES;
     [self loadWebViewData];
     
 }
@@ -108,18 +166,29 @@
     
 }
 -(void)loadWebViewData{
-    
-    
-//    [self.webView stringByEvaluatingJavaScriptFromString: [NSString stringWithFormat:@"loadData(%@,%d)",[JSONManager reverseJSONToString],_deviceObject.classId]];
-    
-    _reloading=NO;
-    [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.webView.scrollView];
+        if(_deviceObject!=nil){
+            self.title=_deviceObject.name;
+            NSMutableDictionary *objectMap=[HYLClassUtils canConvertJSONDataFromObjectInstance:_deviceObject];
+            
+            [self.webView stringByEvaluatingJavaScriptFromString: [NSString stringWithFormat:@"loadData(%@,%@)",mobileAppJSON,[objectMap JSONString]]];
+            
+        }
+        _reloading=NO;
+        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.webView.scrollView];
+}
+-(void)loadLastDeviceData{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        self.deviceObject=[[ElApiService shareElApiService] getObjectValue:_deviceObject.objectId];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self loadWebViewData];
+        });
+    });
 }
 
 #pragma mark EGORefreshTableHeaderDelegate
 -(void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView *)view{
     _reloading=YES;
-    [self performSelector:@selector(loadWebViewData) withObject:nil afterDelay:1];
+    [self loadLastDeviceData];
 }
 -(BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView *)view{
     return _reloading;
@@ -127,19 +196,6 @@
 -(NSDate *)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView *)view{
     return [NSDate date];
 }
-- (BOOL)slideNavigationControllerShouldDisplayRightMenu{
-    return NO;
-}
-- (BOOL)slideNavigationControllerShouldDisplayLeftMenu{
-    return YES;
-}
 
-- (IBAction)leftOnClick:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
-}
 
-- (IBAction)rightOnClick:(id)sender {
-}
 @end

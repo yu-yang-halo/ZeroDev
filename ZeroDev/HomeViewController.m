@@ -9,6 +9,10 @@
 #import "HomeViewController.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "AppManager.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <UIView+Toast.h>
+#import <QRCodeReaderViewController/QRCodeReaderViewController.h>
+#import "AppDelegate.h"
 @interface HomeViewController ()
 
 @end
@@ -39,34 +43,84 @@
             NSLog(@"argument : %@",jsVal.toString);
         }
         
-        [AppManager downloadApp:@"" block:^(BOOL isSuc) {
-            if(isSuc){
-                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"activeYN"];
-                [self performSegueWithIdentifier:@"segueLogin" sender:self];
-            }
-        }];
+        
         
     };
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"activeYN"];
-    [self performSegueWithIdentifier:@"segueLogin" sender:self];
+    context[@"mobile_scanCode"]=^(){
+        NSArray *args=[JSContext currentArguments];
+        for (JSValue *jsVal in args) {
+            NSLog(@"argument : %@",jsVal.toString);
+        }
+        int typeCode=[[args lastObject] toInt32];
+        //typecode ==0  URL   ==1 clientSN
+        
+        QRCodeReaderViewController * _reader = [QRCodeReaderViewController readerWithCancelButtonTitle:@"取消"];
+        
+        // Or by using blocks
+        [_reader setCompletionWithBlock:^(NSString *resultAsString) {
+            
+            [self dismissViewControllerAnimated:YES completion:^{
+                NSLog(@"install app URL  %@", resultAsString);
+                if(resultAsString!=nil){
+                    [self beginDownloadApp:resultAsString];
+                }
+                
+            }];
+        }];
+        
+        [self presentViewController:_reader animated:YES completion:NULL];
+        
+    };
+    context[@"mobile_demoLogin"]=^(){
+        NSArray *args=[JSContext currentArguments];
+        for (JSValue *jsVal in args) {
+            NSLog(@"argument : %@",jsVal.toString);
+        }
+        
+        int demoType=[[args lastObject] toInt32];
+        NSString *demoURLString=@"http://121.41.15.186/iplusweb/upload/22/hylapp1.zip";
+        if(demoType==0){
+            demoURLString=@"http://121.41.15.186/iplusweb/upload/21/hylapp0.zip";
+        }
     
+        [self beginDownloadApp:demoURLString];
+        
+    };
     
+   
+    
+}
+-(void)beginDownloadApp:(NSString *)url{
+    dispatch_async(dispatch_get_main_queue(), ^{
+       
+         MBProgressHUD *hub=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+         [hub setLabelText:@"安装中..."];
+         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [AppManager downloadApp:url block:^(BOOL isSuc) {
+                [hub hide:YES];
+                if(isSuc){
+                    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"activeYN"];
+                    [[NSUserDefaults standardUserDefaults] setObject:url forKey:kZeroDevAppQRCodePathKey];
+                    
+                    AppDelegate* appDelegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    [appDelegate setRootViewController:ROOT_VIEWCONTROLLER_TYPE_LOGIN animated:YES];
+                                        
+                    
+                }else{
+                    [self.view makeToast:@"安装失败，请检查网络状态" duration:1 position:CSToastPositionBottom];
+                }
+                
+            }];
+        });
+        
+    });
+   
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 #pragma mark UIWebViewDelegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{

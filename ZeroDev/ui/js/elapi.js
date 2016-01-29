@@ -375,6 +375,18 @@ function hyl_registerDevice(sn,name){
                    mobile_registerDevice(sn,name);
                }	
 }
+
+/*
+ * 演示APP登陆  loginType 0-智能家居 1-工业控制
+*/
+function hyl_demoLogin(loginType){
+    if(browser.versions.android){
+                      window.jna.mobile_demoLogin(loginType);
+                  }else{
+                      mobile_demoLogin(loginType);
+                  }
+}
+
 /**
  * 更新设备信息
  */

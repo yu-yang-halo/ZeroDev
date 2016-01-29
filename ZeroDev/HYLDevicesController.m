@@ -17,10 +17,12 @@
 #import "JSONManager.h"
 #import "DeviceInfoViewController.h"
 #import "AnimationUtils.h"
+#import "AppDelegate.h"
 @interface HYLDevicesController (){
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
     ELDeviceObject *selectedObject;
+    NSString *mobileAppJSON;
 }
 @property (strong, nonatomic) IBOutlet UIWebView *webVIew;
 @property (nonatomic,retain) NSDictionary *deviceDic;
@@ -39,6 +41,20 @@
 }
 
 
+- (IBAction)slideMenuAction:(id)sender {
+    NSLog(@"sender : %@",sender);
+    AppDelegate *appDelegate=[[UIApplication sharedApplication] delegate];
+    if([[appDelegate sideMenuController] isLeftViewShowing]){
+        [[appDelegate sideMenuController] hideLeftViewAnimated:YES completionHandler:^{
+            
+        }];
+    }else{
+        [[appDelegate sideMenuController] showLeftViewAnimated:YES completionHandler:^{
+            
+        }];
+    }
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,10 +62,12 @@
     
     [self.navigationController.navigationBar setHidden:NO];
     
+    mobileAppJSON=[[JSONManager reverseMobileAppJSONToObject] JSONString];
+    
     [self.webVIew.scrollView setShowsHorizontalScrollIndicator:NO];
     [self.webVIew.scrollView setShowsVerticalScrollIndicator:NO];
     
-    //self.webVIew.delegate=self;
+    self.webVIew.delegate=self;
     self.webVIew.scrollView.delegate=self;
     
     if(_refreshHeaderView==nil){
@@ -91,9 +109,9 @@
                 [devInfoVC setDeviceObject:selectedObject];
                 
                 
-                [self presentViewController:(DeviceInfoViewController *)devInfoVC animated:YES completion:^{
-                    
-                }];
+                AppDelegate *appDelegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
+                [appDelegate setRootViewController2:devInfoVC animated:YES];
+                
                 
             });
         });
@@ -102,50 +120,7 @@
     };
 
     
-    static int count=0;
-    context[@"mobile_requestDevices"]=^(){
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-           
-           self.deviceDic=[[ElApiService shareElApiService] getObjectList];
-           //搜集对象object json数据
-           NSMutableArray *allDeviceObj=[NSMutableArray new];
-           //搜集类型class json数据  {classId：[fields{}] }
-           NSMutableDictionary *allClassObjs=[NSMutableDictionary new];
-            //搜集class icon
-            NSMutableDictionary *classIcon=[NSMutableDictionary new];
-            
-            
-           [self.deviceDic enumerateKeysAndObjectsUsingBlock:^(id key, ELDeviceObject* obj, BOOL *stop) {
-               
-               
-               
-               NSMutableDictionary *objectMap=[HYLClassUtils canConvertJSONDataFromObjectInstance:obj];
-               
-               [allDeviceObj addObject:objectMap];
-               
-           }];
-            
-           NSLog(@"%@",[allDeviceObj JSONString]);
-           NSLog(@"=====================");
-            NSLog(@"%@",[classIcon JSONString]);
-        
-            [HYLClassUtils cacheClasslistData:[allClassObjs JSONString]];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                if(_deviceDic!=nil&&[_deviceDic count]>0){
-                    [self.webVIew stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hyl_loadDevicesData(%@,%@,%@)",[allDeviceObj JSONString],[allClassObjs JSONString],[classIcon JSONString]]];
-                }
-                
-                _reloading=NO;
-                [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.webVIew.scrollView];
-               
-            });
-        });
-        
-        
-    };
+
     
     
 
@@ -181,7 +156,43 @@
     
 }
 -(void)loadWebViewData{
-     [_webVIew stringByEvaluatingJavaScriptFromString:@"hyl_requestDevicesCmd()"];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        self.deviceDic=[[ElApiService shareElApiService] getObjectList];
+        //搜集对象object json数据
+        NSMutableArray *allDeviceObj=[NSMutableArray new];
+        //搜集类型class json数据  {classId：[fields{}] }
+        NSMutableDictionary *allClassObjs=[NSMutableDictionary new];
+        //搜集class icon
+        NSMutableDictionary *classIcon=[NSMutableDictionary new];
+        
+        
+        [self.deviceDic enumerateKeysAndObjectsUsingBlock:^(id key, ELDeviceObject* obj, BOOL *stop) {
+            
+            
+            
+            NSMutableDictionary *objectMap=[HYLClassUtils canConvertJSONDataFromObjectInstance:obj];
+            
+            [allDeviceObj addObject:objectMap];
+            
+        }];
+        
+        
+        
+        NSLog(@"=====================allDeviceObj %@ mobileAppJSON:%@",[allDeviceObj JSONString],mobileAppJSON);
+   
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if(_deviceDic!=nil&&[_deviceDic count]>0){
+                [self.webVIew stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hyl_loadDevicesData(%@,%@)",[allDeviceObj JSONString],mobileAppJSON]];
+            }
+            
+            _reloading=NO;
+            [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.webVIew.scrollView];
+            
+        });
+    });
+
+    
 }
 
 #pragma mark EGORefreshTableHeaderDelegate
@@ -196,33 +207,15 @@
     return [NSDate date];
 }
 
-- (BOOL)slideNavigationControllerShouldDisplayRightMenu{
-    return NO;
+
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    NSLog(@"webViewDidStartLoad...");
 }
-- (BOOL)slideNavigationControllerShouldDisplayLeftMenu{
-    return YES;
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    NSLog(@"webViewDidFinishLoad...");
+    [self loadWebViewData];
 }
-#pragma mark MenuHandlerDelegate
--(void)menuClick:(MENU_CLICK_TYPE)type{
-    
-    NSString *identifier=nil;
-    switch (type) {
-        case MENU_CLICK_TYPE_DEVICE_MANAGER:
-            identifier=@"deviceManagerVC";
-            break;
-        default:
-            identifier=nil;
-            break;
-    }
-    if(identifier!=nil){
-        [self clickToViewController:identifier];
-        
-       
-    }else{
-       
-    }
-    
-}
+
 
 -(void)clickToViewController:(NSString *)identifier{
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"

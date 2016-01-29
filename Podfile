@@ -9,4 +9,5 @@ pod 'SDWebImage', '~> 3.7.2'
 pod 'SIAlertView', '~> 1.3'
 pod 'JDStatusBarNotification', '~> 1.5.2'
 pod 'LGSideMenuController', '~> 1.0.0'
+pod 'QRCodeReaderViewController', :git => 'https://github.com/zhengjinghua/MQRCodeReaderViewController.git'
 

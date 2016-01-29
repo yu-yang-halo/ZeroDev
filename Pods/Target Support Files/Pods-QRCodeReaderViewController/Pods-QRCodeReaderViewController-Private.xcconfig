@@ -1,0 +1,6 @@
+#include "Pods-QRCodeReaderViewController.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/QRCodeReaderViewController" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/EGOTableViewPullRefresh" "${PODS_ROOT}/Headers/Public/JDStatusBarNotification" "${PODS_ROOT}/Headers/Public/JSONKit" "${PODS_ROOT}/Headers/Public/LGSideMenuController" "${PODS_ROOT}/Headers/Public/MBProgressHUD" "${PODS_ROOT}/Headers/Public/QRCodeReaderViewController" "${PODS_ROOT}/Headers/Public/Reachability" "${PODS_ROOT}/Headers/Public/SDWebImage" "${PODS_ROOT}/Headers/Public/SIAlertView" "${PODS_ROOT}/Headers/Public/Toast" "${PODS_ROOT}/Headers/Public/ZipArchive"
+OTHER_LDFLAGS = ${PODS_QRCODEREADERVIEWCONTROLLER_OTHER_LDFLAGS} -ObjC
+PODS_ROOT = ${SRCROOT}
+SKIP_INSTALL = YES

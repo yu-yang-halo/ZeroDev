@@ -21,6 +21,8 @@ typedef void (^DataHandler)(BOOL isSuc);
 
 //uilibs--ui 路径
 +(NSString *)uiRootPath;
++(NSString *)imgRootPath;
+
 //bundle ui
 +(NSString *)bundleUIPath;
 

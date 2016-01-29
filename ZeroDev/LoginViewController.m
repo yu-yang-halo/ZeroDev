@@ -12,15 +12,17 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <ELNetworkService/ELNetworkService.h>
 #import "AppManager.h"
-#import "LGSideMenuController.h"
-#import "LeftViewController.h"
+#import "AppDelegate.h"
+#import "JSONManager.h"
+#import "QRCodeShowViewController.h"
 const  NSString *kloginUserName=@"keyLoginUserName";
 const  NSString *kloginPassword=@"keyLoginPassword";
 
 @interface LoginViewController (){
     MBProgressHUD *hud;
-    LGSideMenuController *sideMenuController ;
-    LeftViewController  *leftMenu;
+ 
+    
+    NSDictionary *applicationObj;
 }
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -41,39 +43,49 @@ const  NSString *kloginPassword=@"keyLoginPassword";
     [self initHtmlUserInfo];
 }
 
+-(void)initNavigationBar{
+    [self.navigationController.navigationBar setHidden:NO];
+    
+   
+    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(registerUser)];
+    [self.navigationItem.leftBarButtonItem setTintColor:[UIColor whiteColor]];
+    
+    
+    self.navigationItem.title=[applicationObj objectForKey:@"localName"];
+    
+    UIButton *qrCodeBtn=[[UIButton alloc] initWithFrame:CGRectMake(0,0,44,44)];
+    [qrCodeBtn setImage:[UIImage imageNamed:@"qr0"] forState:UIControlStateNormal];
+    
+    [qrCodeBtn addTarget:self action:@selector(QRCodeShow) forControlEvents:UIControlEventTouchUpInside];
+    [qrCodeBtn setImageEdgeInsets:UIEdgeInsetsMake(0,0,0,-20)];
+    [qrCodeBtn setTintColor:[UIColor whiteColor]];
+    
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:qrCodeBtn];
+    
+    
+    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
+    
+    
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    applicationObj=[JSONManager reverseApplicationJSONToObject];
     
-    [self.navigationController.navigationBar setHidden:YES];
+    [self initNavigationBar];
+    
+   
+    
+    
     
     [self loadHtmlContent];
     UIBarButtonItem *backButton=[[UIBarButtonItem alloc] init];
     [backButton setTitle:@"返回"];
     self.navigationItem.backBarButtonItem=backButton;
     
-    leftMenu=[[LeftViewController alloc] init];
-    CGRect frame= self.view.frame;
-    frame.size.width=200.f;
-    leftMenu.view.frame=frame;
-    
-    [leftMenu.view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.6]];
-    
-    
-    UINavigationController  *mainNavigationVC=[self.storyboard instantiateViewControllerWithIdentifier:@"MainNavigationVC"];
-    
-   
-    
-    sideMenuController = [[LGSideMenuController alloc] initWithRootViewController:mainNavigationVC];
-   
-    
-    [sideMenuController setLeftViewEnabledWithWidth:200.f
-                                  presentationStyle:LGSideMenuPresentationStyleSlideAbove
-                               alwaysVisibleOptions:0];
-    
-   
-    [sideMenuController.leftView addSubview:leftMenu.view];
-    
-   
+       
     
 }
 
@@ -131,8 +143,11 @@ const  NSString *kloginPassword=@"keyLoginPassword";
         JSValue *thiz=[JSContext currentThis];
         
         NSLog(@"end....%@",thiz);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self asynlogin:[args[0] toString] withPass:[args[1] toString] isRemember:[args[2] toBool]];
+
+        });
         
-        [self asynlogin:[args[0] toString] withPass:[args[1] toString] isRemember:[args[2] toBool]];
         
     };
 }
@@ -153,7 +168,8 @@ const  NSString *kloginPassword=@"keyLoginPassword";
     hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText=@"登录中...";
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        BOOL isOK=[[ElApiService shareElApiService] loginByUsername:name andPassword:pass appId:22];
+        int appId=[[applicationObj objectForKey:@"localAppId"] intValue];
+        BOOL isOK=[[ElApiService shareElApiService] loginByUsername:name andPassword:pass appId:appId];
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hide:YES];
             if(isOK){
@@ -165,15 +181,9 @@ const  NSString *kloginPassword=@"keyLoginPassword";
                 }
                 
                 
-                UIWindow *window = [UIApplication sharedApplication].delegate.window;
+                AppDelegate *appDelegate=[[UIApplication sharedApplication] delegate];
+                [appDelegate setRootViewController:ROOT_VIEWCONTROLLER_TYPE_LISTDEIVCE animated:YES];
                 
-                window.rootViewController = sideMenuController;
-                
-                [UIView transitionWithView:window
-                                  duration:0.3
-                                   options:UIViewAnimationOptionTransitionCrossDissolve
-                                animations:nil
-                                completion:nil];
                
                 
             
@@ -191,6 +201,19 @@ const  NSString *kloginPassword=@"keyLoginPassword";
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     //UIViewController *send=segue.destinationViewController;
 }
+
+#pragma mark Navigation BAR Click envent
+-(void)QRCodeShow{
+    QRCodeShowViewController *qrCodeShowVC=[[QRCodeShowViewController alloc] init];
+    
+    [self.navigationController pushViewController:qrCodeShowVC animated:YES];
+    
+    
+}
+-(void)registerUser{
+    
+}
+
 
 #pragma mark delegate
 

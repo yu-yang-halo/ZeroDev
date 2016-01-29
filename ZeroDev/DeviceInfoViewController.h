@@ -17,15 +17,4 @@
 @property(nonatomic,strong) ELDeviceObject *deviceObject;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
-@property (weak, nonatomic) IBOutlet UINavigationBar *customBar;
-@property (weak, nonatomic) IBOutlet UINavigationItem *customItem;
-
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *leftBarButtomItem;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *rightarButtomItem;
-
-- (IBAction)leftOnClick:(id)sender;
-
-
-- (IBAction)rightOnClick:(id)sender;
-
 @end

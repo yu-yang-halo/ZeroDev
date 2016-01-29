@@ -9,9 +9,25 @@
 #import <UIKit/UIKit.h>
 #import "SKSTableView.h"
 #import "SKSTableViewCell.h"
+typedef NS_ENUM(NSUInteger,SWITCH_PAGE_TYPE){
+    SWITCH_PAGE_TYPE_MAIN,
+    SWITCH_PAGE_TYPE_ADD_DEVICE,
+    SWITCH_PAGE_TYPE_ADD_VIDEO,
+    SWITCH_PAGE_TYPE_DELETE_DEVICE,
+    SWITCH_PAGE_TYPE_USER_INFO,
+    SWITCH_PAGE_TYPE_ABOUT
+};
+
+@protocol PageSwitchDelegate
+
+-(void)swicthToPage:(SWITCH_PAGE_TYPE)pageType;
+
+@end
+
 
 @interface LeftViewController : UIViewController<SKSTableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet SKSTableView *tableView;
+@property(nonatomic,weak) id<PageSwitchDelegate> pageDelegate;
 
 @end

@@ -24,9 +24,20 @@ static NSString *kCacheListDataKey=@"KEY_CACHELISTDATA";
         objc_property_t prop=*(props+i);
         NSString *propertyName=[[NSString alloc] initWithCString:property_getName(prop) encoding:NSUTF8StringEncoding];
         id propertyValue=[objInstance valueForKey:propertyName];
-        NSLog(@"----propertyName %@ propertyValue :%@",propertyName,propertyValue);
-        
-        
+       
+        if([propertyValue isKindOfClass:[NSArray class]]){
+            NSMutableArray *propArr=[[NSMutableArray alloc] init];
+            
+            for (id child in propertyValue) {
+                if([child isKindOfClass:[ELTagInfo class]]){
+                    [propArr addObject:[self canConvertJSONDataFromObjectInstance:child]];
+                }
+                
+            }
+            propertyValue=propArr;
+           
+        }
+         NSLog(@"----propertyName %@ propertyValue :%@",propertyName,propertyValue);
         [canConvertJSONInstance setValue:propertyValue forKey:propertyName];
     }
     free(props);

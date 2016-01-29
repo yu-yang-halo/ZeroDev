@@ -7,10 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LGSideMenuController.h"
+#import "LeftViewController.h"
+typedef NS_ENUM(NSUInteger,ROOT_VIEWCONTROLLER_TYPE){
+    ROOT_VIEWCONTROLLER_TYPE_HOME,
+    ROOT_VIEWCONTROLLER_TYPE_LOGIN,
+    ROOT_VIEWCONTROLLER_TYPE_LISTDEIVCE,
+    ROOT_VIEWCONTROLLER_TYPE_ABOUT,
+};
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,PageSwitchDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+-(void)setRootViewController:(ROOT_VIEWCONTROLLER_TYPE)type animated:(BOOL)animateYN;
+
+-(void)setRootViewController2:(UIViewController *)vc animated:(BOOL)animateYN;
+
+-(LGSideMenuController *)sideMenuController;
 
 
 @end

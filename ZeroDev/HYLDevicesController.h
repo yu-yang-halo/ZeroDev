@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "EGORefreshTableHeaderView.h"
 #import "LGSideMenuController.h"
-#import "LeftMenuViewController.h"
+
 /*
    设备列表处理
  */
-@interface HYLDevicesController : UIViewController<UIWebViewDelegate,EGORefreshTableHeaderDelegate,UIScrollViewDelegate,MenuHandlerDelegate>
+@interface HYLDevicesController : UIViewController<UIWebViewDelegate,EGORefreshTableHeaderDelegate,UIScrollViewDelegate>
 
 @end

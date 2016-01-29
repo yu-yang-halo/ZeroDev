@@ -30,6 +30,7 @@ extern NSString *kErrorAlertNotification;
 @class ELClassField;
 @class ELClassObject;
 @class ELCcsClientInfo;
+@class GDataXMLElement;
 
 static ElApiService* shareService=nil;
 @interface ElApiService : NSObject{
@@ -81,6 +82,7 @@ static ElApiService* shareService=nil;
 -(NSArray *)getAlertEventListByDevice:(NSInteger)objectId withMax:(NSInteger)maxNum;
 -(NSArray *)getShotImgNameList:(NSInteger)objectId withMaxNum:(NSInteger)maxNum;
 -(NSString *)getShotImgByName:(NSInteger)objectId withName:(NSString *)name;
+-(ELDeviceObject *)parseXmlToDeviceObject:(GDataXMLElement *)element;
 
 @end
 

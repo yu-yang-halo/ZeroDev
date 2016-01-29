@@ -59,6 +59,16 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/grayArrow@2x.png"
   install_resource "EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/whiteArrow.png"
   install_resource "EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/whiteArrow@2x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeBottomLeft@2x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeBottomLeft@3x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeBottomRight@2x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeBottomRight@3x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeLine@2x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeLine@3x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeTopLeft@2x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeTopLeft@3x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeTopRight@2x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeTopRight@3x.png"
   install_resource "SIAlertView/SIAlertView/SIAlertView.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -70,6 +80,16 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/grayArrow@2x.png"
   install_resource "EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/whiteArrow.png"
   install_resource "EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/whiteArrow@2x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeBottomLeft@2x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeBottomLeft@3x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeBottomRight@2x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeBottomRight@3x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeLine@2x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeLine@3x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeTopLeft@2x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeTopLeft@3x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeTopRight@2x.png"
+  install_resource "QRCodeReaderViewController/QRCodeReaderViewController/Resources/QRCodeTopRight@3x.png"
   install_resource "SIAlertView/SIAlertView/SIAlertView.bundle"
 fi
 

@@ -35,6 +35,10 @@ const NSString *UI=@"ui";
 +(NSString *)uiRootPath{
     return [[self homePath] stringByAppendingPathComponent:UI];
 }
++(NSString *)imgRootPath{
+    return [[self uiRootPath] stringByAppendingPathComponent:@"img"];
+}
+
 +(NSString *)bundleUIPath{
     return [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:UI];
 }

@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-QRCodeReaderViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Reachability.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,57 +67,62 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>20144D7781B4ADA33A798728</key>
+		<key>1CF29348A6C8FBBBB6A61792</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>382737FAE4D9C016FA306AFE</key>
+		<key>49F806064961BDE1EC6026C5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4733DDE4E43D2C580C43BC29</key>
+		<key>5981C6BAEE4566CA5F3B8226</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4FEF4774D69526B232EAAD95</key>
+		<key>617253F21ED13AC3A43A48A1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5D3DEB867ECB540FEA3703E2</key>
+		<key>7C1A0A09F79FF84F7A76318B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6B72DC36E7AF2A04992CE794</key>
+		<key>7FC529395F73C2576C3B7132</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6DEFA36A742BABB5C0015E24</key>
+		<key>8973AB0B08EF77C9F9ECC8C1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>757DF5F04FBE604093B40A64</key>
+		<key>A7D9E1840A233582141DF31F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CC67C7D8262D08E4A818FF7E</key>
+		<key>D531C8CD8B4E45CC31419411</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F0D37632F5208167F84CE161</key>
+		<key>D8DBEAAAED4C5BC891547B4C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FEBC906BAC2060C8E5CB9782</key>
+		<key>F2559B08800748548C8C320A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F2D3B0FD3F5563DF6B3AD39C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
