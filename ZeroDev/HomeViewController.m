@@ -13,6 +13,8 @@
 #import <UIView+Toast.h>
 #import <QRCodeReaderViewController/QRCodeReaderViewController.h>
 #import "AppDelegate.h"
+
+#import "LoginViewController.h"
 @interface HomeViewController ()
 
 @end
@@ -78,11 +80,17 @@
         }
         
         int demoType=[[args lastObject] toInt32];
+        NSString *username=@"hylapp1";
+        NSString *password=@"hylapp1";
         NSString *demoURLString=@"http://121.41.15.186/iplusweb/upload/22/hylapp1.zip";
         if(demoType==0){
+            username=@"hylapp0";
+            password=@"hylapp0";
             demoURLString=@"http://121.41.15.186/iplusweb/upload/21/hylapp0.zip";
         }
-    
+        [[NSUserDefaults standardUserDefaults] setObject:username forKey:kloginUserName];
+        [[NSUserDefaults standardUserDefaults] setObject:password forKey:kloginPassword];
+       
         [self beginDownloadApp:demoURLString];
         
     };
@@ -103,7 +111,7 @@
                     [[NSUserDefaults standardUserDefaults] setObject:url forKey:kZeroDevAppQRCodePathKey];
                     
                     AppDelegate* appDelegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
-                    [appDelegate setRootViewController:ROOT_VIEWCONTROLLER_TYPE_LOGIN animated:YES];
+                    [appDelegate setRootViewController:ROOT_VIEWCONTROLLER_TYPE_LOGIN animated:YES animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
                                         
                     
                 }else{

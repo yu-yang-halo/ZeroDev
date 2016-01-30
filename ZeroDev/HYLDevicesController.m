@@ -110,7 +110,7 @@
                 
                 
                 AppDelegate *appDelegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
-                [appDelegate setRootViewController2:devInfoVC animated:YES];
+                [appDelegate setRootViewController2:devInfoVC animated:YES animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
                 
                 
             });
@@ -217,20 +217,6 @@
 }
 
 
--(void)clickToViewController:(NSString *)identifier{
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
-                                                             bundle: nil];
-    UIViewController *vc=[mainStoryboard instantiateViewControllerWithIdentifier:identifier];
-    
-   
-    [AnimationUtils addAnimationFromRight:vc.view.layer];
 
-    [self presentViewController:vc animated:NO completion:^{
-        
-    }];
-    
-
-    
-}
 
 @end

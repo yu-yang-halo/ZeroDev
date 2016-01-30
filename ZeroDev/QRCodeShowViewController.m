@@ -21,7 +21,7 @@ const static NSString *QR_PARSE_API_URL=@"http://qr.liantu.com/api.php?text=%@";
     // Do any additional setup after loading the view from its nib.
     
     self.title=@"我的应用";
-    [self.view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.4]];
+    [self.view setBackgroundColor:[UIColor colorWithWhite:0.2 alpha:0.6]];
     
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backLogin)];
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"更换" style:UIBarButtonItemStylePlain target:self action:@selector(change)];
@@ -48,7 +48,7 @@ const static NSString *QR_PARSE_API_URL=@"http://qr.liantu.com/api.php?text=%@";
 }
 -(void)change{
     AppDelegate *appDelegate=[UIApplication sharedApplication].delegate;
-    [appDelegate setRootViewController:ROOT_VIEWCONTROLLER_TYPE_HOME animated:YES];
+    [appDelegate setRootViewController:ROOT_VIEWCONTROLLER_TYPE_HOME animated:YES animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -11,7 +11,8 @@
 #import "JSONManager.h"
 #import "CustomNavigationController.h"
 #import "LeftViewController.h"
-
+#import <ELNetworkService/ELNetworkService.h>
+#import <UIView+Toast.h>
 @interface AppDelegate ()
 {
     CustomNavigationController *customNavVC;
@@ -28,7 +29,7 @@
 @synthesize lunchView;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-   
+   NSLog(@"didFinishLaunchingWithOptions 0");
     self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
    
@@ -56,7 +57,7 @@
     
     if(activeYN){
         
-        [self setRootViewController:ROOT_VIEWCONTROLLER_TYPE_LOGIN animated:NO];
+        [self setRootViewController:ROOT_VIEWCONTROLLER_TYPE_LOGIN animated:NO animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
         
       
         
@@ -85,7 +86,7 @@
          customNavVC.view.alpha=0;
     }else{
         
-         [self setRootViewController:ROOT_VIEWCONTROLLER_TYPE_HOME animated:NO];
+         [self setRootViewController:ROOT_VIEWCONTROLLER_TYPE_HOME animated:NO animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
         
           customNavVC.view.alpha=1;
     }
@@ -93,9 +94,17 @@
    
     [self.window makeKeyAndVisible];
     
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTips:) name:kErrorAlertNotification object:nil];
+    
     return YES;
 }
 
+-(void)showTips:(NSNotification *)notification{
+    NSString *errorMsg=[[notification userInfo] objectForKey:kErrorCodeKey];
+    
+    [self.window makeToast:errorMsg];
+}
 -(void)setUpSideMenuViewController:(UIViewController *)rootVC{
    
     CustomNavigationController *mainNavigationVC=[[CustomNavigationController alloc] initWithRootViewController:rootVC];
@@ -118,21 +127,16 @@
     }];
     
 }
--(void)setRootViewController2:(UIViewController *)vc animated:(BOOL)animateYN{
+-(void)setRootViewController2:(UIViewController *)vc animated:(BOOL)animateYN animationType:(ZERO_DEV_ANIMATION_TYPE)animationType{
     customNavVC=[[CustomNavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController=customNavVC;
-    if(animateYN){
-        [UIView transitionWithView:_window
-                          duration:0.8
-                           options:UIViewAnimationOptionTransitionCrossDissolve
-                        animations:nil
-                        completion:nil];
-    }
+    [self transitionViewAnimation:animationType animated:animateYN];
 }
--(void)setRootViewController:(ROOT_VIEWCONTROLLER_TYPE)type animated:(BOOL)animateYN{
+-(void)setRootViewController:(ROOT_VIEWCONTROLLER_TYPE)type animated:(BOOL)animateYN animationType:(ZERO_DEV_ANIMATION_TYPE)animationType{
     UIStoryboard *storyBoard=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     UIViewController *homeVC=[storyBoard instantiateViewControllerWithIdentifier:@"homeVC"];
     UIViewController *loginVC=[storyBoard instantiateViewControllerWithIdentifier:@"loginVC"];
+     UIViewController *userManagerVC=[storyBoard instantiateViewControllerWithIdentifier:@"userManagerVC"];
     
    
     
@@ -161,30 +165,56 @@
             break;
         case ROOT_VIEWCONTROLLER_TYPE_ABOUT:{
            
-            [self setUpSideMenuViewController:loginVC];
+//            [self setUpSideMenuViewController:loginVC];
+//            
+//            self.window.rootViewController=sideMenuController;
+        }
+            break;
+        case ROOT_VIEWCONTROLLER_TYPE_USERINFO:
+        {
+            [self setUpSideMenuViewController:userManagerVC];
             
             self.window.rootViewController=sideMenuController;
+            
         }
             break;
       
     }
+    
+    [self transitionViewAnimation:animationType animated:animateYN];
    
+   
+}
+
+-(void)transitionViewAnimation:(ZERO_DEV_ANIMATION_TYPE)animationType animated:(BOOL)animateYN{
     if(animateYN){
+        CGRect frame=_window.frame;
+        if(animationType==ZERO_DEV_ANIMATION_TYPE_PUSH){
+            frame.origin.x=frame.size.width;
+        }else{
+            frame.origin.x=-frame.size.width;
+        }
+        
+        _window.frame=frame;
+        
         [UIView transitionWithView:_window
-                          duration:0.8
+                          duration:0.3
                            options:UIViewAnimationOptionTransitionCrossDissolve
-                        animations:nil
+                        animations:^{
+                            _window.frame=[UIScreen mainScreen].bounds;
+                        }
                         completion:nil];
+        
     }
 }
 
 
--(void)swicthToPage:(SWITCH_PAGE_TYPE)pageType{
+-(void)swicthToPage:(SWITCH_PAGE_TYPE)pageType animationType:(ZERO_DEV_ANIMATION_TYPE)type{
    
-    if(pageType==SWITCH_PAGE_TYPE_ABOUT){
-        [self setRootViewController:ROOT_VIEWCONTROLLER_TYPE_ABOUT animated:YES];
+    if(pageType==SWITCH_PAGE_TYPE_USER_INFO){
+        [self setRootViewController:ROOT_VIEWCONTROLLER_TYPE_USERINFO animated:YES animationType:type];
     }else if(pageType==SWITCH_PAGE_TYPE_MAIN){
-        [self setRootViewController:ROOT_VIEWCONTROLLER_TYPE_LISTDEIVCE animated:YES];
+        [self setRootViewController:ROOT_VIEWCONTROLLER_TYPE_LISTDEIVCE animated:YES animationType:type];
     }
     
 }
@@ -194,23 +224,24 @@
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-
+    NSLog(@"applicationWillResignActive 1");
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-
+    NSLog(@"applicationDidEnterBackground 2");
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-   
+    NSLog(@"applicationWillEnterForeground 3");
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-   
+    NSLog(@"applicationDidBecomeActive 4");
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    
+    NSLog(@"applicationWillTerminate 5");
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kErrorAlertNotification object:nil];
 }
 
 @end

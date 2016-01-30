@@ -10,6 +10,10 @@
 /*
    登录界面
  */
+extern const  NSString *kloginUserName;
+extern const  NSString *kloginPassword;
+
+
 @interface LoginViewController : UIViewController<UIWebViewDelegate>
 
 @end

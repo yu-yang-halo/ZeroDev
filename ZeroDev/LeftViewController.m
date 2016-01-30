@@ -234,7 +234,7 @@
     if(row==0){
         NSLog(@"主页");
        
-        [self.pageDelegate swicthToPage:SWITCH_PAGE_TYPE_MAIN];
+        [self.pageDelegate swicthToPage:SWITCH_PAGE_TYPE_MAIN animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
         
     }else if(row==[_tagsArr count]+1){
         NSLog(@"设备管理");
@@ -245,11 +245,11 @@
             [self.tableView reloadData];
          
             if(subRow==1){
-                [self.pageDelegate swicthToPage:SWITCH_PAGE_TYPE_ADD_DEVICE];
+                [self.pageDelegate swicthToPage:SWITCH_PAGE_TYPE_ADD_DEVICE animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
             }else if(subRow==2){
-                [self.pageDelegate swicthToPage:SWITCH_PAGE_TYPE_ADD_VIDEO];
+                [self.pageDelegate swicthToPage:SWITCH_PAGE_TYPE_ADD_VIDEO animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
             }else if(subRow==3){
-                [self.pageDelegate swicthToPage:SWITCH_PAGE_TYPE_DELETE_DEVICE];
+                [self.pageDelegate swicthToPage:SWITCH_PAGE_TYPE_DELETE_DEVICE animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
             }
         }
         
@@ -257,15 +257,15 @@
     }else if(row==[_tagsArr count]+2){
         NSLog(@"用户信息");
         
-        [self.pageDelegate swicthToPage:SWITCH_PAGE_TYPE_USER_INFO];
+        [self.pageDelegate swicthToPage:SWITCH_PAGE_TYPE_USER_INFO animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
     }else if(row==[_tagsArr count]+3){
         NSLog(@"关于");
        
-        [self.pageDelegate swicthToPage:SWITCH_PAGE_TYPE_ABOUT];
+        [self.pageDelegate swicthToPage:SWITCH_PAGE_TYPE_ABOUT animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
     }else if(row==[_tagsArr count]+4){
         NSLog(@"退出");
       
-        [appDelegate setRootViewController:ROOT_VIEWCONTROLLER_TYPE_LOGIN animated:YES];
+        [appDelegate setRootViewController:ROOT_VIEWCONTROLLER_TYPE_LOGIN animated:YES animationType:ZERO_DEV_ANIMATION_TYPE_POP];
     }else{
         NSLog(@"TAG row %d, subRow %d %@",row,subRow,[[self.contents objectAtIndex:row] objectAtIndex:subRow]);
        

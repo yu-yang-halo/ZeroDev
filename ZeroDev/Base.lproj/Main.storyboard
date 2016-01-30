@@ -198,10 +198,10 @@
             </objects>
             <point key="canvasLocation" x="-342" y="-1200"/>
         </scene>
-        <!--Device Manager View Controller-->
+        <!--用户信息-->
         <scene sceneID="RKh-wp-ZuC">
             <objects>
-                <viewController storyboardIdentifier="deviceManagerVC" id="ROA-Bv-vOg" customClass="DeviceManagerViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userManagerVC" id="ROA-Bv-vOg" customClass="UserManagerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5ja-SQ-LfO"/>
                         <viewControllerLayoutGuide type="bottom" id="M7C-cl-Tq5"/>
@@ -210,51 +210,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uUh-Js-c0M">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="USp-ir-DaM">
-                                        <barButtonItem key="leftBarButtonItem" title="返回" id="TVm-4b-q1G">
-                                            <color key="tintColor" red="0.28288966609999999" green="0.79573837479999998" blue="0.66689180169999995" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="leftOnClick:" destination="ROA-Bv-vOg" id="0CT-fC-jbZ"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" id="MzN-wJ-us1">
-                                            <connections>
-                                                <action selector="rightOnClick:" destination="ROA-Bv-vOg" id="heB-lZ-0yg"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4u3-Y4-W8O">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="uUh-Js-c0M" firstAttribute="leading" secondItem="LEl-FR-Hny" secondAttribute="leading" id="IvQ-cN-XdS"/>
-                            <constraint firstItem="uUh-Js-c0M" firstAttribute="top" secondItem="5ja-SQ-LfO" secondAttribute="bottom" id="KPC-dI-R0C"/>
-                            <constraint firstItem="4u3-Y4-W8O" firstAttribute="top" secondItem="uUh-Js-c0M" secondAttribute="bottom" id="Yca-aM-01H"/>
-                            <constraint firstItem="4u3-Y4-W8O" firstAttribute="trailing" secondItem="uUh-Js-c0M" secondAttribute="trailing" id="b4N-Ld-2Qo"/>
-                            <constraint firstAttribute="trailing" secondItem="uUh-Js-c0M" secondAttribute="trailing" id="hZ2-7o-ZrA"/>
-                            <constraint firstItem="4u3-Y4-W8O" firstAttribute="bottom" secondItem="M7C-cl-Tq5" secondAttribute="top" id="lor-1r-TUb"/>
-                            <constraint firstItem="4u3-Y4-W8O" firstAttribute="leading" secondItem="uUh-Js-c0M" secondAttribute="leading" id="ozF-rL-KTg"/>
+                            <constraint firstAttribute="trailing" secondItem="4u3-Y4-W8O" secondAttribute="trailing" id="IZB-0B-Xwl"/>
+                            <constraint firstItem="4u3-Y4-W8O" firstAttribute="top" secondItem="LEl-FR-Hny" secondAttribute="top" id="R5T-LM-HxA"/>
+                            <constraint firstItem="4u3-Y4-W8O" firstAttribute="leading" secondItem="LEl-FR-Hny" secondAttribute="leading" id="aWQ-MD-XI4"/>
+                            <constraint firstItem="4u3-Y4-W8O" firstAttribute="bottom" secondItem="M7C-cl-Tq5" secondAttribute="top" id="yBw-Ga-w6h"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="用户信息" id="y6y-Hv-baR">
+                        <barButtonItem key="leftBarButtonItem" image="ic_drawer" id="r21-MK-n50">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="slideMenuAction:" destination="ROA-Bv-vOg" id="etK-cJ-32i"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="customBar" destination="uUh-Js-c0M" id="mq9-md-5lo"/>
-                        <outlet property="customItem" destination="USp-ir-DaM" id="6pH-en-aeC"/>
-                        <outlet property="leftBarButtomItem" destination="TVm-4b-q1G" id="8yG-hM-Mxe"/>
-                        <outlet property="rightarButtomItem" destination="MzN-wJ-us1" id="dRZ-gK-xbZ"/>
                         <outlet property="webView" destination="4u3-Y4-W8O" id="5N9-LF-0jh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ods-2T-Gby" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-61" y="-258"/>
+            <point key="canvasLocation" x="-255" y="-272"/>
         </scene>
     </scenes>
     <resources>

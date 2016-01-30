@@ -116,7 +116,7 @@
 #pragma mark Button click event
 -(void)backList{
      AppDelegate *appDelegate=[UIApplication sharedApplication].delegate;
-    [appDelegate setRootViewController:ROOT_VIEWCONTROLLER_TYPE_LISTDEIVCE animated:YES];
+    [appDelegate setRootViewController:ROOT_VIEWCONTROLLER_TYPE_LISTDEIVCE animated:YES animationType:ZERO_DEV_ANIMATION_TYPE_POP];
 }
 -(void)settings{
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"

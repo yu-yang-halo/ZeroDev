@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		187526C342650BB622D5430D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AEC66BEC68ABDAA4FFFB25D /* libPods.a */; };
 		845E48561C4DCB6100AAD5A5 /* ui in Resources */ = {isa = PBXBuildFile; fileRef = 845E48551C4DCB6100AAD5A5 /* ui */; };
+		84697C251C5C61B200388077 /* RegexUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84697C241C5C61B200388077 /* RegexUtils.m */; };
 		847F9D251C50DB10005ED278 /* SKSTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F9D1E1C50DB10005ED278 /* SKSTableView.m */; };
 		847F9D261C50DB10005ED278 /* SKSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F9D201C50DB10005ED278 /* SKSTableViewCell.m */; };
 		847F9D271C50DB10005ED278 /* SKSTableViewCellIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F9D221C50DB10005ED278 /* SKSTableViewCellIndicator.m */; };
@@ -64,6 +65,8 @@
 		6E847DE7A8CC4497E18F85E0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7692A53577CA343C4467CC5F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		845E48551C4DCB6100AAD5A5 /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ui; sourceTree = "<group>"; };
+		84697C231C5C61B200388077 /* RegexUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexUtils.h; sourceTree = "<group>"; };
+		84697C241C5C61B200388077 /* RegexUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexUtils.m; sourceTree = "<group>"; };
 		847F9D1D1C50DB10005ED278 /* SKSTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKSTableView.h; sourceTree = "<group>"; };
 		847F9D1E1C50DB10005ED278 /* SKSTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKSTableView.m; sourceTree = "<group>"; };
 		847F9D1F1C50DB10005ED278 /* SKSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKSTableViewCell.h; sourceTree = "<group>"; };
@@ -358,6 +361,8 @@
 			children = (
 				84C3C3D41C5622CB00D9B7F2 /* QRStyleUtils.h */,
 				84C3C3D51C5622CC00D9B7F2 /* QRStyleUtils.m */,
+				84697C231C5C61B200388077 /* RegexUtils.h */,
+				84697C241C5C61B200388077 /* RegexUtils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -547,6 +552,7 @@
 				8484778B1C06EDB500167C3A /* UserRegisterViewController.m in Sources */,
 				8488BC471BEC887500803B96 /* HYLDevicesController.m in Sources */,
 				84CBE9031C0435A5001CBF29 /* JSONManager.m in Sources */,
+				84697C251C5C61B200388077 /* RegexUtils.m in Sources */,
 				84CBE9001C040A60001CBF29 /* AppManager.m in Sources */,
 				84C273971BEC46FA00C52577 /* AppDelegate.m in Sources */,
 				8488BC4B1BEC8F8600803B96 /* HYLClassUtils.m in Sources */,

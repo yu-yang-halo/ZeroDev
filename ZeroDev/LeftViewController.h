@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SKSTableView.h"
 #import "SKSTableViewCell.h"
+#import "AppDelegate.h"
 typedef NS_ENUM(NSUInteger,SWITCH_PAGE_TYPE){
     SWITCH_PAGE_TYPE_MAIN,
     SWITCH_PAGE_TYPE_ADD_DEVICE,
@@ -20,7 +21,7 @@ typedef NS_ENUM(NSUInteger,SWITCH_PAGE_TYPE){
 
 @protocol PageSwitchDelegate
 
--(void)swicthToPage:(SWITCH_PAGE_TYPE)pageType;
+-(void)swicthToPage:(SWITCH_PAGE_TYPE)pageType animationType:(ZERO_DEV_ANIMATION_TYPE)type;
 
 @end
 
