@@ -18,6 +18,8 @@
 #import "DeviceInfoViewController.h"
 #import "AnimationUtils.h"
 #import "AppDelegate.h"
+#import "DeviceVideoViewController.h"
+#import "RegexUtils.h"
 @interface HYLDevicesController (){
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
@@ -91,7 +93,7 @@
     
     context[@"mobile_toDetailPage"]=^(){
         NSArray *args=[JSContext currentArguments];
-        
+        //objectID clientSn
         NSLog(@"%@",[args[0] toString]);
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -103,14 +105,24 @@
                
                 UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
                                                                          bundle: nil];
-                DeviceInfoViewController *devInfoVC=[mainStoryboard instantiateViewControllerWithIdentifier:@"deviceInfoVC"];
+                 AppDelegate *appDelegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
+                if([RegexUtils isVideoDevice:[args[1] toString]]){
+                    DeviceVideoViewController *deviceVC=[[DeviceVideoViewController alloc] init];
+                    [deviceVC setDeviceObject:selectedObject];
+                    [appDelegate setRootViewController2:deviceVC animated:YES animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
+                }else{
+                    DeviceInfoViewController *devInfoVC=[mainStoryboard instantiateViewControllerWithIdentifier:@"deviceInfoVC"];
+                    
+                    [devInfoVC setDeviceObject:selectedObject];
+                     [appDelegate setRootViewController2:devInfoVC animated:YES animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
+                }
                 
                 
-                [devInfoVC setDeviceObject:selectedObject];
                 
                 
-                AppDelegate *appDelegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
-                [appDelegate setRootViewController2:devInfoVC animated:YES animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
+                
+               
+               
                 
                 
             });
@@ -164,15 +176,41 @@
         NSMutableDictionary *allClassObjs=[NSMutableDictionary new];
         //搜集class icon
         NSMutableDictionary *classIcon=[NSMutableDictionary new];
-        
+        NSString *tagSetIdWithTag=[[NSUserDefaults standardUserDefaults] objectForKey:kZeroDevTagSetIdWithTagKey];
         
         [self.deviceDic enumerateKeysAndObjectsUsingBlock:^(id key, ELDeviceObject* obj, BOOL *stop) {
             
+            if(obj.classId==IP_CAMERA_FILED_CLASSID){
+                [obj setNetState:1];
+            }
+            if(tagSetIdWithTag!=nil){
+                
+               NSArray *tagSetIdWithTagArr=[tagSetIdWithTag componentsSeparatedByString:@":"];
+                if([tagSetIdWithTagArr count]==2){
+                   
+                    int tagSetId=[tagSetIdWithTagArr[0] intValue];
+                    NSString *tagContent=tagSetIdWithTagArr[1];
+                    BOOL isThisTagYN=NO;
+                    for(ELTagInfo *tagInfo in obj.tags){
+                        if(tagInfo.setTagId==tagSetId&&[tagInfo.tag isEqualToString:tagContent]){
+                            isThisTagYN=YES;
+                        }
+                    }
+                    if(isThisTagYN){
+                        NSMutableDictionary *objectMap=[HYLClassUtils canConvertJSONDataFromObjectInstance:obj];
+                        
+                        [allDeviceObj addObject:objectMap];
+                    }
+                    
+                }
+                
+            }else{
+                
+                NSMutableDictionary *objectMap=[HYLClassUtils canConvertJSONDataFromObjectInstance:obj];
+                
+                [allDeviceObj addObject:objectMap];
+            }
             
-            
-            NSMutableDictionary *objectMap=[HYLClassUtils canConvertJSONDataFromObjectInstance:obj];
-            
-            [allDeviceObj addObject:objectMap];
             
         }];
         

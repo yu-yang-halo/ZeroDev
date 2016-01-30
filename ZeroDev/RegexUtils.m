@@ -16,4 +16,10 @@
     }
     return YES;
 }
++(BOOL)isVideoDevice:(NSString *)clientSN{
+    if([clientSN isEqualToString:@"CFF0006103115"]||[clientSN isEqualToString:@"CFF0006103114"]){
+        return YES;
+    }
+    return NO;
+}
 @end

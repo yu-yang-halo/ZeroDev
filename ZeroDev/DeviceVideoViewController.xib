@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeviceVideoViewController">
+            <connections>
+                <outlet property="playOrPauseBtn" destination="42c-OC-UBY" id="kZ9-zC-TP6"/>
+                <outlet property="statusLabel" destination="CsO-SL-Jz1" id="8Bu-mO-bIX"/>
+                <outlet property="videoImageView" destination="ZYa-Ml-Lj0" id="yvh-Uc-QVZ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="voiceOnOrOffBtn" destination="T9y-de-1EL" id="H7z-8v-XC6"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZYa-Ml-Lj0">
+                    <rect key="frame" x="0.0" y="64" width="320" height="245"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="245" id="Wcu-lc-RA7"/>
+                    </constraints>
+                </imageView>
+                <view alpha="0.64999999999999969" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9JH-Xb-j4e">
+                    <rect key="frame" x="0.0" y="264" width="320" height="45"/>
+                    <subviews>
+                        <button opaque="NO" alpha="0.5499999999999996" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42c-OC-UBY">
+                            <rect key="frame" x="8" y="7" width="46" height="30"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <state key="normal" title="Play">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="playOrPauseAction:" destination="-1" eventType="touchUpInside" id="x20-BV-Jwe"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" alpha="0.55000001192092896" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9y-de-1EL">
+                            <rect key="frame" x="76" y="7" width="46" height="30"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <state key="normal" title="Voice">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="voiceOnOrOffAction:" destination="-1" eventType="touchUpInside" id="fXF-zJ-Tdr"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="sGf-B0-MIH"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="...." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CsO-SL-Jz1">
+                    <rect key="frame" x="160" y="241" width="160" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="160" id="OPX-aT-1jt"/>
+                        <constraint firstAttribute="height" constant="21" id="mzd-qW-iVC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.72610856269113155" blue="0.80663465214067276" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="9JH-Xb-j4e" firstAttribute="top" secondItem="ZYa-Ml-Lj0" secondAttribute="bottom" constant="-45" id="7ss-I9-Cko"/>
+                <constraint firstItem="ZYa-Ml-Lj0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="8ud-Nz-RqF"/>
+                <constraint firstAttribute="trailing" secondItem="ZYa-Ml-Lj0" secondAttribute="trailing" id="BlN-6v-aX6"/>
+                <constraint firstAttribute="trailing" secondItem="9JH-Xb-j4e" secondAttribute="trailing" id="QG4-Rd-ikQ"/>
+                <constraint firstItem="9JH-Xb-j4e" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YXC-SO-bvb"/>
+                <constraint firstItem="ZYa-Ml-Lj0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bHm-sm-6YI"/>
+                <constraint firstItem="9JH-Xb-j4e" firstAttribute="top" secondItem="CsO-SL-Jz1" secondAttribute="bottom" constant="2" id="nv0-px-gI1"/>
+                <constraint firstItem="CsO-SL-Jz1" firstAttribute="leading" secondItem="ZYa-Ml-Lj0" secondAttribute="trailing" constant="-160" id="sxg-KM-c5U"/>
+            </constraints>
+            <point key="canvasLocation" x="290" y="200"/>
+        </view>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

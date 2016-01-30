@@ -11,5 +11,5 @@
 @interface RegexUtils : NSObject
 
 +(BOOL)isVaildPass:(NSString *)pass;
-
++(BOOL)isVideoDevice:(NSString *)clientSN;
 @end

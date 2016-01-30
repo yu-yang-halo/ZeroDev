@@ -8,8 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		187526C342650BB622D5430D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AEC66BEC68ABDAA4FFFB25D /* libPods.a */; };
+		84325FAC1C5C953400E9E873 /* IOTCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FAA1C5C953400E9E873 /* IOTCamera.framework */; };
+		84325FAD1C5C953400E9E873 /* libIOTCAPIs_ALL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FAB1C5C953400E9E873 /* libIOTCAPIs_ALL.a */; };
+		84325FAF1C5C959B00E9E873 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FAE1C5C959B00E9E873 /* VideoToolbox.framework */; };
+		84325FB11C5C95A800E9E873 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FB01C5C95A800E9E873 /* Accelerate.framework */; };
+		84325FB31C5C95BD00E9E873 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FB21C5C95BD00E9E873 /* libbz2.1.0.dylib */; };
+		84325FB51C5C95D000E9E873 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FB41C5C95D000E9E873 /* QuartzCore.framework */; };
+		84325FB71C5C95E600E9E873 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FB61C5C95E600E9E873 /* libiconv.dylib */; };
+		84325FB91C5C95F000E9E873 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FB81C5C95F000E9E873 /* libz.dylib */; };
+		84325FBB1C5C960000E9E873 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FBA1C5C960000E9E873 /* libxml2.dylib */; };
+		84325FBD1C5C960C00E9E873 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FBC1C5C960C00E9E873 /* libstdc++.6.0.9.dylib */; };
+		84325FBF1C5C961700E9E873 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FBE1C5C961700E9E873 /* CoreVideo.framework */; };
+		84325FC11C5C962400E9E873 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FC01C5C962400E9E873 /* Security.framework */; };
+		84325FC31C5C962B00E9E873 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FC21C5C962B00E9E873 /* GLKit.framework */; };
+		84325FC51C5C963300E9E873 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FC41C5C963300E9E873 /* CFNetwork.framework */; };
+		84325FC71C5C963D00E9E873 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FC61C5C963D00E9E873 /* AVFoundation.framework */; };
+		84325FC91C5C964400E9E873 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FC81C5C964400E9E873 /* OpenAL.framework */; };
+		84325FCB1C5C964A00E9E873 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FCA1C5C964A00E9E873 /* AudioToolbox.framework */; };
+		84325FCD1C5C965200E9E873 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FCC1C5C965200E9E873 /* AssetsLibrary.framework */; };
+		84325FCF1C5C965A00E9E873 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84325FCE1C5C965A00E9E873 /* SystemConfiguration.framework */; };
+		84325FE11C5C96BD00E9E873 /* MyCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 84325FD11C5C96BD00E9E873 /* MyCamera.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84325FE21C5C96BD00E9E873 /* WiFiPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84325FD21C5C96BD00E9E873 /* WiFiPassword.xib */; };
+		84325FE31C5C96BD00E9E873 /* EditWiFiPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84325FD41C5C96BD00E9E873 /* EditWiFiPasswordController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84325FE41C5C96BD00E9E873 /* WiFiNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84325FD61C5C96BD00E9E873 /* WiFiNetworkController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84325FE51C5C96BD00E9E873 /* EditWiFiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84325FD81C5C96BD00E9E873 /* EditWiFiViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84325FE61C5C96BD00E9E873 /* EditWiFiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84325FD91C5C96BD00E9E873 /* EditWiFiViewController.xib */; };
+		84325FE71C5C96BD00E9E873 /* CameraShowGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84325FDA1C5C96BD00E9E873 /* CameraShowGLView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84325FE81C5C96BD00E9E873 /* MonitorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84325FDC1C5C96BD00E9E873 /* MonitorView.xib */; };
+		84325FE91C5C96BD00E9E873 /* MonitorViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84325FDE1C5C96BD00E9E873 /* MonitorViewController.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84325FF21C5CA66500E9E873 /* YUV420Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 84325FEE1C5CA66500E9E873 /* YUV420Shader.fsh */; };
+		84325FF31C5CA66500E9E873 /* YUV420Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 84325FEF1C5CA66500E9E873 /* YUV420Shader.vsh */; };
+		84325FF41C5CA66500E9E873 /* DirectDisplayShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 84325FF01C5CA66500E9E873 /* DirectDisplayShader.fsh */; };
+		84325FF51C5CA66500E9E873 /* DirectDisplayShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 84325FF11C5CA66500E9E873 /* DirectDisplayShader.vsh */; };
 		845E48561C4DCB6100AAD5A5 /* ui in Resources */ = {isa = PBXBuildFile; fileRef = 845E48551C4DCB6100AAD5A5 /* ui */; };
 		84697C251C5C61B200388077 /* RegexUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84697C241C5C61B200388077 /* RegexUtils.m */; };
+		84697C2A1C5C8BB600388077 /* DeviceVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84697C281C5C8BB600388077 /* DeviceVideoViewController.m */; };
+		84697C2B1C5C8BB600388077 /* DeviceVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84697C291C5C8BB600388077 /* DeviceVideoViewController.xib */; };
 		847F9D251C50DB10005ED278 /* SKSTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F9D1E1C50DB10005ED278 /* SKSTableView.m */; };
 		847F9D261C50DB10005ED278 /* SKSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F9D201C50DB10005ED278 /* SKSTableViewCell.m */; };
 		847F9D271C50DB10005ED278 /* SKSTableViewCellIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F9D221C50DB10005ED278 /* SKSTableViewCellIndicator.m */; };
@@ -64,9 +98,50 @@
 /* Begin PBXFileReference section */
 		6E847DE7A8CC4497E18F85E0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7692A53577CA343C4467CC5F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		84325FAA1C5C953400E9E873 /* IOTCamera.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOTCamera.framework; path = "ZeroDev/lib/Debug-iphoneos/IOTCamera.framework"; sourceTree = "<group>"; };
+		84325FAB1C5C953400E9E873 /* libIOTCAPIs_ALL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libIOTCAPIs_ALL.a; path = "ZeroDev/lib/Debug-iphoneos/libIOTCAPIs_ALL.a"; sourceTree = "<group>"; };
+		84325FAE1C5C959B00E9E873 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		84325FB01C5C95A800E9E873 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		84325FB21C5C95BD00E9E873 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = usr/lib/libbz2.1.0.dylib; sourceTree = SDKROOT; };
+		84325FB41C5C95D000E9E873 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		84325FB61C5C95E600E9E873 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		84325FB81C5C95F000E9E873 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		84325FBA1C5C960000E9E873 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		84325FBC1C5C960C00E9E873 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		84325FBE1C5C961700E9E873 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		84325FC01C5C962400E9E873 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		84325FC21C5C962B00E9E873 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		84325FC41C5C963300E9E873 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		84325FC61C5C963D00E9E873 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		84325FC81C5C964400E9E873 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		84325FCA1C5C964A00E9E873 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		84325FCC1C5C965200E9E873 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		84325FCE1C5C965A00E9E873 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		84325FD01C5C96BD00E9E873 /* MyCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCamera.h; sourceTree = "<group>"; };
+		84325FD11C5C96BD00E9E873 /* MyCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCamera.m; sourceTree = "<group>"; };
+		84325FD21C5C96BD00E9E873 /* WiFiPassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WiFiPassword.xib; sourceTree = "<group>"; };
+		84325FD31C5C96BD00E9E873 /* EditWiFiPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditWiFiPasswordController.h; sourceTree = "<group>"; };
+		84325FD41C5C96BD00E9E873 /* EditWiFiPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditWiFiPasswordController.m; sourceTree = "<group>"; };
+		84325FD51C5C96BD00E9E873 /* WiFiNetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiFiNetworkController.h; sourceTree = "<group>"; };
+		84325FD61C5C96BD00E9E873 /* WiFiNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WiFiNetworkController.m; sourceTree = "<group>"; };
+		84325FD71C5C96BD00E9E873 /* EditWiFiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditWiFiViewController.h; sourceTree = "<group>"; };
+		84325FD81C5C96BD00E9E873 /* EditWiFiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditWiFiViewController.m; sourceTree = "<group>"; };
+		84325FD91C5C96BD00E9E873 /* EditWiFiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditWiFiViewController.xib; sourceTree = "<group>"; };
+		84325FDA1C5C96BD00E9E873 /* CameraShowGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraShowGLView.m; sourceTree = "<group>"; };
+		84325FDB1C5C96BD00E9E873 /* CameraShowGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraShowGLView.h; sourceTree = "<group>"; };
+		84325FDC1C5C96BD00E9E873 /* MonitorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonitorView.xib; sourceTree = "<group>"; };
+		84325FDD1C5C96BD00E9E873 /* MonitorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitorViewController.h; sourceTree = "<group>"; };
+		84325FDE1C5C96BD00E9E873 /* MonitorViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MonitorViewController.mm; sourceTree = "<group>"; };
+		84325FEE1C5CA66500E9E873 /* YUV420Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = YUV420Shader.fsh; sourceTree = "<group>"; };
+		84325FEF1C5CA66500E9E873 /* YUV420Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = YUV420Shader.vsh; sourceTree = "<group>"; };
+		84325FF01C5CA66500E9E873 /* DirectDisplayShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DirectDisplayShader.fsh; sourceTree = "<group>"; };
+		84325FF11C5CA66500E9E873 /* DirectDisplayShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DirectDisplayShader.vsh; sourceTree = "<group>"; };
 		845E48551C4DCB6100AAD5A5 /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ui; sourceTree = "<group>"; };
 		84697C231C5C61B200388077 /* RegexUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexUtils.h; sourceTree = "<group>"; };
 		84697C241C5C61B200388077 /* RegexUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexUtils.m; sourceTree = "<group>"; };
+		84697C271C5C8BB600388077 /* DeviceVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceVideoViewController.h; sourceTree = "<group>"; };
+		84697C281C5C8BB600388077 /* DeviceVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceVideoViewController.m; sourceTree = "<group>"; };
+		84697C291C5C8BB600388077 /* DeviceVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceVideoViewController.xib; sourceTree = "<group>"; };
 		847F9D1D1C50DB10005ED278 /* SKSTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKSTableView.h; sourceTree = "<group>"; };
 		847F9D1E1C50DB10005ED278 /* SKSTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKSTableView.m; sourceTree = "<group>"; };
 		847F9D1F1C50DB10005ED278 /* SKSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKSTableViewCell.h; sourceTree = "<group>"; };
@@ -147,7 +222,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84325FCF1C5C965A00E9E873 /* SystemConfiguration.framework in Frameworks */,
+				84325FCD1C5C965200E9E873 /* AssetsLibrary.framework in Frameworks */,
+				84325FCB1C5C964A00E9E873 /* AudioToolbox.framework in Frameworks */,
+				84325FC91C5C964400E9E873 /* OpenAL.framework in Frameworks */,
+				84325FC71C5C963D00E9E873 /* AVFoundation.framework in Frameworks */,
+				84325FC51C5C963300E9E873 /* CFNetwork.framework in Frameworks */,
+				84325FC31C5C962B00E9E873 /* GLKit.framework in Frameworks */,
+				84325FC11C5C962400E9E873 /* Security.framework in Frameworks */,
+				84325FBF1C5C961700E9E873 /* CoreVideo.framework in Frameworks */,
+				84325FBD1C5C960C00E9E873 /* libstdc++.6.0.9.dylib in Frameworks */,
+				84325FBB1C5C960000E9E873 /* libxml2.dylib in Frameworks */,
+				84325FB91C5C95F000E9E873 /* libz.dylib in Frameworks */,
+				84325FB71C5C95E600E9E873 /* libiconv.dylib in Frameworks */,
+				84325FB51C5C95D000E9E873 /* QuartzCore.framework in Frameworks */,
+				84325FB31C5C95BD00E9E873 /* libbz2.1.0.dylib in Frameworks */,
+				84325FB11C5C95A800E9E873 /* Accelerate.framework in Frameworks */,
+				84325FAF1C5C959B00E9E873 /* VideoToolbox.framework in Frameworks */,
 				84C273D81BEC67BA00C52577 /* ELNetworkService.framework in Frameworks */,
+				84325FAC1C5C953400E9E873 /* IOTCamera.framework in Frameworks */,
+				84325FAD1C5C953400E9E873 /* libIOTCAPIs_ALL.a in Frameworks */,
 				187526C342650BB622D5430D /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,6 +259,25 @@
 		172CBF0E2C09348CCCF582C0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84325FCE1C5C965A00E9E873 /* SystemConfiguration.framework */,
+				84325FCC1C5C965200E9E873 /* AssetsLibrary.framework */,
+				84325FCA1C5C964A00E9E873 /* AudioToolbox.framework */,
+				84325FC81C5C964400E9E873 /* OpenAL.framework */,
+				84325FC61C5C963D00E9E873 /* AVFoundation.framework */,
+				84325FC41C5C963300E9E873 /* CFNetwork.framework */,
+				84325FC21C5C962B00E9E873 /* GLKit.framework */,
+				84325FC01C5C962400E9E873 /* Security.framework */,
+				84325FBE1C5C961700E9E873 /* CoreVideo.framework */,
+				84325FBC1C5C960C00E9E873 /* libstdc++.6.0.9.dylib */,
+				84325FBA1C5C960000E9E873 /* libxml2.dylib */,
+				84325FB81C5C95F000E9E873 /* libz.dylib */,
+				84325FB61C5C95E600E9E873 /* libiconv.dylib */,
+				84325FB41C5C95D000E9E873 /* QuartzCore.framework */,
+				84325FB21C5C95BD00E9E873 /* libbz2.1.0.dylib */,
+				84325FB01C5C95A800E9E873 /* Accelerate.framework */,
+				84325FAE1C5C959B00E9E873 /* VideoToolbox.framework */,
+				84325FAA1C5C953400E9E873 /* IOTCamera.framework */,
+				84325FAB1C5C953400E9E873 /* libIOTCAPIs_ALL.a */,
 				9AEC66BEC68ABDAA4FFFB25D /* libPods.a */,
 			);
 			name = Frameworks;
@@ -177,6 +290,51 @@
 				7692A53577CA343C4467CC5F /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		84325FEC1C5C96C500E9E873 /* psd */ = {
+			isa = PBXGroup;
+			children = (
+				84325FED1C5CA5F600E9E873 /* Shaders */,
+				84325FD01C5C96BD00E9E873 /* MyCamera.h */,
+				84325FD11C5C96BD00E9E873 /* MyCamera.m */,
+				84325FD21C5C96BD00E9E873 /* WiFiPassword.xib */,
+				84325FD31C5C96BD00E9E873 /* EditWiFiPasswordController.h */,
+				84325FD41C5C96BD00E9E873 /* EditWiFiPasswordController.m */,
+				84325FD51C5C96BD00E9E873 /* WiFiNetworkController.h */,
+				84325FD61C5C96BD00E9E873 /* WiFiNetworkController.m */,
+				84325FD71C5C96BD00E9E873 /* EditWiFiViewController.h */,
+				84325FD81C5C96BD00E9E873 /* EditWiFiViewController.m */,
+				84325FD91C5C96BD00E9E873 /* EditWiFiViewController.xib */,
+				84325FDA1C5C96BD00E9E873 /* CameraShowGLView.m */,
+				84325FDB1C5C96BD00E9E873 /* CameraShowGLView.h */,
+				84325FDC1C5C96BD00E9E873 /* MonitorView.xib */,
+				84325FDD1C5C96BD00E9E873 /* MonitorViewController.h */,
+				84325FDE1C5C96BD00E9E873 /* MonitorViewController.mm */,
+			);
+			name = psd;
+			sourceTree = "<group>";
+		};
+		84325FED1C5CA5F600E9E873 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				84325FEE1C5CA66500E9E873 /* YUV420Shader.fsh */,
+				84325FEF1C5CA66500E9E873 /* YUV420Shader.vsh */,
+				84325FF01C5CA66500E9E873 /* DirectDisplayShader.fsh */,
+				84325FF11C5CA66500E9E873 /* DirectDisplayShader.vsh */,
+			);
+			name = Shaders;
+			sourceTree = "<group>";
+		};
+		84697C261C5C8B7B00388077 /* video */ = {
+			isa = PBXGroup;
+			children = (
+				84325FEC1C5C96C500E9E873 /* psd */,
+				84697C271C5C8BB600388077 /* DeviceVideoViewController.h */,
+				84697C281C5C8BB600388077 /* DeviceVideoViewController.m */,
+				84697C291C5C8BB600388077 /* DeviceVideoViewController.xib */,
+			);
+			name = video;
 			sourceTree = "<group>";
 		};
 		847F9D1C1C50DACC005ED278 /* SKSTableViewImpl */ = {
@@ -312,6 +470,7 @@
 		84C273D21BEC55A800C52577 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				84697C261C5C8B7B00388077 /* video */,
 				84CCFB5E1C5B61DF00F42003 /* other */,
 				84C700DA1C534B94007FA60F /* leftmenu */,
 				8488BC451BEC887500803B96 /* HYLDevicesController.h */,
@@ -488,16 +647,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84325FF51C5CA66500E9E873 /* DirectDisplayShader.vsh in Resources */,
+				84325FF41C5CA66500E9E873 /* DirectDisplayShader.fsh in Resources */,
+				84325FF31C5CA66500E9E873 /* YUV420Shader.vsh in Resources */,
 				84C2739D1BEC46FA00C52577 /* Main.storyboard in Resources */,
 				84CCFB181C5AF68100F42003 /* InfoPlist.strings in Resources */,
+				84325FF21C5CA66500E9E873 /* YUV420Shader.fsh in Resources */,
 				84C700DF1C534BC3007FA60F /* LeftViewController.xib in Resources */,
+				84325FE81C5C96BD00E9E873 /* MonitorView.xib in Resources */,
 				84CCFB631C5B625800F42003 /* QRCodeShowViewController.xib in Resources */,
 				84CBE90E1C058D1D001CBF29 /* ModalView.xib in Resources */,
 				84CCFB5D1C5B5E5800F42003 /* Localizable.strings in Resources */,
+				84325FE61C5C96BD00E9E873 /* EditWiFiViewController.xib in Resources */,
 				84C273A21BEC46FA00C52577 /* LaunchScreen.xib in Resources */,
 				845E48561C4DCB6100AAD5A5 /* ui in Resources */,
 				84C7011C1C536810007FA60F /* expandableImage@2x.png in Resources */,
+				84697C2B1C5C8BB600388077 /* DeviceVideoViewController.xib in Resources */,
 				84C2739F1BEC46FA00C52577 /* Images.xcassets in Resources */,
+				84325FE21C5C96BD00E9E873 /* WiFiPassword.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,14 +717,21 @@
 			files = (
 				848477881C06ED3700167C3A /* DeviceDeleteViewController.m in Sources */,
 				8484778B1C06EDB500167C3A /* UserRegisterViewController.m in Sources */,
+				84325FE71C5C96BD00E9E873 /* CameraShowGLView.m in Sources */,
 				8488BC471BEC887500803B96 /* HYLDevicesController.m in Sources */,
+				84325FE51C5C96BD00E9E873 /* EditWiFiViewController.m in Sources */,
+				84325FE31C5C96BD00E9E873 /* EditWiFiPasswordController.m in Sources */,
 				84CBE9031C0435A5001CBF29 /* JSONManager.m in Sources */,
 				84697C251C5C61B200388077 /* RegexUtils.m in Sources */,
 				84CBE9001C040A60001CBF29 /* AppManager.m in Sources */,
 				84C273971BEC46FA00C52577 /* AppDelegate.m in Sources */,
 				8488BC4B1BEC8F8600803B96 /* HYLClassUtils.m in Sources */,
+				84325FE91C5C96BD00E9E873 /* MonitorViewController.mm in Sources */,
+				84325FE11C5C96BD00E9E873 /* MyCamera.m in Sources */,
 				8484778E1C06EE6300167C3A /* FindPassViewController.m in Sources */,
+				84325FE41C5C96BD00E9E873 /* WiFiNetworkController.m in Sources */,
 				84992F1B1BFC32BE00D890A2 /* ZDItem.m in Sources */,
+				84697C2A1C5C8BB600388077 /* DeviceVideoViewController.m in Sources */,
 				84CBE8FD1C040048001CBF29 /* HomeViewController.m in Sources */,
 				848477921C07033700167C3A /* AnimationUtils.m in Sources */,
 				848477821C06E86700167C3A /* UserManagerViewController.m in Sources */,
@@ -707,12 +881,17 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ZeroDev",
+					"$(PROJECT_DIR)/ZeroDev/lib/Debug-iphoneos",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ZeroDev/ZeroDevPrefixHeader.pch";
 				INFOPLIST_FILE = ZeroDev/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ZeroDev/lib/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -749,12 +928,17 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ZeroDev",
+					"$(PROJECT_DIR)/ZeroDev/lib/Release-iphoneos",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ZeroDev/ZeroDevPrefixHeader.pch";
 				INFOPLIST_FILE = ZeroDev/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ZeroDev/lib/Release-iphoneos",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

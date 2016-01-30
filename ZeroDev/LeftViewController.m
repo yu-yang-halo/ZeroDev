@@ -120,7 +120,7 @@
     
     [cell setBackgroundColor:[UIColor clearColor]];
     UIView *selectedBg=[[UIView alloc] initWithFrame:cell.frame];
-    [selectedBg setBackgroundColor:[UIColor colorWithRed:0 green:1 blue:1 alpha:0.5]];
+    [selectedBg setBackgroundColor:[UIColor colorWithWhite:0.6 alpha:0.2]];
     [cell setSelectedBackgroundView:selectedBg];
     
     cell.textLabel.text = self.contents[indexPath.row][0];
@@ -150,7 +150,7 @@
     [cell.textLabel setTextColor:[UIColor whiteColor]];
     [cell setBackgroundColor:[UIColor clearColor]];
     UIView *selectedBg=[[UIView alloc] initWithFrame:cell.frame];
-    [selectedBg setBackgroundColor:[UIColor colorWithRed:0 green:1 blue:1 alpha:0.5]];
+    [selectedBg setBackgroundColor:[UIColor colorWithWhite:0.6 alpha:0.2]];
     [cell setSelectedBackgroundView:selectedBg];
     
    // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -233,8 +233,11 @@
     
     if(row==0){
         NSLog(@"主页");
-       
+       [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kZeroDevTagSetIdWithTagKey];
+       [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kZeroDevDeviceManagerKey];
         [self.pageDelegate swicthToPage:SWITCH_PAGE_TYPE_MAIN animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
+        [self.tableView reloadData];
+        
         
     }else if(row==[_tagsArr count]+1){
         NSLog(@"设备管理");
@@ -279,7 +282,8 @@
             [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@:%@",tagSetId,tagContent] forKey:kZeroDevTagSetIdWithTagKey];
             
             [self.tableView reloadData];
-           
+            
+            [self.pageDelegate swicthToPage:SWITCH_PAGE_TYPE_MAIN animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
 
         }
     }
