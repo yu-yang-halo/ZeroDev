@@ -16,4 +16,5 @@ typedef NS_ENUM(NSUInteger,IP_CAMERA_FILED){
 #import <ELNetworkService/ELNetworkService.h>
 @interface DeviceVideoViewController : UIViewController
 @property(nonatomic,strong) ELDeviceObject *deviceObject;
+
 @end

@@ -10,12 +10,12 @@
 #import <IOTCamera/AVIOCTRLDEFs.h>
 #import <IOTCamera/Camera.h>
 #import "EditWiFiPasswordController.h"
-
+#import "MyCamera.h"
 @protocol WiFiNetworkDelegate;
 
-@interface WiFiNetworkController : UITableViewController <CameraDelegate, EditWiFiPasswordDelegate> {
+@interface WiFiNetworkController : UITableViewController <MyCameraDelegate, EditWiFiPasswordDelegate> {
     
-    Camera *camera;
+    MyCamera *camera;
     SWifiAp wifiSSIDList[28];
     int wifiSSIDListCount;
     Boolean isRecvWiFi;
@@ -31,7 +31,7 @@
 }
 
 @property (nonatomic, retain) NSTimer* timerListWifiApResp;
-@property (nonatomic, retain) Camera *camera;
+@property (nonatomic, retain) MyCamera *camera;
 @property (nonatomic, copy) NSString *wifiSSID;
 @property (nonatomic, weak) id<WiFiNetworkDelegate> delegate;
 

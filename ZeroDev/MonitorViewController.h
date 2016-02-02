@@ -40,10 +40,11 @@
 @property (nonatomic, retain) NSString *videoUID;
 @property (nonatomic, retain) NSString *videoPass;
 @property (retain, nonatomic) IBOutlet UIScrollView *scrollViewPortrait;
-
+@property(nonatomic,retain) NSString *UID;
 @property (nonatomic,retain) UIImage *image;
 -(void)stop;
 - (void)activeAudioSession:(NSInteger)selectedAudioMode;
 - (void)unactiveAudioSession;
 -(void)snapshot;
+-(void)playOrPause:(BOOL)playYN;
 @end

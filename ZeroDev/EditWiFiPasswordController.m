@@ -133,6 +133,8 @@ BOOL bDoWaiting = FALSE;
                                    target:self 
                                    action:@selector(join:)];
     self.navigationItem.rightBarButtonItem = joinButton;
+     [self.navigationItem.leftBarButtonItem setTintColor:[UIColor whiteColor]];
+    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
     [joinButton release];    
     
     
@@ -159,7 +161,7 @@ BOOL bDoWaiting = FALSE;
 - (void)viewWillAppear:(BOOL)animated {
 
     if (camera != nil)
-        camera.delegate = self;
+        camera.delegate2 = self;
     
     [super viewWillAppear:animated];
 }
@@ -242,7 +244,7 @@ BOOL bDoWaiting = FALSE;
 }
 
 #pragma mark - MyCameraDelegate Methods
-- (void)camera:(Camera *)camera_ didReceiveIOCtrlWithType:(NSInteger)type Data:(const char*)data DataSize:(NSInteger)size{
+- (void)camera:(MyCamera *)camera_ _didReceiveIOCtrlWithType:(NSInteger)type Data:(const char*)data DataSize:(NSInteger)size{
        
     if (camera_ == camera && type == IOTYPE_USER_IPCAM_SETWIFI_RESP) {
         NSLog( @"IOTYPE_USER_IPCAM_SETWIFI_RESP received." );

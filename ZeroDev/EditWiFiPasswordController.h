@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <IOTCamera/Camera.h>
-
+#import "MyCamera.h"
 @protocol EditWiFiPasswordDelegate;
 
 @interface EditWiFiPasswordController : UIViewController 
-<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, CameraDelegate> {
+<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, MyCameraDelegate> {
     
     UITableView *tableView;
     UITextField *textFieldBeingEdited;
@@ -22,14 +22,14 @@
     char mode;
     char enctype;
     
-    Camera *camera;
+    MyCamera *camera;
     
     id<EditWiFiPasswordDelegate> delegate;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) IBOutlet UITextField *textFieldBeingEdited;
-@property (nonatomic, retain) Camera *camera;
+@property (nonatomic, retain) MyCamera *camera;
 @property (nonatomic, copy) NSString *ssid;
 @property (nonatomic) int ssid_length;
 @property (nonatomic) char mode;

@@ -25,8 +25,10 @@ unsigned int _getTickCount() {
 @interface MonitorViewController (){
     UILabel *mlabel;
     int selectedChannel;
+   
 }
-@property(nonatomic,retain) NSString *UID;
+
+@property(nonatomic,retain)  NSString *connectMessage;
 @end
 
 @implementation MonitorViewController
@@ -52,6 +54,7 @@ unsigned int _getTickCount() {
     [camera stop:0];
     [camera disconnect];
     [camera setDelegate:nil];
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -134,34 +137,39 @@ unsigned int _getTickCount() {
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(cameraStopShowCompleted:) name: @"CameraStopShowCompleted" object: nil];
     
     
-    
-    if (camera.sessionState != CONNECTION_STATE_CONNECTED)
-        [camera connect:_UID];
-    
-    if ([camera getConnectionStateOfChannel:0] != CONNECTION_STATE_CONNECTED) {
-        [camera start:0];
-        
+    //[self playOrPause:YES];
+}
+
+-(void)playOrPause:(BOOL)playYN{
+    if(playYN){
+        [camera setDelegate2:self];
+        [self.camera connect:_UID];
+        [self.camera start:0];
+        [self.camera startShow:0 ScreenObject:self];
         SMsgAVIoctrlGetAudioOutFormatReq *s = (SMsgAVIoctrlGetAudioOutFormatReq *)malloc(sizeof(SMsgAVIoctrlGetAudioOutFormatReq));
         s->channel = 0;
-        [camera sendIOCtrlToChannel:0 Type:IOTYPE_USER_IPCAM_GETAUDIOOUTFORMAT_REQ Data:(char *)s DataSize:sizeof(SMsgAVIoctrlGetAudioOutFormatReq)];
+        [self.camera sendIOCtrlToChannel:0 Type:IOTYPE_USER_IPCAM_GETAUDIOOUTFORMAT_REQ Data:(char *)s DataSize:sizeof(SMsgAVIoctrlGetAudioOutFormatReq)];
         free(s);
         
         SMsgAVIoctrlGetSupportStreamReq *s2 = (SMsgAVIoctrlGetSupportStreamReq *)malloc(sizeof(SMsgAVIoctrlGetSupportStreamReq));
-        [camera sendIOCtrlToChannel:0 Type:IOTYPE_USER_IPCAM_GETSUPPORTSTREAM_REQ Data:(char *)s2 DataSize:sizeof(SMsgAVIoctrlGetSupportStreamReq)];
+        [self.camera sendIOCtrlToChannel:0 Type:IOTYPE_USER_IPCAM_GETSUPPORTSTREAM_REQ Data:(char *)s2 DataSize:sizeof(SMsgAVIoctrlGetSupportStreamReq)];
         free(s2);
         
         SMsgAVIoctrlTimeZone s3={0};
         s3.cbSize = sizeof(s3);
-        [camera sendIOCtrlToChannel:0 Type:IOTYPE_USER_IPCAM_GET_TIMEZONE_REQ Data:(char *)&s3 DataSize:sizeof(s3)];
+        [self.camera sendIOCtrlToChannel:0 Type:IOTYPE_USER_IPCAM_GET_TIMEZONE_REQ Data:(char *)&s3 DataSize:sizeof(s3)];
         
+    }else{
+        [camera setDelegate2:nil];
+        [self.camera stopShow:0];
+        [self waitStopShowCompleted:DEF_WAIT4STOPSHOW_TIME];
+        [self.camera stopSoundToDevice:0];
+        [self.camera stopSoundToPhone:0];
+        [self.camera disconnect];
+        [self unactiveAudioSession];
     }
-    
-    if ( selectedChannel != 0 && [camera getConnectionStateOfChannel:selectedChannel] != CONNECTION_STATE_CONNECTED) {
-        [camera start:selectedChannel];
-    }
-    
-    [camera startShow:0 ScreenObject:self];
 }
+
 -(void)recordCameraState:(UILabel *)label{
     mlabel=label;
 }
@@ -209,25 +217,25 @@ unsigned int _getTickCount() {
     NSString *message=nil;
     switch (status) {
         case CONNECTION_STATE_CONNECTED:
-            message=NSLocalizedString(@"connect_suc", nil);
+            message=@"连接成功";
           
             break;
             
         case CONNECTION_STATE_CONNECTING:
-            message=NSLocalizedString(@"connecting",nil);
+            message=@"连接中...";
             break;
             
         case CONNECTION_STATE_DISCONNECTED:
-            message=NSLocalizedString(@"unconnect",nil);
+            message=@"连接断开";
             break;
             
         case CONNECTION_STATE_CONNECT_FAILED:{
-            message=NSLocalizedString(@"connect_fail",nil);
+            message=@"连接错误";
         }
             break;
             
         case CONNECTION_STATE_TIMEOUT:{
-            message=NSLocalizedString(@"connect_timeout",nil);
+            message=@"连接超时";
             [self.camera stopShow:0];
             [self waitStopShowCompleted:DEF_WAIT4STOPSHOW_TIME];
             [self.camera stopSoundToDevice:0];
@@ -256,7 +264,7 @@ unsigned int _getTickCount() {
             break;
             
         case CONNECTION_STATE_UNKNOWN_DEVICE:
-            message=NSLocalizedString(@"unknown_device",nil);
+            message=@"未知的设备";
             break;
             
         case CONNECTION_STATE_UNSUPPORTED:
@@ -264,18 +272,19 @@ unsigned int _getTickCount() {
             break;
             
         case CONNECTION_STATE_WRONG_PASSWORD:
-             message=NSLocalizedString(@"passerror", nil);
+             message=@"密码错误";
             break;
             
         default:
              message=@"";
             break;
     }
-    mlabel.text=message;
+   
     if(status==CONNECTION_STATE_CONNECTED){
        
     }
-    
+    self.connectMessage=message;
+    mlabel.text=[NSString stringWithFormat:@" 状态:%@",_connectMessage];
 }
 -(void)getWifiInfo {
     NSLog(@"***** wifi info****");
@@ -291,7 +300,9 @@ unsigned int _getTickCount() {
 }
 - (void)camera:(MyCamera *)camera _didReceiveFrameInfoWithVideoWidth:(NSInteger)videoWidth VideoHeight:(NSInteger)videoHeight VideoFPS:(NSInteger)fps VideoBPS:(NSInteger)videoBps AudioBPS:(NSInteger)audioBps OnlineNm:(NSInteger)onlineNm FrameCount:(unsigned int)frameCount IncompleteFrameCount:(unsigned int)incompleteFrameCount
 {
+    NSString *message=[NSString stringWithFormat:@" 状态:%@ \n 帧率:%d 视频位率:%d \n 音频位率:%d 在线数:%d 帧数:%d",_connectMessage,fps,videoBps,audioBps,onlineNm,frameCount];
     
+    mlabel.text=message;
 }
 - (void)camera:(MyCamera *)camera _didReceiveIOCtrlWithType:(NSInteger)type Data:(const char*)data DataSize:(NSInteger)size
 {

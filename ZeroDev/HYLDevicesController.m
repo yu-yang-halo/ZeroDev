@@ -28,6 +28,7 @@
 }
 @property (strong, nonatomic) IBOutlet UIWebView *webVIew;
 @property (nonatomic,retain) NSDictionary *deviceDic;
+@property (nonatomic,retain) NSString *titleName;
 
 @end
 
@@ -194,6 +195,7 @@
                     for(ELTagInfo *tagInfo in obj.tags){
                         if(tagInfo.setTagId==tagSetId&&[tagInfo.tag isEqualToString:tagContent]){
                             isThisTagYN=YES;
+                            self.titleName=tagContent;
                         }
                     }
                     if(isThisTagYN){
@@ -205,7 +207,7 @@
                 }
                 
             }else{
-                
+                 self.titleName=@"设备列表";
                 NSMutableDictionary *objectMap=[HYLClassUtils canConvertJSONDataFromObjectInstance:obj];
                 
                 [allDeviceObj addObject:objectMap];
@@ -220,6 +222,7 @@
    
         dispatch_async(dispatch_get_main_queue(), ^{
             
+            self.title=_titleName;
             if(_deviceDic!=nil&&[_deviceDic count]>0){
                 [self.webVIew stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hyl_loadDevicesData(%@,%@)",[allDeviceObj JSONString],mobileAppJSON]];
             }

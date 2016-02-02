@@ -82,11 +82,11 @@
         int demoType=[[args lastObject] toInt32];
         NSString *username=@"hylapp1";
         NSString *password=@"hylapp1";
-        NSString *demoURLString=@"http://121.41.15.186/iplusweb/upload/22/hylapp1.zip";
+        NSString *demoURLString=@"http://121.41.15.186/iplusweb/upload/22.zip";
         if(demoType==0){
             username=@"hylapp0";
             password=@"hylapp0";
-            demoURLString=@"http://121.41.15.186/iplusweb/upload/21/hylapp0.zip";
+            demoURLString=@"http://121.41.15.186/iplusweb/upload/21.zip";
         }
         [[NSUserDefaults standardUserDefaults] setObject:username forKey:kloginUserName];
         [[NSUserDefaults standardUserDefaults] setObject:password forKey:kloginPassword];

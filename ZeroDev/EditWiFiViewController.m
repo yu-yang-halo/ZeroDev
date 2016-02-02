@@ -9,7 +9,7 @@
 #import "EditWiFiViewController.h"
 #import "WiFiNetworkController.h"
 @interface EditWiFiViewController (){
-    Camera *camera;
+    MyCamera *camera;
     NSTimer* timerListWifiApResp;
     int nTotalWaitingTime;
     BOOL bTimerListWifiApResp;
@@ -18,7 +18,12 @@
 @property (retain, nonatomic) IBOutlet UIActivityIndicatorView *wifiActivityIndicator;
 @property (retain, nonatomic) IBOutlet UIView *statusView;
 @property(retain,nonatomic) NSString *wifiSSID;
-@property(strong,nonatomic) Camera *camera;
+
+@property (retain, nonatomic) IBOutlet UITextField *uidTextField;
+
+@property (retain, nonatomic) IBOutlet UITextField *accTextField;
+
+@property (retain, nonatomic) IBOutlet UITextField *pwdTextField;
 
 @end
 
@@ -27,10 +32,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    [self initCameraInfo];
+   
     self.title=@"WiFi参数";
     [self.navigationController setNavigationBarHidden:NO];
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(close)];
+    [self.navigationItem.leftBarButtonItem setTintColor:[UIColor whiteColor]];
+    
     
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toNetWork:)];
     [tap setNumberOfTapsRequired:1];
@@ -38,7 +45,18 @@
     
     
     [_wifiActivityIndicator startAnimating];
+    
+    NSString *uid=[self.deviceObject.fieldMap objectForKey:[NSString stringWithFormat:@"%d",IP_CAMERA_FILED_UID]];
+    NSString *acc=[self.deviceObject.fieldMap objectForKey:[NSString stringWithFormat:@"%d",IP_CAMERA_FILED_USERNAME]];
+    NSString *pass=[self.deviceObject.fieldMap objectForKey:[NSString stringWithFormat:@"%d",IP_CAMERA_FILED_PASSWORD]];
+    [self.uidTextField setText:uid];
+    [self.accTextField setText:acc];
+    [self.pwdTextField setText:pass];
+    self.uidTextField.delegate=self;
+    self.accTextField.delegate=self;
+    self.pwdTextField.delegate=self;
 }
+
 
 -(void)toNetWork:(id)sender{
     WiFiNetworkController *controller = [[WiFiNetworkController alloc] initWithStyle:UITableViewStyleGrouped delegate:self];
@@ -52,23 +70,18 @@
 }
 
 -(void)initCameraInfo{
-//    
-//    
-//    if ([deviceURL isEqualToString:@"2.2.2.2"]) {
-//        [Camera initIOTC];
-//        self.camera = [[Camera alloc] initWithName:deviceUMID];
-//        camera.delegate=self;
-//        [camera connect:deviceUMID];//8YM2LT63DMWXPBUG111A
-//        [camera start:0 viewAccount:deviceUserID  viewPassword:devicePassword is_playback:FALSE];
-//        
-//        SMsgAVIoctrlGetAudioOutFormatReq *s = (SMsgAVIoctrlGetAudioOutFormatReq *)malloc(sizeof(SMsgAVIoctrlGetAudioOutFormatReq));
-//        s->channel = 0;
-//        [camera sendIOCtrlToChannel:0 Type:IOTYPE_USER_IPCAM_GETAUDIOOUTFORMAT_REQ Data:(char *)s DataSize:sizeof(SMsgAVIoctrlGetAudioOutFormatReq)];
-//        free(s);
-//
-//    }else{
-//        _wifiSSIDLabel.text=@"该设备不支持wifi设置";
-//    }
+    
+        [Camera initIOTC];
+         camera.delegate2=self;
+         [camera connect:camera.name];
+         [camera start:0];
+    
+        
+        SMsgAVIoctrlGetAudioOutFormatReq *s = (SMsgAVIoctrlGetAudioOutFormatReq *)malloc(sizeof(SMsgAVIoctrlGetAudioOutFormatReq));
+        s->channel = 0;
+        [camera sendIOCtrlToChannel:0 Type:IOTYPE_USER_IPCAM_GETAUDIOOUTFORMAT_REQ Data:(char *)s DataSize:sizeof(SMsgAVIoctrlGetAudioOutFormatReq)];
+        free(s);
+
 }
 
 
@@ -76,13 +89,15 @@
     [super didReceiveMemoryWarning];
     
 }
+-(void)viewDidAppear:(BOOL)animated{
+     [self initCameraInfo];
+}
 -(void)closeCameraConnection{
-    if(self.camera!=nil){
-        [self.camera stop:0];
-        [self.camera disconnect];
-        [self.camera setDelegate:nil];
-        [self.camera release];
-        self.camera=nil;
+    if(camera!=nil){
+        [camera stop:0];
+        [camera disconnect];
+        [camera setDelegate2:nil];
+        [camera release];
     }
 }
 
@@ -106,16 +121,36 @@
     [super dealloc];
 }
 -(void)close{
-    [self closeCameraConnection];
-    [self.navigationController setNavigationBarHidden:YES];
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self closeCameraConnection];
+        NSString *uid=[self.deviceObject.fieldMap objectForKey:[NSString stringWithFormat:@"%d",IP_CAMERA_FILED_UID]];
+        NSString *acc=[self.deviceObject.fieldMap objectForKey:[NSString stringWithFormat:@"%d",IP_CAMERA_FILED_USERNAME]];
+        NSString *pass=[self.deviceObject.fieldMap objectForKey:[NSString stringWithFormat:@"%d",IP_CAMERA_FILED_PASSWORD]];
+        if(![self.uidTextField.text isEqualToString:uid]&&![Util isEmpty:self.uidTextField.text]){
+            [[ElApiService shareElApiService] setFieldValue:self.uidTextField.text forFieldId:IP_CAMERA_FILED_UID toDevice:_deviceObject.objectId withYN:YES];
+        }
+        if(![self.accTextField.text isEqualToString:acc]&&![Util isEmpty:self.accTextField.text]){
+            [[ElApiService shareElApiService] setFieldValue:self.accTextField.text forFieldId:IP_CAMERA_FILED_USERNAME toDevice:_deviceObject.objectId withYN:YES];
+        }
+        if(![self.pwdTextField.text isEqualToString:pass]&&![Util isEmpty:self.pwdTextField.text]){
+            [[ElApiService shareElApiService] setFieldValue:self.pwdTextField.text forFieldId:IP_CAMERA_FILED_PASSWORD toDevice:_deviceObject.objectId withYN:YES];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+    });
+    
+    
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     
 }
 
-- (void)camera:(Camera *)camera didChangeSessionStatus:(NSInteger)status
+- (void)camera:(MyCamera *)camera _didChangeSessionStatus:(NSInteger)status
 {
     switch (status) {
         case CONNECTION_STATE_CONNECTED:
@@ -160,7 +195,7 @@
     
 }
 
-- (void)camera:(Camera *)camera didReceiveIOCtrlWithType:(NSInteger)type Data:(const char *)data DataSize:(NSInteger)size
+- (void)camera:(MyCamera *)camera _didReceiveIOCtrlWithType:(NSInteger)type Data:(const char *)data DataSize:(NSInteger)size
 {
     NSLog(@"didReceiveIOCtrlWithType %d %s",type,data);
     if (type == IOTYPE_USER_IPCAM_LISTWIFIAP_RESP) {
@@ -257,6 +292,10 @@
         [timerListWifiApResp release];
         bTimerListWifiApResp = FALSE;
     }
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

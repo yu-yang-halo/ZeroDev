@@ -13,7 +13,10 @@
 #import "CameraShowGLView.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "WiFiNetworkController.h"
-@interface EditWiFiViewController : UIViewController<CameraDelegate,WiFiNetworkDelegate>
+#import "MyCamera.h"
+#import "DeviceVideoViewController.h"
+@interface EditWiFiViewController : UIViewController<MyCameraDelegate,WiFiNetworkDelegate,UITextFieldDelegate>
 
-
+@property(strong,nonatomic) MyCamera *camera;
+@property(nonatomic,strong) ELDeviceObject *deviceObject;
 @end

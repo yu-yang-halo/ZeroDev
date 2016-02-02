@@ -42,6 +42,7 @@
                                              style:UIBarButtonItemStylePlain
                                              target:self
                                              action:@selector(back:)];
+    [self.navigationItem.leftBarButtonItem setTintColor:[UIColor whiteColor]];
     
     self.navigationItem.title = NSLocalizedString(@"WiFi Networks", @"");       
      [self doRefresh];
@@ -66,7 +67,7 @@
 //		[self doRefresh];
 	}
 	
-    self.camera.delegate = self;
+    self.camera.delegate2 = self;
     [super viewWillAppear:animated];
 }
 
@@ -168,8 +169,8 @@
 	nLastSelIdx = idx;
 }
 
-#pragma mark - CameraDelegate Methods
-- (void)camera:(Camera *)camera_ didReceiveIOCtrlWithType:(NSInteger)type Data:(const char*)data DataSize:(NSInteger)size{
+#pragma mark - MyCameraDelegate Methods
+- (void)camera:(MyCamera *)camera_ _didReceiveIOCtrlWithType:(NSInteger)type Data:(const char*)data DataSize:(NSInteger)size{
     NSLog(@"*********************OK");
     if (camera_ == camera) {
         
