@@ -30,8 +30,13 @@
     [self.tableView.tableHeaderView setFrame:CGRectZero];
     
     
+    
+    [self refreshTableData];
+}
+-(void)refreshTableData{
+    
     self.tags=[JSONManager getMobileAppTags];
-
+    
     NSArray *menuDataArr=@[
                            @[@"主页"],
                            @[@"设备管理",@"添加设备",@"添加视频",@"删除设备"],
@@ -70,13 +75,8 @@
         self.contents=menuDataArr;
     }
     
-    
-    
-    
-    
-    
+    [self.tableView reloadData];
 }
-
 
 #pragma mark - Private
 

@@ -31,4 +31,5 @@ typedef NS_ENUM(NSUInteger,SWITCH_PAGE_TYPE){
 @property (weak, nonatomic) IBOutlet SKSTableView *tableView;
 @property(nonatomic,weak) id<PageSwitchDelegate> pageDelegate;
 
+
 @end

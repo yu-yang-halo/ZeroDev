@@ -13,14 +13,18 @@
 #import "LeftViewController.h"
 #import <ELNetworkService/ELNetworkService.h>
 #import <UIView+Toast.h>
+#import "HYLWIFITableViewController.h"
+#import "HYLReachabilityUtils.h"
 @interface AppDelegate ()
 {
     CustomNavigationController *customNavVC;
-    LeftViewController *leftMenu;
-    LGSideMenuController *sideMenuController;
+   
+    
     
 }
 @property(nonatomic,strong) UIView *lunchView;
+@property(nonatomic,strong) LeftViewController *leftMenu;
+@property(nonatomic,strong) LGSideMenuController *sideMenuController;
 
 @end
 
@@ -30,6 +34,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
    NSLog(@"didFinishLaunchingWithOptions 0");
+     [HYLReachabilityUtils startNetChecking];
     self.window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
    
@@ -37,23 +42,8 @@
     
     application.statusBarStyle=UIStatusBarStyleLightContent;
     
-    leftMenu=[[LeftViewController alloc] init];
-    leftMenu.pageDelegate=self;
-    CGRect frame= self.window.frame;
-    frame.size.width=200.f;
-    leftMenu.view.frame=frame;
     
-    [leftMenu.view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.6]];
-    sideMenuController = [[LGSideMenuController alloc] init];
-    
-    [sideMenuController setLeftViewEnabledWithWidth:200.f
-                                  presentationStyle:LGSideMenuPresentationStyleSlideAbove
-                               alwaysVisibleOptions:0];
-    sideMenuController.leftViewStatusBarStyle = UIStatusBarStyleLightContent;
-    sideMenuController.leftViewStatusBarVisibleOptions = LGSideMenuStatusBarVisibleOnAll;
-    
-    [sideMenuController.leftView addSubview:leftMenu.view];
-    
+    [self reInitLeftViewAndSideViewController];
     
     if(activeYN){
         
@@ -99,6 +89,27 @@
     
     return YES;
 }
+-(void)reInitLeftViewAndSideViewController{
+    self.leftMenu=[[LeftViewController alloc] init];
+    _leftMenu.pageDelegate=self;
+    CGRect frame= self.window.frame;
+    frame.size.width=200.f;
+    _leftMenu.view.frame=frame;
+    
+    [_leftMenu.view setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.6]];
+    self.sideMenuController = [[LGSideMenuController alloc] init];
+    
+    [_sideMenuController setLeftViewEnabledWithWidth:200.f
+                                  presentationStyle:LGSideMenuPresentationStyleSlideAbove
+                               alwaysVisibleOptions:0];
+    _sideMenuController.leftViewStatusBarStyle = UIStatusBarStyleLightContent;
+    _sideMenuController.leftViewStatusBarVisibleOptions = LGSideMenuStatusBarVisibleOnAll;
+    
+    [_sideMenuController.leftView addSubview:_leftMenu.view];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kZeroDevTagSetIdWithTagKey];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kZeroDevDeviceManagerKey];
+}
 
 -(void)showTips:(NSNotification *)notification{
     NSString *errorMsg=[[notification userInfo] objectForKey:kErrorCodeKey];
@@ -106,10 +117,10 @@
     [self.window makeToast:errorMsg];
 }
 -(void)setUpSideMenuViewController:(UIViewController *)rootVC{
-   
-    CustomNavigationController *mainNavigationVC=[[CustomNavigationController alloc] initWithRootViewController:rootVC];
-    [sideMenuController setRootViewController:mainNavigationVC];
     
+     CustomNavigationController *mainNavigationVC=[[CustomNavigationController alloc] initWithRootViewController:rootVC];
+     [_sideMenuController setRootViewController:mainNavigationVC];
+  
 }
 
 
@@ -143,12 +154,15 @@
     switch (type) {
         case ROOT_VIEWCONTROLLER_TYPE_HOME:
         {
+           
              customNavVC=[[CustomNavigationController alloc] initWithRootViewController:homeVC];
              self.window.rootViewController=customNavVC;
         }
             break;
         case ROOT_VIEWCONTROLLER_TYPE_LOGIN:
         {
+            [self reInitLeftViewAndSideViewController];
+            
             customNavVC=[[CustomNavigationController alloc] initWithRootViewController:loginVC];
              self.window.rootViewController=customNavVC;
         }
@@ -158,7 +172,7 @@
             
             [self setUpSideMenuViewController:devicesVC];
             
-            self.window.rootViewController=sideMenuController;
+            self.window.rootViewController=_sideMenuController;
             
 
         }
@@ -174,7 +188,7 @@
         {
             [self setUpSideMenuViewController:userManagerVC];
             
-            self.window.rootViewController=sideMenuController;
+            self.window.rootViewController=_sideMenuController;
             
         }
             break;
@@ -220,7 +234,7 @@
 }
 
 -(LGSideMenuController *)sideMenuController{
-    return sideMenuController;
+    return _sideMenuController;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -233,6 +247,9 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     NSLog(@"applicationWillEnterForeground 3");
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationWIFIPageLogic object:nil];
+    
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

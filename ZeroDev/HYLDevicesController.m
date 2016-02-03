@@ -65,6 +65,9 @@
     
     [self.navigationController.navigationBar setHidden:NO];
     
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"WIFI设置" style:UIBarButtonItemStylePlain target:self action:@selector(WIFIConfig)];
+    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
+   
     mobileAppJSON=[[JSONManager reverseMobileAppJSONToObject] JSONString];
     
     [self.webVIew.scrollView setShowsHorizontalScrollIndicator:NO];
@@ -140,7 +143,15 @@
     
     
 }
-
+-(void)WIFIConfig{
+    
+    UIStoryboard *storyBoard=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    UIViewController *wifiModule=[storyBoard instantiateViewControllerWithIdentifier:@"wifiModule"];
+    AppDelegate *appDelegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate setRootViewController2:wifiModule animated:YES animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
+    
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -191,11 +202,12 @@
                    
                     int tagSetId=[tagSetIdWithTagArr[0] intValue];
                     NSString *tagContent=tagSetIdWithTagArr[1];
+                      self.titleName=tagContent;
                     BOOL isThisTagYN=NO;
                     for(ELTagInfo *tagInfo in obj.tags){
                         if(tagInfo.setTagId==tagSetId&&[tagInfo.tag isEqualToString:tagContent]){
                             isThisTagYN=YES;
-                            self.titleName=tagContent;
+                          
                         }
                     }
                     if(isThisTagYN){
