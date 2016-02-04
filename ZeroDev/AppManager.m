@@ -42,6 +42,17 @@ const NSString *UI=@"ui";
 +(NSString *)bundleUIPath{
     return [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:UI];
 }
+
++(NSString *)addPointZip:(NSString *)url{
+    
+    if(![url hasSuffix:@".zip"]){
+        url=[url stringByAppendingPathExtension:@"zip"];
+        NSLog(@"URL :%@",url);
+    }
+    
+    return url;
+}
+
 +(void)downloadApp:(NSString *)url block:(DataHandler)handler{
     /*
         首先下载云端配置界面zip文件到res.zip{
@@ -59,6 +70,8 @@ const NSString *UI=@"ui";
         第4步: 解压 res.zip
      
      */
+    url=[self addPointZip:url];
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
        
         NSString *bundleReszipPath=[[self homePath] stringByAppendingPathComponent:@"res.zip"];
