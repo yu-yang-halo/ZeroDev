@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EGORefreshTableHeaderView.h"
 /*
    设备删除处理
  */
-@interface DeviceDeleteViewController : UIViewController<UIWebViewDelegate>
+@interface DeviceDeleteViewController : UIViewController<UIWebViewDelegate,EGORefreshTableHeaderDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @end
 

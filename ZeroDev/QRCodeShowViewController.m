@@ -47,8 +47,16 @@ const static NSString *QR_PARSE_API_URL=@"http://qr.liantu.com/api.php?text=%@";
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)change{
-    AppDelegate *appDelegate=[UIApplication sharedApplication].delegate;
-    [appDelegate setRootViewController:ROOT_VIEWCONTROLLER_TYPE_HOME animated:YES animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
+//    AppDelegate *appDelegate=[UIApplication sharedApplication].delegate;
+//    [appDelegate setRootViewController:ROOT_VIEWCONTROLLER_TYPE_HOME animated:YES animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
+    UIStoryboard *storyBoard=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    UIViewController *homeVC=[storyBoard instantiateViewControllerWithIdentifier:@"homeVC"];
+    UIBarButtonItem *backItem=[[UIBarButtonItem alloc] init];
+    [backItem setTintColor:[UIColor whiteColor]];
+    [backItem setTitle:@"返回"];
+     self.navigationItem.backBarButtonItem =backItem;
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [self.navigationController pushViewController:homeVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

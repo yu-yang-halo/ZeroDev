@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4DB85BBE3809BD0DA7B096FA75AB5AA5225FBD05",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4DB85BBE3809BD0DA7B096FA75AB5AA5225FBD05" : 0,
+    "0AB82E2B25D07F6F48D3E8D751DF30DD7B39BCCC" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "018B7052-55E1-4BAE-8FFC-D4ED5F13F325",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4DB85BBE3809BD0DA7B096FA75AB5AA5225FBD05" : "ZeroDev",
+    "0AB82E2B25D07F6F48D3E8D751DF30DD7B39BCCC" : "elTools\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ZeroDev",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ZeroDev.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/yu-yang-halo\/elTools",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0AB82E2B25D07F6F48D3E8D751DF30DD7B39BCCC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/yu-yang-halo\/ZeroDev.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4DB85BBE3809BD0DA7B096FA75AB5AA5225FBD05"
+    }
+  ]
+}

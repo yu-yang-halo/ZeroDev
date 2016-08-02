@@ -5,9 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QRCodeShowViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController">
             <connections>
-                <outlet property="qrCodeImageView" destination="4V5-jF-TQB" id="wmm-zj-Sol"/>
+                <outlet property="textView" destination="bNN-bk-bLS" id="i80-i9-0Df"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,20 +16,21 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4V5-jF-TQB">
-                    <rect key="frame" x="60" y="228" width="200" height="200"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="200" id="B6f-gV-1TV"/>
-                        <constraint firstAttribute="height" constant="200" id="maf-oF-ZQJ"/>
-                    </constraints>
-                </imageView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNN-bk-bLS">
+                    <rect key="frame" x="5" y="0.0" width="310" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <attributedString key="attributedText"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="4V5-jF-TQB" secondAttribute="centerX" id="PMz-KP-VP4"/>
-                <constraint firstAttribute="centerY" secondItem="4V5-jF-TQB" secondAttribute="centerY" constant="-44" id="xrr-W5-mUg"/>
+                <constraint firstItem="bNN-bk-bLS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="7Xd-Ye-kVs"/>
+                <constraint firstAttribute="bottom" secondItem="bNN-bk-bLS" secondAttribute="bottom" id="Se8-Kd-xzD"/>
+                <constraint firstAttribute="trailing" secondItem="bNN-bk-bLS" secondAttribute="trailing" constant="5" id="YT1-Ld-zwg"/>
+                <constraint firstItem="bNN-bk-bLS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mkf-u2-CF0"/>
             </constraints>
-            <point key="canvasLocation" x="-27" y="4"/>
+            <point key="canvasLocation" x="312" y="193"/>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -90,7 +90,7 @@
 		</data>
 		<key>Headers/ElApiService.h</key>
 		<data>
-		B6qgfgDtOb4GVDGKIdfrpgN5ZjM=
+		e3r0pk4E50nBHCRCIYtFrhn1u9k=
 		</data>
 		<key>Headers/Util.h</key>
 		<data>
@@ -102,7 +102,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		7d8DSGB+Do+2X9PNAmTcmOAjPtI=
+		hFY3zd8IL5n7/oXWdOXB0IW69YI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -112,105 +112,280 @@
 	<key>files2</key>
 	<dict>
 		<key>Headers/ELAlertAddress.h</key>
-		<data>
-		m9TibafgEVb9EzfUCAB724tpSLA=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			m9TibafgEVb9EzfUCAB724tpSLA=
+			</data>
+			<key>hash2</key>
+			<data>
+			M/bFmO7EDT6zEsVUlM59oYqaqTIvGmyUgQwjJuZpPmQ=
+			</data>
+		</dict>
 		<key>Headers/ELAlertCondition.h</key>
-		<data>
-		m3YkT6ibrZsD1ApJb7nG1Q9gFcQ=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			m3YkT6ibrZsD1ApJb7nG1Q9gFcQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			ftnbIvl5dwdsUIhYrqkAgI2TlRc69qd8DEqX/zgVflw=
+			</data>
+		</dict>
 		<key>Headers/ELAlertEvent.h</key>
-		<data>
-		shHpz9h4o2c7YJYHo7C5OTFHKJo=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			shHpz9h4o2c7YJYHo7C5OTFHKJo=
+			</data>
+			<key>hash2</key>
+			<data>
+			2xRuSFSKFwrEnu/v7VlwQrbH23p/hWI0glMxkL18QrU=
+			</data>
+		</dict>
 		<key>Headers/ELAlertSchedule.h</key>
-		<data>
-		3z8kRNXFq9GpcrMSgzDKrixczBU=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			3z8kRNXFq9GpcrMSgzDKrixczBU=
+			</data>
+			<key>hash2</key>
+			<data>
+			elnqotHU/x5tLm3WMLt3COZKySLhdNJD4/phklbab5Y=
+			</data>
+		</dict>
 		<key>Headers/ELCcsClientInfo.h</key>
-		<data>
-		8TAZqM/5R4osA2PYwafOxiAGfRw=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			8TAZqM/5R4osA2PYwafOxiAGfRw=
+			</data>
+			<key>hash2</key>
+			<data>
+			8uewTLisA9gVnH0o1ayBoQuWjEQbGV+Wr10t+EnAvFo=
+			</data>
+		</dict>
 		<key>Headers/ELClass.h</key>
-		<data>
-		4byfnzmtm2zteDtvjofdeuvckGo=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			4byfnzmtm2zteDtvjofdeuvckGo=
+			</data>
+			<key>hash2</key>
+			<data>
+			+8mA7GoJIYli4qQ6TTTDawDL+lNmiGEeBmSTRxHgc8g=
+			</data>
+		</dict>
 		<key>Headers/ELClassField.h</key>
-		<data>
-		O4mbWZtezhYWuZfTMCiw23YZUu0=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			O4mbWZtezhYWuZfTMCiw23YZUu0=
+			</data>
+			<key>hash2</key>
+			<data>
+			ZcMizdmHkNgKSJ75uPpVQzR3LVJT1vCADnK16HOckvA=
+			</data>
+		</dict>
 		<key>Headers/ELClassObject.h</key>
-		<data>
-		j4pp/YpC0G9IJ1vI8QBowVv7kTI=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			j4pp/YpC0G9IJ1vI8QBowVv7kTI=
+			</data>
+			<key>hash2</key>
+			<data>
+			/T+6/qh5gHme6++1LXw2asEpecQ6DEbEmsbZxtkVoew=
+			</data>
+		</dict>
 		<key>Headers/ELDeviceInfo.h</key>
-		<data>
-		SUQNRhfGutngt/+GXdttR0ITelQ=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			SUQNRhfGutngt/+GXdttR0ITelQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			MrLmt1QVlUWzppg872X4K1Rf6qsAwFulGuNXX0001go=
+			</data>
+		</dict>
 		<key>Headers/ELDeviceObject.h</key>
-		<data>
-		RnMilf9DdmeV3mVJKPwqlLHy7Aw=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			RnMilf9DdmeV3mVJKPwqlLHy7Aw=
+			</data>
+			<key>hash2</key>
+			<data>
+			HeA5dMprhitx6LLCf2/em/HhdnfiRF38JoERUv5Mv9o=
+			</data>
+		</dict>
 		<key>Headers/ELDeviceObjectHolder.h</key>
-		<data>
-		qjZAY6XhnDuR/T7HKbQtFfhNk3Q=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			qjZAY6XhnDuR/T7HKbQtFfhNk3Q=
+			</data>
+			<key>hash2</key>
+			<data>
+			z8vqdJLAKvQ7Xp90IL05fKd4BVW+tgP0CrAKOQvIdoU=
+			</data>
+		</dict>
 		<key>Headers/ELErrorCode.h</key>
-		<data>
-		rz2jtucU+ga/vkQRZUYVOkuz7iE=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			rz2jtucU+ga/vkQRZUYVOkuz7iE=
+			</data>
+			<key>hash2</key>
+			<data>
+			Kwatf6CCIwQiAoG9IR6vAMup22x8PhQOL33oCAqAMoM=
+			</data>
+		</dict>
 		<key>Headers/ELField.h</key>
-		<data>
-		Rr9o/jjy5q5U2G8HfFnMSubxaKU=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			Rr9o/jjy5q5U2G8HfFnMSubxaKU=
+			</data>
+			<key>hash2</key>
+			<data>
+			RqrAfrQIAj/ssLijs8Fp6LCBvgqFO92eASElJGf7gbY=
+			</data>
+		</dict>
 		<key>Headers/ELFieldValue.h</key>
-		<data>
-		3wTZDUiErvhNqtixyJHyFWl+4/o=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			3wTZDUiErvhNqtixyJHyFWl+4/o=
+			</data>
+			<key>hash2</key>
+			<data>
+			zK2GBSsr9rTatpn2nYnhn7MEpXERqP+ujCOvOWTjFaw=
+			</data>
+		</dict>
 		<key>Headers/ELNetworkService.h</key>
-		<data>
-		XyZWEIJeL3jRRI0rC91/+ryqFsw=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			XyZWEIJeL3jRRI0rC91/+ryqFsw=
+			</data>
+			<key>hash2</key>
+			<data>
+			fXtrgz9R+C4ftbwot94fM5+qZo+iN36j7zyS1JvmwE4=
+			</data>
+		</dict>
 		<key>Headers/ELPacketData.h</key>
-		<data>
-		zaFAZegVxaUAh/bVLmAYvhdF1FE=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			zaFAZegVxaUAh/bVLmAYvhdF1FE=
+			</data>
+			<key>hash2</key>
+			<data>
+			4Yw3YN3XjfdvIpeLkuuorDM/ZYKfxpRTLgu+nrJLgg4=
+			</data>
+		</dict>
 		<key>Headers/ELScenario.h</key>
-		<data>
-		0KG5mSyM8oDYas6bz5+VWUHnfAU=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			0KG5mSyM8oDYas6bz5+VWUHnfAU=
+			</data>
+			<key>hash2</key>
+			<data>
+			j5j8XuamlB1XUfIwp6GfleXQTVWRvEbrbu3RY3PpQoo=
+			</data>
+		</dict>
 		<key>Headers/ELScenarioDetail.h</key>
-		<data>
-		6cgtLVDISThiferDZlbK/DSmC1I=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			6cgtLVDISThiferDZlbK/DSmC1I=
+			</data>
+			<key>hash2</key>
+			<data>
+			MwOGiDlqHWHpqCAJJEk1D58ogD921o4UYrk43zpK6Ys=
+			</data>
+		</dict>
 		<key>Headers/ELScheduleTask.h</key>
-		<data>
-		BGoglGA1Mi8FLZLDWbKnoSc9njE=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			BGoglGA1Mi8FLZLDWbKnoSc9njE=
+			</data>
+			<key>hash2</key>
+			<data>
+			ISyAVE0Pg/ksM1RVnyfJv0vXQDYtrZhAfMcOD7ZtIww=
+			</data>
+		</dict>
 		<key>Headers/ELSimpleTask.h</key>
-		<data>
-		nHCJkzlKo4I3IrLov4mPpHjJAeo=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			nHCJkzlKo4I3IrLov4mPpHjJAeo=
+			</data>
+			<key>hash2</key>
+			<data>
+			ZhyuBWJ9xk6itqZj5+BnmLyYo3t5joqrPhJ7QWpQuXg=
+			</data>
+		</dict>
 		<key>Headers/ELUserInfo.h</key>
-		<data>
-		6MTgPfE2WoifBOfypgDPEdr5yB4=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			6MTgPfE2WoifBOfypgDPEdr5yB4=
+			</data>
+			<key>hash2</key>
+			<data>
+			RGJUa583olguS3NY9xujyMpaYXgwyw1V9f1iuxmp6nA=
+			</data>
+		</dict>
 		<key>Headers/ElApiService.h</key>
-		<data>
-		B6qgfgDtOb4GVDGKIdfrpgN5ZjM=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			e3r0pk4E50nBHCRCIYtFrhn1u9k=
+			</data>
+			<key>hash2</key>
+			<data>
+			kVLIXqe8QxAjRz6OZ4h1a4uAn4SSJNtGi0YJey7qzrw=
+			</data>
+		</dict>
 		<key>Headers/Util.h</key>
-		<data>
-		eS+jdAb2DLVMcP+QHNHnGTBUv1s=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			eS+jdAb2DLVMcP+QHNHnGTBUv1s=
+			</data>
+			<key>hash2</key>
+			<data>
+			ElPqWK5sO/D4omLVsxDN/lZg1cLv3ok3g4ZF7XsB60A=
+			</data>
+		</dict>
 		<key>Headers/WsqMD5Util.h</key>
-		<data>
-		0CCBHHyNs3Hu39R7FlL5m0vn8kw=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			0CCBHHyNs3Hu39R7FlL5m0vn8kw=
+			</data>
+			<key>hash2</key>
+			<data>
+			WkNixeRYw4oNXal7MduVkSLvolxtA1kgbtSn5zn6Qro=
+			</data>
+		</dict>
 		<key>Modules/module.modulemap</key>
-		<data>
-		NbEBc2Ulwq0GpqH1lCoXP7aoKPg=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			NbEBc2Ulwq0GpqH1lCoXP7aoKPg=
+			</data>
+			<key>hash2</key>
+			<data>
+			NbhwsztWz0mvixr08NVBLIniN8uv0zGbK6PSatAUyUo=
+			</data>
+		</dict>
 	</dict>
 	<key>rules</key>
 	<dict>

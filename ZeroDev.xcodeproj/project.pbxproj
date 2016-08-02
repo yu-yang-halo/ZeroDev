@@ -89,6 +89,9 @@
 		84CCFB5D1C5B5E5800F42003 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84CCFB5C1C5B5E5800F42003 /* Localizable.strings */; };
 		84CCFB621C5B625800F42003 /* QRCodeShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CCFB601C5B625800F42003 /* QRCodeShowViewController.m */; };
 		84CCFB631C5B625800F42003 /* QRCodeShowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CCFB611C5B625800F42003 /* QRCodeShowViewController.xib */; };
+		84DA80F91C741C4E0010CDAB /* VideoRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DA80F81C741C4E0010CDAB /* VideoRegisterViewController.m */; };
+		84DA80FE1C745C2F0010CDAB /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DA80FC1C745C2F0010CDAB /* AboutViewController.m */; };
+		84DA80FF1C745C2F0010CDAB /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DA80FD1C745C2F0010CDAB /* AboutViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -239,6 +242,12 @@
 		84CCFB5F1C5B625800F42003 /* QRCodeShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeShowViewController.h; sourceTree = "<group>"; };
 		84CCFB601C5B625800F42003 /* QRCodeShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeShowViewController.m; sourceTree = "<group>"; };
 		84CCFB611C5B625800F42003 /* QRCodeShowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeShowViewController.xib; sourceTree = "<group>"; };
+		84DA80F71C741C4D0010CDAB /* VideoRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoRegisterViewController.h; sourceTree = "<group>"; };
+		84DA80F81C741C4E0010CDAB /* VideoRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoRegisterViewController.m; sourceTree = "<group>"; };
+		84DA80FB1C745C2F0010CDAB /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		84DA80FC1C745C2F0010CDAB /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		84DA80FD1C745C2F0010CDAB /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		84E14ECB1C76BA6E004C7C4A /* SrcJsonkitm */ = {isa = PBXFileReference; lastKnownFileType = text; path = SrcJsonkitm; sourceTree = "<group>"; };
 		9AEC66BEC68ABDAA4FFFB25D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -506,6 +515,7 @@
 				84C273931BEC46FA00C52577 /* main.m */,
 				84C3C3D71C5625D000D9B7F2 /* ZeroDevPrefixHeader.pch */,
 				84CCFB5C1C5B5E5800F42003 /* Localizable.strings */,
+				84E14ECB1C76BA6E004C7C4A /* SrcJsonkitm */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -540,6 +550,7 @@
 		84C273D21BEC55A800C52577 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				84DA80FA1C745C130010CDAB /* about */,
 				84697C261C5C8B7B00388077 /* video */,
 				84CCFB5E1C5B61DF00F42003 /* other */,
 				84C700DA1C534B94007FA60F /* leftmenu */,
@@ -553,8 +564,6 @@
 				84CBE9081C046862001CBF29 /* DeviceInfoViewController.m */,
 				84CCFB191C5B0A6400F42003 /* DeviceConfigViewController.h */,
 				84CCFB1A1C5B0A6400F42003 /* DeviceConfigViewController.m */,
-				848477841C06EBD100167C3A /* DeviceRegisterViewController.m */,
-				848477871C06ED3700167C3A /* DeviceDeleteViewController.m */,
 				8484778C1C06EE6300167C3A /* FindPassViewController.h */,
 				8484778D1C06EE6300167C3A /* FindPassViewController.m */,
 				8484777D1C06E84700167C3A /* DeviceManagerViewController.h */,
@@ -562,9 +571,13 @@
 				848477801C06E86700167C3A /* UserManagerViewController.h */,
 				848477811C06E86700167C3A /* UserManagerViewController.m */,
 				848477831C06EBD100167C3A /* DeviceRegisterViewController.h */,
+				848477841C06EBD100167C3A /* DeviceRegisterViewController.m */,
 				848477861C06ED3700167C3A /* DeviceDeleteViewController.h */,
+				848477871C06ED3700167C3A /* DeviceDeleteViewController.m */,
 				848477891C06EDB500167C3A /* UserRegisterViewController.h */,
 				8484778A1C06EDB500167C3A /* UserRegisterViewController.m */,
+				84DA80F71C741C4D0010CDAB /* VideoRegisterViewController.h */,
+				84DA80F81C741C4E0010CDAB /* VideoRegisterViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -633,6 +646,16 @@
 				84CCFB611C5B625800F42003 /* QRCodeShowViewController.xib */,
 			);
 			name = other;
+			sourceTree = "<group>";
+		};
+		84DA80FA1C745C130010CDAB /* about */ = {
+			isa = PBXGroup;
+			children = (
+				84DA80FB1C745C2F0010CDAB /* AboutViewController.h */,
+				84DA80FC1C745C2F0010CDAB /* AboutViewController.m */,
+				84DA80FD1C745C2F0010CDAB /* AboutViewController.xib */,
+			);
+			name = about;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -729,6 +752,7 @@
 				84CCFB631C5B625800F42003 /* QRCodeShowViewController.xib in Resources */,
 				84CBE90E1C058D1D001CBF29 /* ModalView.xib in Resources */,
 				84CCFB5D1C5B5E5800F42003 /* Localizable.strings in Resources */,
+				84DA80FF1C745C2F0010CDAB /* AboutViewController.xib in Resources */,
 				84325FE61C5C96BD00E9E873 /* EditWiFiViewController.xib in Resources */,
 				84C273A21BEC46FA00C52577 /* LaunchScreen.xib in Resources */,
 				845E48561C4DCB6100AAD5A5 /* ui in Resources */,
@@ -808,7 +832,9 @@
 				84697C2A1C5C8BB600388077 /* DeviceVideoViewController.m in Sources */,
 				84CBE8FD1C040048001CBF29 /* HomeViewController.m in Sources */,
 				848477921C07033700167C3A /* AnimationUtils.m in Sources */,
+				84DA80F91C741C4E0010CDAB /* VideoRegisterViewController.m in Sources */,
 				848477821C06E86700167C3A /* UserManagerViewController.m in Sources */,
+				84DA80FE1C745C2F0010CDAB /* AboutViewController.m in Sources */,
 				847F9D251C50DB10005ED278 /* SKSTableView.m in Sources */,
 				84CBE9111C059368001CBF29 /* ModalView.m in Sources */,
 				8484777F1C06E84700167C3A /* DeviceManagerViewController.m in Sources */,
@@ -955,6 +981,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ZeroDev",
@@ -1008,6 +1035,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ZeroDev",

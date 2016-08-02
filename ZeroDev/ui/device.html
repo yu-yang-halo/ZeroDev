@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -241,8 +241,15 @@
 						pages.push(jsonPage);
 					}
 					for (var i = 0; i < pages.length; i++) {
-						var titleBar = "<div class='title'>" + pages[i].localTitle + "</div>";
-						var display_style = "display:none;";
+                        var titleBar = "<div class='title'>" + pages[i].localTitle + "</div>";
+                        
+                        if(pages[i].localTitle==""||pages[i].localTitle==undefined){
+                            titleBar = "<div class='title' style='display:none;' >" + pages[i].localTitle + "</div>";
+                            
+                        }
+                        
+                        
+                        var display_style = "display:none;";
 						/*
 						 * 首页显示，其他页隐藏
 						 */

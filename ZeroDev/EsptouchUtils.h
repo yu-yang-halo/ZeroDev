@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+typedef void (^CompleteBlock)();
+
 
 @interface EsptouchUtils : NSObject
 
-+(void)configWifiSSID:(NSString *)apSsid pass:(NSString *)apPassword bssid:(NSString *)apBssid;
++(void)configWifiSSID:(NSString *)apSsid pass:(NSString *)apPassword bssid:(NSString *)apBssid completeBlock:(CompleteBlock)block;
 
 @end

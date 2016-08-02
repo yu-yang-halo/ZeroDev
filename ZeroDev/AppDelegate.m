@@ -15,6 +15,8 @@
 #import <UIView+Toast.h>
 #import "HYLWIFITableViewController.h"
 #import "HYLReachabilityUtils.h"
+#import "AboutViewController.h"
+#import <SIAlertView/SIAlertView.h>
 @interface AppDelegate ()
 {
     CustomNavigationController *customNavVC;
@@ -112,9 +114,25 @@
 }
 
 -(void)showTips:(NSNotification *)notification{
-    NSString *errorMsg=[[notification userInfo] objectForKey:kErrorCodeKey];
+    NSString *errorCode=[[notification userInfo] objectForKey:kErrorCodeKey];
+    NSString *errMsg=[[notification userInfo] objectForKey:kErrorCodeMsgKey];
     
-    [self.window makeToast:errorMsg];
+    if([errorCode isEqualToString:@"1039"]){
+        
+        SIAlertView *alertView=[[SIAlertView alloc] initWithTitle:@"提示" andMessage:@"超时,请重新登录"];
+        [alertView addButtonWithTitle:@"确定" type:SIAlertViewButtonTypeDefault handler:^(SIAlertView *alertView) {
+            
+            [self setRootViewController:ROOT_VIEWCONTROLLER_TYPE_LOGIN animated:YES animationType:ZERO_DEV_ANIMATION_TYPE_POP];
+            
+        }];
+        
+        [alertView show];
+        
+        
+    }else{
+        [self.window makeToast:errMsg];
+    }
+    
 }
 -(void)setUpSideMenuViewController:(UIViewController *)rootVC{
     
@@ -147,8 +165,13 @@
     UIStoryboard *storyBoard=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     UIViewController *homeVC=[storyBoard instantiateViewControllerWithIdentifier:@"homeVC"];
     UIViewController *loginVC=[storyBoard instantiateViewControllerWithIdentifier:@"loginVC"];
-     UIViewController *userManagerVC=[storyBoard instantiateViewControllerWithIdentifier:@"userManagerVC"];
+    UIViewController *userManagerVC=[storyBoard instantiateViewControllerWithIdentifier:@"userManagerVC"];
     
+    UIViewController *devRegVC=[storyBoard instantiateViewControllerWithIdentifier:@"devRegVC"];
+    UIViewController *videoRegVC=[storyBoard instantiateViewControllerWithIdentifier:@"videoRegVC"];
+    UIViewController *devDelVC=[storyBoard instantiateViewControllerWithIdentifier:@"devDelVC"];
+
+    UIViewController *wifiModule=[storyBoard instantiateViewControllerWithIdentifier:@"wifiModule"];
    
     
     switch (type) {
@@ -178,10 +201,8 @@
         }
             break;
         case ROOT_VIEWCONTROLLER_TYPE_ABOUT:{
-           
-//            [self setUpSideMenuViewController:loginVC];
-//            
-//            self.window.rootViewController=sideMenuController;
+            AboutViewController *aboutVC=[[AboutViewController alloc] init];
+            [self setRootViewController2:aboutVC animated:YES animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
         }
             break;
         case ROOT_VIEWCONTROLLER_TYPE_USERINFO:
@@ -190,6 +211,32 @@
             
             self.window.rootViewController=_sideMenuController;
             
+        }
+            break;
+        case ROOT_VIEWCONTROLLER_TYPE_REGISTER_DEVICE:{
+            [self setUpSideMenuViewController:devRegVC];
+            
+            self.window.rootViewController=_sideMenuController;
+        }
+            break;
+        case ROOT_VIEWCONTROLLER_TYPE_REGISTER_VIDEO:{
+            [self setUpSideMenuViewController:videoRegVC];
+            
+            self.window.rootViewController=_sideMenuController;
+        }
+            break;
+        case ROOT_VIEWCONTROLLER_TYPE_DELETE_DEVICE:
+        {
+            [self setUpSideMenuViewController:devDelVC];
+            
+            self.window.rootViewController=_sideMenuController;
+
+        }
+            break;
+        case ROOT_VIEWCONTROLLER_TYPE_WIFI_CONFIG:
+        {
+            
+            [self setRootViewController2:wifiModule animated:YES animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
         }
             break;
       
@@ -229,6 +276,16 @@
         [self setRootViewController:ROOT_VIEWCONTROLLER_TYPE_USERINFO animated:YES animationType:type];
     }else if(pageType==SWITCH_PAGE_TYPE_MAIN){
         [self setRootViewController:ROOT_VIEWCONTROLLER_TYPE_LISTDEIVCE animated:YES animationType:type];
+    }else if(pageType==SWITCH_PAGE_TYPE_ADD_DEVICE){
+        [self setRootViewController:ROOT_VIEWCONTROLLER_TYPE_REGISTER_DEVICE animated:YES animationType:type];
+    }else if(pageType==SWITCH_PAGE_TYPE_ADD_VIDEO){
+        [self setRootViewController:ROOT_VIEWCONTROLLER_TYPE_REGISTER_VIDEO animated:YES animationType:type];
+    }else if(pageType==SWITCH_PAGE_TYPE_DELETE_DEVICE){
+        [self setRootViewController:ROOT_VIEWCONTROLLER_TYPE_DELETE_DEVICE animated:YES animationType:type];
+    }else if(pageType==SWITCH_PAGE_TYPE_ABOUT){
+         [self setRootViewController:ROOT_VIEWCONTROLLER_TYPE_ABOUT animated:YES animationType:type];
+    }else if(pageType==SWITCH_PAGE_TYPE_WIFI_CONFIG){
+        [self setRootViewController:ROOT_VIEWCONTROLLER_TYPE_WIFI_CONFIG animated:YES animationType:type];
     }
     
 }

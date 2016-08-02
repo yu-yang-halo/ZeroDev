@@ -74,6 +74,7 @@ const  NSString *kloginPassword=@"keyLoginPassword";
     [super viewDidLoad];
     applicationObj=[JSONManager reverseApplicationJSONToObject];
     
+    
     [self initNavigationBar];
     
    
@@ -131,7 +132,16 @@ const  NSString *kloginPassword=@"keyLoginPassword";
         
         
     };
-    
+    //findPassVC
+    context[@"mobile_tofindPassPage"]=^(){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIStoryboard *storyBoard=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+            UIViewController *findPassVC=[storyBoard instantiateViewControllerWithIdentifier:@"findPassVC"];
+            [self.navigationController pushViewController:findPassVC animated:YES];
+            
+        });
+
+    };
     context[@"mobile_login"]=^(){
         NSLog(@"objc_login....");
         
@@ -211,7 +221,10 @@ const  NSString *kloginPassword=@"keyLoginPassword";
     
 }
 -(void)registerUser{
-    
+    //userRegVC
+    UIStoryboard *storyBoard=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    UIViewController *userRegVC=[storyBoard instantiateViewControllerWithIdentifier:@"userRegVC"];
+    [self.navigationController pushViewController:userRegVC animated:YES];
 }
 
 

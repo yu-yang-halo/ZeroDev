@@ -8,18 +8,17 @@
 
 #import "EsptouchUtils.h"
 #import <Esptouch/Esptouch.h>
+
 static const int TASK_COUNT=5;
 static const BOOL IS_SSID_HIDDEN=NO;
 
 @implementation EsptouchUtils
 
-+(void)configWifiSSID:(NSString *)apSsid pass:(NSString *)apPassword bssid:(NSString *)apBssid{
-    NSLog(@"ESPViewController do confirm action...");
++(void)configWifiSSID:(NSString *)apSsid pass:(NSString *)apPassword bssid:(NSString *)apBssid completeBlock:(CompleteBlock)block{
+
     dispatch_queue_t  queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
-        NSLog(@"ESPViewController do the execute work...");
-        
-        // execute the task
+                // execute the task
         ESPTouchTask *_espTouchTask=[[ESPTouchTask alloc] initWithApSsid:apSsid andApBssid:apBssid andApPwd:apPassword andIsSsidHiden:IS_SSID_HIDDEN];
         
         NSArray *esptouchResultArray =[_espTouchTask executeForResults:TASK_COUNT];
@@ -55,12 +54,15 @@ static const BOOL IS_SSID_HIDDEN=NO;
                     {
                         [mutableStr appendString:[NSString stringWithFormat:@"\nthere's %lu more result(s) without showing\n",(unsigned long)([esptouchResultArray count] - count)]];
                     }
-                    [[[UIAlertView alloc]initWithTitle:@"Execute Result" message:mutableStr delegate:nil cancelButtonTitle:@"I know" otherButtonTitles:nil]show];
+                    block();
+                    [[[UIAlertView alloc]initWithTitle:@"提示" message:mutableStr delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil]show];
                 }
                 
                 else
                 {
-                    [[[UIAlertView alloc]initWithTitle:@"Execute Result" message:@"Esptouch fail" delegate:nil cancelButtonTitle:@"I know" otherButtonTitles:nil]show];
+                     block();
+                    
+                    [[[UIAlertView alloc]initWithTitle:@"提示" message:@"配置失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil] show];
                 }
             }
             

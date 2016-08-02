@@ -10,11 +10,13 @@
 #import "HYLWifiUtils.h"
 #import "HYLCache.h"
 #import "HYLReachabilityUtils.h"
-
+#import <MBProgressHUD/MBProgressHUD.h>
 #import <UIView+Toast.h>
 #import "EsptouchUtils.h"
 NSString *const kNotificationWIFIPageLogic=@"kNotificationWIFIPageLogic";
-@interface HYLWIFITableViewController ()
+@interface HYLWIFITableViewController (){
+    MBProgressHUD *hud;
+}
 - (IBAction)toSystemSetting:(id)sender;
 @property (strong, nonatomic) IBOutlet UITextField *willConntectWifiSSID;
 @property (strong, nonatomic) IBOutlet UITextField *willConnectWifiPassword;
@@ -28,7 +30,7 @@ NSString *const kNotificationWIFIPageLogic=@"kNotificationWIFIPageLogic";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wifiPageLogic) name:kNotificationWIFIPageLogic object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wifiPageLogic) name:kNotificationWIFIPageLogic object:nil];
     
     self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backList)];
     [self.navigationItem.leftBarButtonItem setTintColor:[UIColor whiteColor]];
@@ -39,7 +41,7 @@ NSString *const kNotificationWIFIPageLogic=@"kNotificationWIFIPageLogic";
     
     self.willConntectWifiSSID.text=[HYLCache shareHylCache].availableWIFISSID;
    
-    [self hideItemsYN:YES];
+    [self hideItemsYN:NO];
     
 }
 -(void)backList{
@@ -71,7 +73,7 @@ NSString *const kNotificationWIFIPageLogic=@"kNotificationWIFIPageLogic";
 }
 
 -(void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationWIFIPageLogic object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationWIFIPageLogic object:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -90,9 +92,13 @@ NSString *const kNotificationWIFIPageLogic=@"kNotificationWIFIPageLogic";
         [[[UIApplication sharedApplication] keyWindow] makeToast:@"wifi名称与密码不能为空"];
         
     }else{
-       [HYLWifiUtils reqConfigWifiSSID:ssid password:password];
+       //[HYLWifiUtils reqConfigWifiSSID:ssid password:password];
+        hud=[MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
         
-       // [EsptouchUtils configWifiSSID:ssid pass:password bssid:[HYLWifiUtils fetchBSSIDInfo]];
+        hud.labelText=@"WIFI配置中，请等待...";
+        [EsptouchUtils configWifiSSID:ssid pass:password bssid:[HYLWifiUtils fetchBSSIDInfo] completeBlock:^{
+            [hud hide:YES];
+        }];
     }
 }
 

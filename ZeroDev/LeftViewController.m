@@ -39,7 +39,7 @@
     
     NSArray *menuDataArr=@[
                            @[@"主页"],
-                           @[@"设备管理",@"添加设备",@"添加视频",@"删除设备"],
+                           @[@"设备管理",@"添加设备",@"添加视频",@"删除设备",@"WIFI配置"],
                            @[@"用户信息"],
                            @[@"关于"],
                            @[@"退出"]
@@ -253,6 +253,8 @@
                 [self.pageDelegate swicthToPage:SWITCH_PAGE_TYPE_ADD_VIDEO animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
             }else if(subRow==3){
                 [self.pageDelegate swicthToPage:SWITCH_PAGE_TYPE_DELETE_DEVICE animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
+            }else if(subRow==4){
+                [self.pageDelegate swicthToPage:SWITCH_PAGE_TYPE_WIFI_CONFIG animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
             }
         }
         

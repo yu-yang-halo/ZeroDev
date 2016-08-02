@@ -47,7 +47,7 @@
         
         NSString *jsonDictionary= [[NSString alloc] initWithContentsOfFile:jsonPath encoding:NSUTF8StringEncoding error:NULL];
         id  jsonObject=[jsonDictionary objectFromJSONString];
-        if([jsonObject isKindOfClass:[NSDictionary class]]){
+        if([jsonObject isKindOfClass:[NSDictionary class]]||[jsonObject isKindOfClass:[NSArray class]]){
             
             return jsonObject;
         }

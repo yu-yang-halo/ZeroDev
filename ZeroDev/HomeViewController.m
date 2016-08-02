@@ -24,7 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.navigationController.navigationBar setHidden:YES];
+    //[self.navigationController.navigationBar setHidden:YES];
+    self.title=@"iPlus";
+    
     self.webView.delegate=self;
     self.webView.scrollView.scrollEnabled=NO;
     

@@ -18,13 +18,11 @@ const NSString *UI=@"ui";
     
     BOOL isDir;
     if(![[NSFileManager defaultManager] fileExistsAtPath:HOME_PATH isDirectory:&isDir]){
-        if(isDir){
-            BOOL isCreateDirSuccess=[[NSFileManager defaultManager] createDirectoryAtPath:HOME_PATH withIntermediateDirectories:YES attributes:nil error:NULL];
-            if(isCreateDirSuccess){
-                NSLog(@"HOME 目录创建成功");
-            }else{
-                NSLog(@"HOME 目录创建失败");
-            }
+        BOOL isCreateDirSuccess=[[NSFileManager defaultManager] createDirectoryAtPath:HOME_PATH withIntermediateDirectories:YES attributes:nil error:NULL];
+        if(isCreateDirSuccess){
+            NSLog(@"HOME 目录创建成功");
+        }else{
+            NSLog(@"HOME 目录创建失败");
         }
        
     }
@@ -128,7 +126,7 @@ const NSString *UI=@"ui";
         NSLog(@"saveFilePath : %@",saveFilePath);
         
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        // Copy the database sql file from the resourcepath to the documentpath
+    
         if ([fileManager fileExistsAtPath:saveFilePath])
         {
             BOOL isDeleteFile=[fileManager removeItemAtPath:saveFilePath error:nil];
@@ -142,7 +140,7 @@ const NSString *UI=@"ui";
         
         BOOL isWriteToFile=[fileManager createFileAtPath:saveFilePath contents:data attributes:nil];
         
-        //        BOOL isWriteToFile=[data writeToFile:FileName atomically:NO];//将NSData类型对象data写入文件，文件名为FileName
+        //BOOL isWriteToFile=[data writeToFile:saveFilePath atomically:NO];//将NSData类型对象data写入文件，文件名为FileName
         
         return isWriteToFile;
     

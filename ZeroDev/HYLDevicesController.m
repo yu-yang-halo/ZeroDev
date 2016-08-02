@@ -65,9 +65,9 @@
     
     [self.navigationController.navigationBar setHidden:NO];
     
-    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"WIFI设置" style:UIBarButtonItemStylePlain target:self action:@selector(WIFIConfig)];
-    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
-   
+//    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"WIFI设置" style:UIBarButtonItemStylePlain target:self action:@selector(WIFIConfig)];
+//    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
+//   
     mobileAppJSON=[[JSONManager reverseMobileAppJSONToObject] JSONString];
     
     [self.webVIew.scrollView setShowsHorizontalScrollIndicator:NO];
@@ -140,15 +140,12 @@
     
     
 
-    
+   
     
 }
 -(void)WIFIConfig{
     
-    UIStoryboard *storyBoard=[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    UIViewController *wifiModule=[storyBoard instantiateViewControllerWithIdentifier:@"wifiModule"];
-    AppDelegate *appDelegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate setRootViewController2:wifiModule animated:YES animationType:ZERO_DEV_ANIMATION_TYPE_PUSH];
+   
     
     
 }
