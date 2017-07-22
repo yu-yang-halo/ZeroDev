@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,maximum-scale=1,user-scalable=no" />
 	<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
 	<script type="text/javascript" src="js/elapi.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
 	<script type="text/javascript" src="js/map.js"></script>
 	<title>设备列表</title>
 	<link rel="stylesheet" href="css/theme.css" type="text/css" charset="utf-8" />
@@ -161,10 +162,13 @@
 		var imagePairs = new Map();
 		var objectId=0;
      
-		function initDomcument() {
+		function initDomcument(pageIndex) {
 			var len = $("#container").children().length;
-			var currentIndex = 0;
+			var currentIndex = pageIndex;
 			loadNav(len, currentIndex);
+            
+            $(document).on("swipeleft","#container",moveLeft);
+            $(document).on("swiperight","#container",moveRight);
 
 			function moveLeft() {
 				if (++currentIndex >= len) {
@@ -193,7 +197,9 @@
 					}
 				}
 			}
-			addTouchEvent(document.getElementById("container"), moveLeft, moveRight);
+		
+        
+            
 		}
 
 
@@ -209,7 +215,16 @@
 
 
 		function loadData(root, devJSON) {
-		     objectId=devJSON.objectId;
+             var pageIndex=0;
+             if(arguments.length==3){
+                 pageIndex=arguments[2];
+             }
+             
+             
+             objectId=devJSON.objectId;
+             
+             
+             
 
 			/*
 			 * 该类型设备UI描述页数
@@ -253,7 +268,7 @@
 						/*
 						 * 首页显示，其他页隐藏
 						 */
-						if (pages[i].localNum == 1) {
+						if (pages[i].localNum == pageIndex+1) {
 							display_style = "";
 						}
 						/*
@@ -280,12 +295,12 @@
 								rowselementString += rowElement;
 							}
 						}
-						var elements = " <div class='page' id='page" + pages[i].localNum + "'  style='" + display_style + ";padding:" + pages[i].localPadding + "px; '>" + titleBar + rowselementString + "</div>";
+						var elements = " <div class='page' id='page" + pages[i].localNum + "'  style='" + display_style + ";padding-top:" + pages[i].localPadding + "px; '>" + titleBar + rowselementString + "</div>";
 						$("#container").append(elements);
 					}
 				}
 			}
-			initDomcument();
+			initDomcument(pageIndex);
 			$(".st").each(function() {
 				var fieldId = $(this).attr("fieldId");
 				var imageArr=imagePairs.get(fieldId);

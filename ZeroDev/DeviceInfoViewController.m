@@ -21,6 +21,7 @@
     BOOL _reloading;
     NSString *mobileAppJSON;
     BOOL _pageLoadFinished;
+    int pageIndex;
 }
 @end
 
@@ -31,6 +32,7 @@
     [super viewDidLoad];
     
     [self setTitle:_deviceObject.name];
+    pageIndex=0;
      self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backList)];
      self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(settings)];
     [self.navigationItem.leftBarButtonItem setTintColor:[UIColor whiteColor]];
@@ -77,10 +79,21 @@
         }
         
         [self setFieldValue:[args[0] toString] fieldId:[args[1] toInt32] objectId:[args[2] toInt32]];
+   
+    };
+    context[@"mobile_pageIndex"]=^(){
         
+        // fieldValue,fieldId,objectId
+        NSArray *args=[JSContext currentArguments];
+        for (JSValue *jsVal in args) {
+            NSLog(@"mobile_pageIndex : %@",jsVal.toString);
+        }
         
+        pageIndex=[args[0] toInt32];
         
     };
+    
+    
     context[@"malert"]=^(){
          NSArray *args=[JSContext currentArguments];
          dispatch_async(dispatch_get_main_queue(), ^{
@@ -170,7 +183,7 @@
             self.title=_deviceObject.name;
             NSMutableDictionary *objectMap=[HYLClassUtils canConvertJSONDataFromObjectInstance:_deviceObject];
             
-            [self.webView stringByEvaluatingJavaScriptFromString: [NSString stringWithFormat:@"loadData(%@,%@)",mobileAppJSON,[objectMap JSONString]]];
+            [self.webView stringByEvaluatingJavaScriptFromString: [NSString stringWithFormat:@"loadData(%@,%@,%d)",mobileAppJSON,[objectMap JSONString],pageIndex]];
             
         }
         _reloading=NO;

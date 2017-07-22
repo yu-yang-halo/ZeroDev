@@ -14,14 +14,12 @@ a{
 .title{
 					   	 height:35px;
 					   	 width: 100%;
-					   	background: #99a9bb;
-					   	 color: #FFFFFF;
 					   	 text-align: center;
 					   	 line-height: 35px;
-					   	 font-size: 18px;
+					   	 font-size: 20px;
 					   }
 .title label{
-	color: white;
+	color: black;
 	margin-left: 2px;
 	
 }		

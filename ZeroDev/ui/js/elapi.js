@@ -386,6 +386,14 @@ function hyl_demoLogin(loginType){
                       mobile_demoLogin(loginType);
                   }
 }
+function hyl_pageIndex(pageIndex){
+    if(browser.versions.android){
+          window.jna.mobile_pageIndex(pageIndex);
+    }else{
+          mobile_pageIndex(pageIndex);
+    }
+}
+                           
 
 /**
  * 更新设备信息
@@ -463,72 +471,78 @@ function findFieldName(clsJson,clsId,fieldId){
 
 
 /*
-*  javascript 处理左右滑动触摸事件
-*/
-
-	function reEnableTouchEvent() {
-			[].slice.call(document.querySelectorAll('input, select, button,table')).forEach(function(el) {
-				el.addEventListener(('ontouchstart' in window) ? 'touchstart' : 'mousedown', function(e) {
-					e.stopPropagation();
-				})
-			})
-		}
-
-        function addTouchEvent(dom,moveLeft,moveRight){
-             var xx, yy, XX, YY, swipeX, swipeY;
-		     var swipeleft=false;
-		     dom.addEventListener("touchstart", touchStart, false);
-		     dom.addEventListener("touchmove", touchMove, false);
-		     dom.addEventListener("touchend", touchEnd, false);
-
-		     function touchEnd(event) {
-                  if(swipeX&&swipeY){
-
-                  }else{
-                      if(swipeX){
-			                if(swipeleft){
-
-			                    moveLeft();
-			                  }else{
-
-			                    moveRight();
-			                  }
-			             }
-                  }
-
-
-			 }
-
-             function touchStart(event) {
-			        xx = event.targetTouches[0].screenX;
-			        yy = event.targetTouches[0].screenY;
-			        swipeX = true;
-			        swipeY = true;
-		     }
-		     function touchMove(event) {
-		           	XX = event.targetTouches[0].screenX;
-			        YY = event.targetTouches[0].screenY;
-
-			        if (swipeX && Math.abs(XX - xx) - Math.abs(YY - yy) > 0&&Math.abs(XX - xx)>=10) //左右滑动
-			        {
-				             event.stopPropagation(); //组织冒泡
-				             event.preventDefault(); //阻止浏览器默认事件
-				             swipeY = false;
-                             //左右滑动
-			            	 if(XX-xx>0){
-				                swipeleft=false;//向右
-			            	  }else{
-				                swipeleft=true;//向左
-			             	  }
-
-			           } else if (swipeY && Math.abs(XX - xx) - Math.abs(YY - yy) < 0) { //上下滑动
-				               swipeX = false;//上下滑动，使用浏览器默认的上下滑动
-
-			           }
-	               }
-
-        }
-function loadNav(numbers,index){
+**  javascript 处理左右滑动触摸事件
+ function reEnableTouchEvent(touchStart,touchMove,touchEnd) {
+ [].slice.call(document.querySelectorAll('input, select, button,table')).forEach(function(el) {
+ el.removeEventListener("touchstart",touchStart,false);
+ el.removeEventListener("touchmove",touchMove,false);
+ el.removeEventListener("touchend",touchEnd,false);
+ })
+ }
+ 
+ function addTouchEvent(dom,moveLeft,moveRight){
+ 
+ var xx, yy, XX, YY, swipeX, swipeY;
+ var swipeleft=false;
+ dom.addEventListener("touchstart", touchStart, true);
+ dom.addEventListener("touchmove", touchMove, true);
+ dom.addEventListener("touchend", touchEnd, true);
+ 
+ 
+ reEnableTouchEvent(touchStart,touchMove,touchEnd);
+ 
+ function touchEnd(event) {
+ if(swipeX&&swipeY){
+ 
+ }else{
+ if(swipeX){
+ if(swipeleft){
+ 
+ moveLeft();
+ }else{
+ 
+ moveRight();
+ }
+ }
+ }
+ 
+ 
+ }
+ 
+ function touchStart(event) {
+ xx = event.targetTouches[0].screenX;
+ yy = event.targetTouches[0].screenY;
+ swipeX = true;
+ swipeY = true;
+ }
+ function touchMove(event) {
+ XX = event.targetTouches[0].screenX;
+ YY = event.targetTouches[0].screenY;
+ 
+ if (swipeX && Math.abs(XX - xx) - Math.abs(YY - yy) > 0&&Math.abs(XX - xx)>=10) //左右滑动
+ {
+ event.stopPropagation(); //组织冒泡
+ event.preventDefault(); //阻止浏览器默认事件
+ swipeY = false;
+ //左右滑动
+ if(XX-xx>0){
+ swipeleft=false;//向右
+ }else{
+ swipeleft=true;//向左
+ }
+ 
+ } else if (swipeY && Math.abs(XX - xx) - Math.abs(YY - yy) < 0) { //上下滑动
+ swipeX = false;//上下滑动，使用浏览器默认的上下滑动
+ 
+ }
+ }
+ 
+ }
+ */
+                           
+                           
+       function loadNav(numbers,index){
+                           hyl_pageIndex(index);
 	    	$(".nav_div").remove();
 	    	if(numbers==1){
 	    		return;
